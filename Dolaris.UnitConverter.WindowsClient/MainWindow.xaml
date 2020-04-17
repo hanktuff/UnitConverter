@@ -1,0 +1,15 @@
+﻿<Window x:Class="Dolaris.UnitConverter.WindowsClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid x:Name="MainGrid">
+        <TabControl x:Name="tabControlUnits" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" >
+            <!--<TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>-->
+        </TabControl>
+    </Grid>
+</Window>

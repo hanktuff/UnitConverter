@@ -1,0 +1,18 @@
+﻿
+
+Unit    Meters
+============================================
+Meter   1
+Inch    0.0254
+Foot    0.3048
+Yard    0.9144
+Mile    1609.344
+
+
+
+40 inches in feet?
+->  40in * 0.0254 = 1.016m
+    1.016m / 1ft = 1.016m / 0.3048m = 3.3333ft
+	40in * InchesInMeters / FeetInMeters
+
+

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Dolaris.UnitConverter.Web.UnitCandyService" CodeBehind="UnitCandyService.svc.cs" %>

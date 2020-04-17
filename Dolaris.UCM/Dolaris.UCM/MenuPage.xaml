@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Dolaris.UCM"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core;assembly:Xamarin.Forms.Core"
+             x:Class="Dolaris.UCM.MenuPage">
+
+    <ScrollView Orientation="Vertical">
+
+        <TableView x:Name="tableviewUnits" Intent="Menu" HasUnevenRows="True">
+            <TableView.Root>
+
+                <!-- DEBUG -->
+                <TableSection x:Name="tablesectionDEBUG" Title="DEBUG">
+                    <ViewCell>
+                        <ContentView>
+                            <Editor Text="editr" />
+                        </ContentView>
+                    </ViewCell>
+                    
+                    <!--<ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal">
+                                --><!--<Label>Label 1</Label>-->
+                                <!--<Label>Label 2</Label>--><!--
+                                <EntryCell Label="entrycell" Placeholder="placeh." />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>-->
+                    <!--<EntryCell Label="EntryCell2" Placeholder="2nd entry cell" />-->
+                    <!--<ViewCell>
+                        <ViewCell.View>
+                            <StackLayout>
+                                <SwitchCell Text="Yes or No?" />
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>-->
+                </TableSection>
+
+                <TableSection x:Name="tablesectionTypesOfUnits" Title="Types of Units">
+                </TableSection>
+                
+                <TableSection Title="Info">
+                    <TextCell x:Name="textcellAboutUnitCandy" Text="About UnitCandy" local:CellExtensions.Accessory="DisclosureIndicator" Tapped="textcellAboutUnitCandy_Tapped"/>
+                </TableSection>
+                
+            </TableView.Root>
+        </TableView>
+
+    </ScrollView>
+
+</ContentPage>

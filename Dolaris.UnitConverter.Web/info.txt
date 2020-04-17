@@ -1,0 +1,33 @@
+﻿
+
+Show how to use Bootstrap:
+http://getbootstrap.com/css/
+http://www.w3schools.com/bootstrap/default.asp
+
+
+This is the link to a demo of our theme Flatland:
+http://wrapbootstrap.com/preview/WB0J86D6H
+
+
+For working with superscript (m2, m3, ...):
+http://www.fileformat.info/info/unicode/char/b2/index.htm
+
+
+
+
+This can be useful when debugging web pages:
+
+<div class="row">
+    <div class="col-md-1">Column 1</div>
+    <div class="col-md-1">Column 2</div>
+    <div class="col-md-1">Column 3</div>
+    <div class="col-md-1">Column 4</div>
+    <div class="col-md-1">Column 5</div>
+    <div class="col-md-1">Column 6</div>
+    <div class="col-md-1">Column 7</div>
+    <div class="col-md-1">Column 8</div>
+    <div class="col-md-1">Column 9</div>
+    <div class="col-md-1">Column 10</div>
+    <div class="col-md-1">Column 11</div>
+    <div class="col-md-1">Column 12</div>
+</div>

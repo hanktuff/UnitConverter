@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="Dolaris.UnitConverter.WindowsClient.UnitControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignWidth="200" Height="40">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+        </Grid.RowDefinitions>
+
+        <Label x:Name="labelUnitName" Grid.Column="0" Grid.Row="0" Content="Meters:" VerticalAlignment="Center" />
+        <!--<Label x:Name="UnitValue" Grid.Column="1" Grid.Row="0" Content="4.56" VerticalAlignment="Center" />-->
+        <TextBlock x:Name="textblockUnitValue" Grid.Column="1" Grid.Row="0" Text="4.56" VerticalAlignment="Center" MouseLeftButtonUp="UnitValue_MouseLeftButtonUp" />
+        <TextBox x:Name="textboxUnitValueEditing" Grid.Column="1" Grid.Row="0" Text="3.45" VerticalAlignment="Center" Width="120" HorizontalAlignment="Left" LostFocus="textboxUnitValueEditing_LostFocus" />
+    </Grid>
+</UserControl>

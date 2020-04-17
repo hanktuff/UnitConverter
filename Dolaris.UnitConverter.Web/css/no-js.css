@@ -1,0 +1,16 @@
+.animation { visibility:visible; }
+
+.carousel-slider > div { display:none; }
+.carousel-slider > div:first-child, .carousel-slider.gallery-slider > div:nth-child(2), .carousel-slider.gallery-slider > div:nth-child(3), .carousel-slider.gallery-slider > div:nth-child(4) { display:block; }
+
+.img-overlay:hover .overlay-masked, .img-overlay .overlay-masked p { display:block; }
+.img-overlay .overlay-masked .overlay-icon {
+	top:50%;
+	opacity:1;
+}
+
+@media (max-width: 767px) {
+	
+	.carousel-slider.gallery-slider > div:nth-child(2), .carousel-slider.gallery-slider > div:nth-child(3), .carousel-slider.gallery-slider > div:nth-child(4) { display:none; }
+	
+}

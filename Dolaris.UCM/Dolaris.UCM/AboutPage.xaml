@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Dolaris.UCM"
+             x:Class="Dolaris.UCM.AboutPage"
+             Title="About">
+
+    <ScrollView Orientation="Vertical">
+        <StackLayout Margin="15">
+
+            <Label FontSize="Medium">UnitCandy</Label>
+            <Label />
+            <Label />
+            <Label FontSize="Small">Version 1.1</Label>
+            <Label />
+            <Label FontSize="Micro">UnitCandy is utility that is trying to help you with your everyday unit conversion needs. It contains many units of measurement commonly encountered and converts them to other units.</Label>
+            <Label />
+            <Label />
+            <Label />
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Micro">UnitCandy website:</Label>
+                <Label x:Name="labelLinkToUnitcandyWebsite" FontSize="Micro" TextColor="Blue" local:ViewExtensions.Hyperlink="http://www.unitcandy.com">www.unitcandy.com</Label>
+            </StackLayout>
+            <Label />
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Micro">UnitCandy on Twitter:</Label>
+                <Label x:Name="labelLinkToTwitter" FontSize="Micro" TextColor="Blue" local:ViewExtensions.Hyperlink="https://twitter.com/unitcandy">@Unitcandy</Label>
+            </StackLayout>
+            <Label />
+            <StackLayout Orientation="Horizontal">
+                <Label FontSize="Micro">UnitCandy e-mail:</Label>
+                <Label x:Name="labelLinkToUnitcandyEmail" FontSize="Micro" TextColor="Blue" local:ViewExtensions.Hyperlink="mailto:unitcandycom@gmail.com">unitcandycom@gmail.com</Label>
+            </StackLayout>
+            <Label />
+            <Label />
+            <Label />
+            <Label FontSize="Micro">© 2017 All Rights Reserved. Created by Dolaris.</Label>
+            <Label />
+            <Label />
+            <Label FontSize="Micro">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Dolaris&#10;" />
+                        <Span Text="P.O. Box 2187&#10;" />
+                        <Span Text="Kirkland, WA 98083&#10;" />
+                        <Span Text="United States&#10;" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
