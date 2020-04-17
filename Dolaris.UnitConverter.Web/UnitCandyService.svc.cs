@@ -15,7 +15,7 @@ using System.Net.Mail;
 namespace Dolaris.UnitConverter.Web {
 
 
-    [ServiceContract(Namespace = "http://www.unitcandy.com/ws/")]
+    [ServiceContract(Namespace = "https://www.unitcandy.com/ws/")]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class UnitCandyService {
 
@@ -269,14 +269,14 @@ namespace Dolaris.UnitConverter.Web {
 
         /// <summary>
         /// Returns the unit and magnitude from the url.
-        /// For example: "http://www.unitcandy.com?1.2m" is 1.2 Meters.
+        /// For example: "https://www.unitcandy.com?1.2m" is 1.2 Meters.
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
         [OperationContract]
         public FormattedUnit FindUnitFromUrl(string url) {
 
-            // from "http://www.unitcandy.com?12.345m"
+            // from "https://www.unitcandy.com?12.345m"
             // find 12.345 meters
 
             FormattedUnit result = null;

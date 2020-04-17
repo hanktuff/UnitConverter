@@ -19,7 +19,7 @@
             <Label />
             <StackLayout Orientation="Horizontal">
                 <Label FontSize="Micro">UnitCandy website:</Label>
-                <Label x:Name="labelLinkToUnitcandyWebsite" FontSize="Micro" TextColor="Blue" local:ViewExtensions.Hyperlink="http://www.unitcandy.com">www.unitcandy.com</Label>
+                <Label x:Name="labelLinkToUnitcandyWebsite" FontSize="Micro" TextColor="Blue" local:ViewExtensions.Hyperlink="https://www.unitcandy.com">www.unitcandy.com</Label>
             </StackLayout>
             <Label />
             <StackLayout Orientation="Horizontal">

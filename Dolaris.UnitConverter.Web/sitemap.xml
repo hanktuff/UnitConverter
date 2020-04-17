@@ -3,9 +3,9 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
-    <loc>http://www.unitcandy.com/</loc>
+    <loc>https://www.unitcandy.com/</loc>
     <image:image>
-      <image:loc>http://www.unitcandy.com/images/UnitcandyIcon128.png</image:loc>
+      <image:loc>https://www.unitcandy.com/images/UnitcandyIcon128.png</image:loc>
       <image:caption>UnitCandy</image:caption>
     </image:image>
     <!--<video:video>

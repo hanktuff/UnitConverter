@@ -1,1 +1,1 @@
-﻿Sitemap: http://www.unitcandy.com/sitemap.xml
+﻿Sitemap: https://www.unitcandy.com/sitemap.xml
