@@ -185,6 +185,9 @@
                     </div>
                     <p class="help-block" style="color: white">Enter, for example, "24in", "60 Fahrenheit", etc.</p>
                 </div>
+                <div class="col-md-2">
+                    <input type="hidden" name="IL_IN_ARTICLE">
+                </div>
             </div>
         </div>
     </div>
@@ -464,13 +467,15 @@
     <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    <script type="text/javascript" src="Dolaris.UnitConverter.js"></script>
 
-    <%--<script type="text/javascript">
+    <%--<script type="text/javascript" src="Dolaris.UnitConverter.js"></script>--%>
+    <script type="text/javascript" src="unitcandy.js"></script>
+
+    <script type="text/javascript">
         var infolinks_pid = 3190727;
         var infolinks_wsid = 2;
-    </script>--%>
-    <%--<script type="text/javascript" src="https://resources.infolinks.com/js/infolinks_main.js"></script>--%>
+    </script>
+    <script type="text/javascript" src="https://resources.infolinks.com/js/infolinks_main.js"></script>
 
 </body>
 

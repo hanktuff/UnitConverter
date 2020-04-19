@@ -13,6 +13,11 @@ namespace Dolaris.UnitConverter.Web {
         /// <summary>
         /// Name of attribute used to store the value of the unit name.
         /// </summary>
+        private const string _attributeID = "data-id";
+
+        /// <summary>
+        /// Name of attribute used to store the value of the unit name.
+        /// </summary>
         private const string _attributeUnitName = "data-unitname";
 
         /// <summary>
@@ -40,6 +45,7 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="unit"></param>
         public void Initialize(IUnit unit, bool startCollapsed = false) {
 
+            this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
             UnitName = unit.ID.ToString();
             UnitGroupName = unit.Type.ToString();
             UnitNameTag = unit.Name + ":";
@@ -61,6 +67,24 @@ namespace Dolaris.UnitConverter.Web {
 
             if (unit.MaxValue != double.MaxValue) {
                 UnitHelperActionMax.Visible = true;
+            }
+        }
+
+        //
+        public String ID {
+            get {
+                string id = null;
+
+                try {
+                    id = UnitTextBox.Attributes[_attributeID];
+
+                } catch (Exception) {
+                }
+
+                return id;
+            }
+            set {
+                UnitTextBox.Attributes.Add(_attributeID, value);
             }
         }
 

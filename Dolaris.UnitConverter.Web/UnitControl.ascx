@@ -4,7 +4,8 @@
     <div class="form-inline">
         <label id="UnitNameLabel" runat="server" for="UnitTextBox" class="control-label col-sm-4 col-md-3 textbox"></label>
         <div class="input-group">
-            <input type="text" id="UnitTextBox" runat="server" class="form-control" onchange="unitChanged(event)" onkeypress="unitChangedKeyPressed(event)" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+            <input type="text" id="UnitTextBox" runat="server" class="form-control" onchange="unitChanged(event)" onkeypress="unitChangedKeyPressed(event)" 
+                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
             <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
         </div>
         <label class="control-label col-md-3"></label>

@@ -46,6 +46,7 @@ namespace Dolaris.UnitConverter.Web {
         /// </summary>
         /// <returns></returns>
         [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
         public String Ping() {
             return string.Format("Ping was received at: '{0}'.", DateTime.Now.ToString("dddd, yyyy/MM/dd HH:mm:ss.fff"));
         }
@@ -57,7 +58,9 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="unitName">The name/ID of the unit (for example "Meter").</param>
         /// <param name="unitValue">The value of the unit as entered by the user. Does not have to be a number.</param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public List<FormattedUnit> Recalculate(string unitName, string unitValue) {
             //System.Threading.Thread.Sleep(3000);
             var result = new List<FormattedUnit>();
@@ -130,7 +133,9 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="unitValue">The value of the unit as entered by the user. Does not have to be a number.</param>
         /// <param name="action">The action, like +1, -1, *10, etc.</param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public List<FormattedUnit> RecalculateWithHelperAction(string unitName, string unitValue, string action) {
 
             if (!_webman.IsNumber(unitValue)) {
@@ -177,7 +182,9 @@ namespace Dolaris.UnitConverter.Web {
         /// </summary>
         /// <param name="unitGroupName"></param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public String GetCopyToClipboardText(string unitName, string unitValue) {
             StringBuilder result = new StringBuilder();
 
@@ -225,7 +232,7 @@ namespace Dolaris.UnitConverter.Web {
         }
 
         /// <summary>
-        /// Returns the unit and magnitude parse from inputstring.
+        /// Returns the unit and magnitude parsed from inputstring.
         /// If unitName is provided only the magnitude from inputstring is used and the unit is the unitName.
         /// For example: "1.2m" is 1.2 Meters.
         /// For example: "1.2m" and "Fahrenheit" is 1.2 Fahrenheit.
@@ -233,7 +240,9 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="inputstring"></param>
         /// <param name="unitName"></param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public FormattedUnit FindUnit(string inputstring, string unitName) {
 
             FormattedUnit result = null;
@@ -273,7 +282,9 @@ namespace Dolaris.UnitConverter.Web {
         /// </summary>
         /// <param name="url"></param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public FormattedUnit FindUnitFromUrl(string url) {
 
             // from "https://www.unitcandy.com?12.345m"
@@ -311,7 +322,9 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="emailAddress"></param>
         /// <param name="message"></param>
         /// <returns></returns>
-        [OperationContract]
+        //[OperationContract]
+        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public String SendFeedbackMail(string emailAddress, string message) {
 
             // the message cannot be empty
