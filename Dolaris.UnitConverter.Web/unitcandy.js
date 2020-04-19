@@ -34,23 +34,28 @@ var Recalculate = /** @class */ (function () {
     return Recalculate;
 }());
 $(document).ready(function () {
-    //alert('Do you see me?');
     var UnitElements = $('[data-id^="UnitTextBox-"]');
-    UnitElements.on('click', function (e) {
+    UnitElements.on('focusout', function (e) {
         var dataID = e.target.attributes['data-id'].value;
         var unitElement = $('[data-id="' + dataID + '"]');
-        //alert(elem.data('unitname'));
         recalculateUnit = new Recalculate();
         recalculateUnit.recalculate(unitElement);
     });
-    //let meter = $('[data-unitname="Meter"]');
-    //meter.on('click', () => alert('Meter!'));
-    //meter.on('click', () => alert(meter.data('unitgroupname')));
+    UnitElements.on('keypress', function (e) {
+        var key = e.keyCode || e.which;
+        if (key === 13) {
+            //alert('you hit Enter');
+            var dataID = e.target.attributes['data-id'].value;
+            var unitElement = $('[data-id="' + dataID + '"]');
+            recalculateUnit = new Recalculate();
+            recalculateUnit.recalculate(unitElement);
+        }
+    });
 });
-var lastUnitName = '';
-var lastUnitGroupName = '';
-var lastUnitValue = '';
-var anyUnitSelectedValue = '';
+//var lastUnitName = '';
+//var lastUnitGroupName = '';
+//var lastUnitValue = '';
+//var anyUnitSelectedValue = '';
 //function unitChangedKeyPressed(e) {
 //    lastUnitName = e.srcElement.dataset.unitname;
 //    lastUnitGroupName = e.srcElement.dataset.unitgroupname;

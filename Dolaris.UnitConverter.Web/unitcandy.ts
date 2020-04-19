@@ -52,24 +52,33 @@ class Recalculate {
 
 $(document).ready(function () {
 
-    //alert('Do you see me?');
-
     const UnitElements: JQuery = $('[data-id^="UnitTextBox-"]');
 
-    UnitElements.on('click',
+    UnitElements.on('focusout',
         (e) => {
 
             const dataID = e.target.attributes['data-id'].value;
             const unitElement: JQuery = $('[data-id="' + dataID + '"]');
-            //alert(elem.data('unitname'));
 
             recalculateUnit = new Recalculate();
             recalculateUnit.recalculate(unitElement);
         });
 
-    //let meter = $('[data-unitname="Meter"]');
-    //meter.on('click', () => alert('Meter!'));
-    //meter.on('click', () => alert(meter.data('unitgroupname')));
+    UnitElements.on('keypress',
+        (e) => {
+
+            const key = e.keyCode || e.which;
+
+            if (key === 13) {
+                //alert('you hit Enter');
+
+                const dataID = e.target.attributes['data-id'].value;
+                const unitElement: JQuery = $('[data-id="' + dataID + '"]');
+
+                recalculateUnit = new Recalculate();
+                recalculateUnit.recalculate(unitElement);
+            }
+        });
 });
 
 
@@ -78,10 +87,10 @@ $(document).ready(function () {
 
 
 
-var lastUnitName = '';
-var lastUnitGroupName = '';
-var lastUnitValue = '';
-var anyUnitSelectedValue = '';
+//var lastUnitName = '';
+//var lastUnitGroupName = '';
+//var lastUnitValue = '';
+//var anyUnitSelectedValue = '';
 
 
 
