@@ -79,7 +79,6 @@
 
         ga('create', 'UA-80895444-2', 'auto');
         ga('send', 'pageview');
-
     </script>
 
     <div id="fb-root"></div>
@@ -145,8 +144,8 @@
                         </ul>
                     </li>
                     <li>
-                        <button class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
-                        <button class="btn navbar-btn btn-blue" onclick="gotoInfoArea()" style="width: 90px;">Info</button>
+                        <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
+                        <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
                     </li>
                     <%-- Copy to Clipboard --%>
                     <%--<li><a href="javascript:void(0);" onclick="copyToClipboard()" data-toggle="modal" data-target="#modalCopyToClipboard"><i class="fa fa-copy text-success" data-toggle="tooltip" data-placement="bottom" title="Copy to Clipboard"></i></a></li>--%>

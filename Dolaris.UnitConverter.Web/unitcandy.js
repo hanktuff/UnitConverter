@@ -34,21 +34,47 @@ var Recalculate = /** @class */ (function () {
     return Recalculate;
 }());
 $(document).ready(function () {
-    var UnitElements = $('[data-id^="UnitTextBox-"]');
-    UnitElements.on('focusout', function (e) {
+    var unitElements = $('[data-id^="UnitTextBox-"]');
+    unitElements.on('focusout', function (e) {
         var dataID = e.target.attributes['data-id'].value;
-        var unitElement = $('[data-id="' + dataID + '"]');
+        var elementUnit = $('[data-id="' + dataID + '"]');
         recalculateUnit = new Recalculate();
-        recalculateUnit.recalculate(unitElement);
+        recalculateUnit.recalculate(elementUnit);
     });
-    UnitElements.on('keypress', function (e) {
+    unitElements.on('keypress', function (e) {
         var key = e.keyCode || e.which;
         if (key === 13) {
-            //alert('you hit Enter');
             var dataID = e.target.attributes['data-id'].value;
-            var unitElement = $('[data-id="' + dataID + '"]');
+            var elementUnit = $('[data-id="' + dataID + '"]');
             recalculateUnit = new Recalculate();
-            recalculateUnit.recalculate(unitElement);
+            recalculateUnit.recalculate(elementUnit);
+        }
+    });
+    var elementAnyUnit = $('#inputFindUnit');
+    elementAnyUnit.on('keypress', function (e) {
+        var key = e.keyCode || e.which;
+        if (key === 13) {
+            $.ajax({
+                url: 'UnitCandyService.svc/FindUnit',
+                async: true,
+                method: 'GET',
+                data: { inputstring: elementAnyUnit.val(), unitName: null },
+                dataType: 'json',
+                beforeSend: function () { document.body.style.cursor = "wait"; },
+                success: function (data, status, xhr) {
+                    var dataID = 'UnitTextBox-' + data.d.UnitType + '-' + data.d.UnitName;
+                    var unitElement = $('[data-id="' + dataID + '"]');
+                    unitElement.val(data.d.UnitValue).focus().trigger($.Event("keypress", { which: 13 }));
+                    document.body.style.cursor = "auto";
+                    return null;
+                },
+                error: function (xhr, status, error) {
+                    document.body.style.cursor = "auto";
+                    console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                    //alert('Error: ' + xhr.statusText + xhr.responseText);
+                    return null;
+                }
+            });
         }
     });
 });
@@ -56,42 +82,8 @@ $(document).ready(function () {
 //var lastUnitGroupName = '';
 //var lastUnitValue = '';
 //var anyUnitSelectedValue = '';
-//function unitChangedKeyPressed(e) {
-//    lastUnitName = e.srcElement.dataset.unitname;
-//    lastUnitGroupName = e.srcElement.dataset.unitgroupname;
-//    lastUnitValue = e.srcElement.value;
-//    var key = e.keyCode || e.which;
-//    if (key === 13) {
-//        unitChanged(e);
-//    }
-//};
-//function unitChangedCompleted(result) {
-//    if (result !== null) {
-//        for (var i = 0; i < result.length; i++) {
-//            var unitName = result[i].UnitName;
-//            var unitValue = result[i].UnitValue;
-//            var errorString = result[i].ErrorString;
-//            var controls = $('[data-unitname=' + unitName + ']');
-//            if (controls.length === 1) {
-//                if (errorString === '') {
-//                    controls[0].value = unitValue;
-//                    controls[0].placeholder = '';
-//                } else {
-//                    controls[0].value = '';
-//                    controls[0].placeholder = errorString;
-//                }
-//                controls[0].disabled = false;
-//            }
-//        }
-//    }
-//    document.body.style.cursor = "auto";
-//};
 //function unitChangedError(err) {
 //    document.body.style.cursor = "auto";
-//};
-//function gotoInfoArea() {
-//    var aTag = $('#ContactUnitCandy');
-//    $('html,body').animate({ scrollTop: aTag.offset().top }, 2000);
 //}
 //function unitChangedWithHelperAction(action, e) {
 //    try {
