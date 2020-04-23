@@ -592,6 +592,7 @@
     <Content Include="assets\vendor\slick-carousel\slick\slick.less" />
     <Content Include="assets\vendor\slick-carousel\slick\slick.scss" />
     <None Include="info.txt" />
+    <Content Include="index.html" />
     <Content Include="js\jquery-1.11.3.min.map" />
     <Content Include="packages.config" />
     <Content Include="fonts\index.html" />

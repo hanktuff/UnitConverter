@@ -25,20 +25,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <%--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" rel="stylesheet" type="text/css" />--%>
+    <%--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />--%>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+<%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/slick.css" />
     <link rel="stylesheet" href="css/slick-theme.css" />
     <link rel="stylesheet" href="css/jquery.fancybox.css" />
     <link rel="stylesheet" href="css/animate.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />--%>
 
     <!-- Custom Colors -->
-    <link rel="stylesheet" href="css/colors/blue.css" />
+    <%--<link rel="stylesheet" href="css/colors/blue.css" />--%>
     <%--<link rel="stylesheet" href="css/colors/green.css">--%>
     <%--<!--<link rel="stylesheet" href="css/colors/orange.css">-->--%>
     <%--<link rel="stylesheet" href="css/colors/pink.css">--%>
@@ -55,7 +55,7 @@
     <![endif]--%>
 
     <%--<noscript><link rel="stylesheet" href="css/no-js.css" /></noscript>--%>
-    <link rel="stylesheet" href="css/no-js.css" />
+    <%--<link rel="stylesheet" href="css/no-js.css" />--%>
 
     <%--Favicons--%>
     <link rel="unitcandy-icon" sizes="80x58" href="images/unitcandy_icon.png" />
@@ -64,6 +64,37 @@
     <%--<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />--%>
     <%--<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />--%>
     <%--<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />--%>
+
+
+
+
+
+
+
+    <!-- Google Fonts -->
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!-- CSS Global Compulsory -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
+    <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" href="assets/vendor/animate.css">
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
+    <link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css">
+    <link rel="stylesheet" href="assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
+    <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+
+    <!-- CSS Template -->
+    <link rel="stylesheet" href="assets/css/styles.op-app.css">
+
+    <!-- CSS Customization -->
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="10">
@@ -206,7 +237,7 @@
     --%>
 
 
-    <div class="container-fluid wrap-container60 bg-info">
+    <div class="container-fluid wrap-container60 bg-info" hidden="hidden">
         <div class="row col-center" style="min-height: 100px;">
 
             <div class="col-lg-3 x-bg-success">
@@ -261,8 +292,6 @@
                 <%--<div class="input-group">
                     <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
                 </div>--%>
-
-
             </div>
 
             <%--<div class="col-lg-2 bg-danger">wrap-container60</div>--%>
@@ -552,8 +581,100 @@
     </div>
 
 
+    <!-- JS Global Compulsory -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
+    <script src="assets/vendor/popper.js/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/bootstrap.min.js"></script>
+
+    <!-- JS Implementing Plugins -->
+    <script src="assets/vendor/appear.js"></script>
+    <script src="assets/vendor/dzsparallaxer/dzsparallaxer.js"></script>
+    <script src="assets/vendor/dzsparallaxer/dzsscroller/scroller.js"></script>
+    <script src="assets/vendor/dzsparallaxer/advancedscroller/plugin.js"></script>
+    <script src="assets/vendor/fancybox/jquery.fancybox.js"></script>
+    <script src="assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+    <script src="assets/vendor/slick-carousel/slick/slick.js"></script>
+
+    <!-- JS Unify -->
+    <script src="assets/js/hs.core.js"></script>
+    <script src="assets/js/components/hs.header.js"></script>
+    <script src="assets/js/helpers/hs.hamburgers.js"></script>
+    <script src="assets/js/components/hs.scroll-nav.js"></script>
+    <script src="assets/js/components/hs.onscroll-animation.js"></script>
+    <script src="assets/js/components/hs.tabs.js"></script>
+    <script src="assets/js/components/hs.cubeportfolio.js"></script>
+    <script src="assets/js/components/hs.popup.js"></script>
+    <script src="assets/js/components/hs.carousel.js"></script>
+    <script src="assets/js/components/hs.go-to.js"></script>
+
+    <!-- JS Customization -->
+    <%--<script src="../../assets/js/custom.js"></script>--%>
+    <script src="unitcandy.js"></script>
+
+    <!-- JS Plugins Init. -->
+    <script>
+        $(document).on('ready', function () {
+            // initialization of carousel
+            $.HSCore.components.HSCarousel.init('.js-carousel');
+
+            // initialization of header
+            $.HSCore.components.HSHeader.init($('#js-header'));
+            $.HSCore.helpers.HSHamburgers.init('.hamburger');
+
+            // initialization of tabs
+            $.HSCore.components.HSTabs.init('[role="tablist"]');
+
+            // initialization of scroll animation
+            $.HSCore.components.HSOnScrollAnimation.init('[data-animation]');
+
+            // initialization of go to section
+            $.HSCore.components.HSGoTo.init('.js-go-to');
+
+            // initialization of popups
+            $.HSCore.components.HSPopup.init('.js-fancybox-media', {
+                helpers: {
+                    media: {},
+                    overlay: {
+                        css: {
+                            'background': 'rgba(255, 255, 255, .8)'
+                        }
+                    }
+                }
+            });
+        });
+
+        $(window).on('load', function () {
+            // initialization of HSScrollNav
+            $.HSCore.components.HSScrollNav.init($('#js-scroll-nav'), {
+                duration: 700
+            });
+
+            // initialization of cubeportfolio
+            $.HSCore.components.HSCubeportfolio.init('.cbp');
+        });
+
+        $(window).on('resize', function () {
+            setTimeout(function () {
+                $.HSCore.components.HSTabs.init('[role="tablist"]');
+            }, 200);
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <%--JavaScript--%>
-    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <%-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery.easing.min.js"></script>
@@ -569,10 +690,10 @@
     <script type="text/javascript" src="js/parallax.min.js"></script>
     <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>--%>
 
     <%--<script type="text/javascript" src="Dolaris.UnitConverter.js"></script>--%>
-    <script type="text/javascript" src="unitcandy.js"></script>
+    <%--<script type="text/javascript" src="unitcandy.js"></script>--%>
 
     <script type="text/javascript">
         var infolinks_pid = 3190727;
