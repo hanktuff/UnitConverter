@@ -1,10 +1,10 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UnitControl.ascx.cs" Inherits="Dolaris.UnitConverter.Web.UnitControl" %>
 
-<div id="UnitHeadElement" runat="server" class="form-group">
+<div id="UnitHeadElement" runat="server" class="form-group" data-test="isUnitElement">
     <div class="form-inline">
         <label id="UnitNameLabel" runat="server" for="UnitTextBox" class="control-label col-sm-4 col-md-3 textbox"></label>
         <div class="input-group">
-            <input type="text" id="UnitTextBox" runat="server" class="form-control" onchange="unitChanged(event)" onkeypress="unitChangedKeyPressed(event)" 
+            <input type="text" id="UnitTextBox" runat="server" class="form-control" 
                 data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
             <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
         </div>

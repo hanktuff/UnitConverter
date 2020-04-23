@@ -22,6 +22,7 @@ var Recalculate = /** @class */ (function () {
                     unitElement.attr('placeholder', '');
                 });
                 document.body.style.cursor = "auto";
+                return null;
             },
             error: function (xhr, status, error) {
                 document.body.style.cursor = "auto";
@@ -77,6 +78,15 @@ $(document).ready(function () {
             });
         }
     });
+    // DEBUG
+    //data-test="isUnitElement"
+    var test = $('[data-id^="UnitTextBox-"]').parents('[data-test="isUnitElement"]');
+    try {
+    }
+    catch (e) {
+        var stopp = 3;
+    }
+    ////////
 });
 //var lastUnitName = '';
 //var lastUnitGroupName = '';
@@ -230,12 +240,6 @@ $(document).ready(function () {
 //        text = document.location.origin + "#" + unitGroupName;
 //    }
 //    return text;
-//}
-//function debug_alert(message) {
-//    if (message === null) {
-//        message = '';
-//    }
-//    alert(message);
 //}
 //window.onload = function () {
 //    var myUrl = '';

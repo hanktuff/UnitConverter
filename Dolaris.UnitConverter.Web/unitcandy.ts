@@ -36,6 +36,8 @@ class Recalculate {
 
 
                 document.body.style.cursor = "auto";
+
+                return null;
             },
 
             error: function (xhr, status, error) {
@@ -118,6 +120,22 @@ $(document).ready(() => {
                 });
             }
         });
+
+
+    // DEBUG
+
+    //data-test="isUnitElement"
+
+        const test = $('[data-id^="UnitTextBox-"]').parents('[data-test="isUnitElement"]');
+    try {
+
+    } catch (e) {
+
+    const stopp = 3;
+    }
+
+
+    ////////
 });
 
 
@@ -362,14 +380,6 @@ $(document).ready(() => {
 //    return text;
 //}
 
-//function debug_alert(message) {
-
-//    if (message === null) {
-//        message = '';
-//    }
-
-//    alert(message);
-//}
 
 
 

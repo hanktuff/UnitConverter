@@ -205,6 +205,110 @@
     </div>
     --%>
 
+
+    <div class="container-fluid wrap-container60 bg-info">
+        <div class="row col-center" style="min-height: 100px;">
+
+            <div class="col-lg-3 x-bg-success">
+                <h3><strong>Length</strong></h3>
+                <h6>Length is any quantity with dimension distance.</h6>
+                <h5 class="margin-top20">
+                    <span><i class="fa fa-clipboard" title="Copy to Clipboard" style="margin-right: 10px;"></i></span>
+                    <span><i class="fa fa-trash-o" title="Clear"></i></span>
+                </h5>
+            </div>
+
+            <div class="col-lg-7 x-bg-warning">
+                <div class="container-fluid">
+                    <div class="row margin-bottom10">
+                        <div class="col-lg-2 aligncenter">
+                            <label id="UnitNameLabel" runat="server" class="">Meter:</label>
+                        </div>
+                        <div class="col-lg-7">
+                            <input type="text" id="UnitTextBox" runat="server" class="form-control"
+                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                        </div>
+                    </div>
+                    <div class="row margin-bottom10">
+                        <div class="col-lg-2 col-center">
+                            <label id="Label1" runat="server" class="">Centimeter:</label>
+                        </div>
+                        <div class="col-lg-7">
+                            <input type="text" id="Text1" runat="server" class="form-control"
+                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                        </div>
+                    </div>
+                    <div class="row margin-bottom10">
+                        <div class="col-lg-2 top-right">
+                            <label id="Label2" runat="server" class="">Millimeter:</label>
+                        </div>
+                        <div class="col-lg-7">
+                            <input type="text" id="Text2" runat="server" class="form-control"
+                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                        </div>
+                    </div>
+                    <div class="row margin-bottom10">
+                        <div class="col-lg-2">
+                            <label id="Label3" runat="server" class="">Yard:</label>
+                        </div>
+                        <div class="col-lg-7">
+                            <input type="text" id="Text3" runat="server" class="form-control"
+                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                        </div>
+                    </div>
+                </div>
+
+                <%--<div class="input-group">
+                    <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
+                </div>--%>
+
+
+            </div>
+
+            <%--<div class="col-lg-2 bg-danger">wrap-container60</div>--%>
+        </div>
+    </div>
+
+    <%--<div class="container bg-grey">
+        <div class="row" style="min-height: 100px;">
+            <div class="col-lg-3 bg-success">a</div>
+            <div class="col-lg-7 bg-warning">b</div>
+            <div class="col-lg-2 bg-danger">c</div>
+        </div>
+    </div>--%>
+
+
+
+
+    <%--<div id="MainDiv" runat="server">
+        <div class="wrap-container60">
+            <div class="header-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="header-text">
+                                <div class="header-heading">
+                                    <h1 id="UnitGroupTitle" runat="server" data-toggle="collapse" data-target=".unitscollapse" class="animation" data-animation="animation-fade-in-left"></h1>
+                                    <h5 id="UnitGroupDescription" runat="server" class="unitscollapse animation" data-animation="animation-fade-in-left" data-delay="3000"></h5>
+                                    <style>
+                                        a, a:visited, a:hover, a:active {
+                                            color: inherit;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>--%>
+
+
+
+
+
+
     <!-- Main Form -->
     <form id="mainform" runat="server" action="/" method="post">
 
