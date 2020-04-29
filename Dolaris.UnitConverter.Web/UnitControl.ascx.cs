@@ -43,178 +43,165 @@ namespace Dolaris.UnitConverter.Web {
         /// Initialize() is the preferred way of setting properties.
         /// </summary>
         /// <param name="unit"></param>
-        public void Initialize(IUnit unit, bool startCollapsed = false) {
+        public void Initialize(string name, string symbol) {
 
-            this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
-            UnitName = unit.ID.ToString();
-            UnitGroupName = unit.Type.ToString();
-            UnitNameTag = unit.Name + ":";
-            UnitSymbol = unit.Symbol;
-            Tooltip = unit.GetPlural();
+            Name = name;
+            Symbol = symbol;
 
-            SetCollapseAttribute(unit.Type.ToString(), startCollapsed);
+            //this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
+            //UnitName = unit.ID.ToString();
+            //UnitGroupName = unit.Type.ToString();
+            //UnitNameTag = unit.Name + ":";
+            //UnitSymbol = unit.Symbol;
+            //Tooltip = unit.GetPlural();
 
-            // show or hide the helper links (+1, -1, ...)
+            //SetCollapseAttribute(unit.Type.ToString(), startCollapsed);
 
-            UnitHelperActionClean.Visible = UnitHelperActionMin.Visible = UnitHelperActionMax.Visible = false;
+            //// show or hide the helper links (+1, -1, ...)
 
-            if (unit.MinValue == 0) {
-                UnitHelperActionClean.Visible = true;
+            //UnitHelperActionClean.Visible = UnitHelperActionMin.Visible = UnitHelperActionMax.Visible = false;
 
-            } else if (unit.MinValue < 0) {
-                UnitHelperActionMin.Visible = true;
-            }
+            //if (unit.MinValue == 0) {
+            //    UnitHelperActionClean.Visible = true;
 
-            if (unit.MaxValue != double.MaxValue) {
-                UnitHelperActionMax.Visible = true;
-            }
+            //} else if (unit.MinValue < 0) {
+            //    UnitHelperActionMin.Visible = true;
+            //}
+
+            //if (unit.MaxValue != double.MaxValue) {
+            //    UnitHelperActionMax.Visible = true;
+            //}
         }
 
         //
-        public String ID {
-            get {
-                string id = null;
+        //public String ID {
+        //    get {
+        //        string id = null;
 
-                try {
-                    id = UnitTextBox.Attributes[_attributeID];
+        //        try {
+        //            id = UnitTextBox.Attributes[_attributeID];
 
-                } catch (Exception) {
-                }
+        //        } catch (Exception) {
+        //        }
 
-                return id;
-            }
-            set {
-                UnitTextBox.Attributes.Add(_attributeID, value);
-            }
-        }
+        //        return id;
+        //    }
+        //    set {
+        //        UnitTextBox.Attributes.Add(_attributeID, value);
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the unit name.
         /// For example: "Meter" is the name of a unit.
         /// </summary>
-        public String UnitName {
+        public String Name {
             get {
-                string unitName = null;
-
-                try {
-                    unitName = UnitTextBox.Attributes[_attributeUnitName];
-
-                } catch (Exception) {
-                }
-
-                return unitName;
+                return _name;
             }
             set {
-                UnitTextBox.Attributes.Add(_attributeUnitName, value);
-                UnitHelper.Attributes.Add(_attributeUnitHelper, value);
+                _name = value;
+                UnitNamePlaceHolder.Controls.Clear();
+                UnitNamePlaceHolder.Controls.Add(new Literal() { Text = value + ":" });
             }
         }
+        private string _name;
 
-        /// <summary>
-        /// Gets or sets the unit group name.
-        /// For example: "Length" is the name of a group of units.
-        /// </summary>
-        public String UnitGroupName {
-            get {
-                string unitGroupName = null;
+        ///// <summary>
+        ///// Gets or sets the unit group name.
+        ///// For example: "Length" is the name of a group of units.
+        ///// </summary>
+        //public String UnitGroupName {
+        //    get {
+        //        string unitGroupName = null;
 
-                try {
-                    unitGroupName = UnitTextBox.Attributes[_attributeUnitGroupName];
+        //        try {
+        //            unitGroupName = UnitTextBox.Attributes[_attributeUnitGroupName];
 
-                } catch (Exception) {
-                }
+        //        } catch (Exception) {
+        //        }
 
-                return unitGroupName;
-            }
-            set {
-                // if the attribute already exists it will not be added a second time
-                UnitTextBox.Attributes.Add(_attributeUnitGroupName, value);
-            }
-        }
+        //        return unitGroupName;
+        //    }
+        //    set {
+        //        // if the attribute already exists it will not be added a second time
+        //        UnitTextBox.Attributes.Add(_attributeUnitGroupName, value);
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets the tag/label for the unit.
-        /// For example: the label "Meter:" is used for meters.
-        /// </summary>
-        public String UnitNameTag {
-            get {
-                return UnitNameLabel.InnerText;
-            }
-            set {
-                UnitNameLabel.InnerText = value;
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the tag/label for the unit.
+        ///// For example: the label "Meter:" is used for meters.
+        ///// </summary>
+        //public String UnitNameTag {
+        //    get {
+        //        return UnitNameLabel.InnerText;
+        //    }
+        //    set {
+        //        UnitNameLabel.InnerText = value;
+        //    }
+        //}
 
         /// <summary>
         /// Gets or sets the symbol of the unit.
         /// For example: "m" is the symbol for Meter.
         /// </summary>
-        public String UnitSymbol {
+        public String Symbol {
             get {
-                return UnitTextBoxSymbol.InnerText;
+                return _symbol;
             }
             set {
-
-                // substitute m2, m3, ... with nicely looking superscript character
-                //   more info: http://www.fileformat.info/info/unicode/char/b2/index.htm
-
-                if (value.EndsWith("2")) {
-                    value = value.Trim('2') + "\u00B2";
-
-                } else if (value.EndsWith("3")) {
-                    value = value.Trim('3') + "\u00B3";
-                }
-
-                UnitTextBoxSymbol.InnerText = value;
-
-                UnitTextBox.Attributes.Add(_attributeUnitSymbol, value);
+                _symbol = value;
+                UnitSymbolPlaceHolder.Controls.Clear();
+                UnitSymbolPlaceHolder.Controls.Add(new Literal() { Text = value });
             }
         }
+        private string _symbol;
 
-        /// <summary>
-        /// Gets or sets the tooltip for the unit.
-        /// </summary>
-        public String Tooltip {
-            get {
-                string tooltip = null;
+        ///// <summary>
+        ///// Gets or sets the tooltip for the unit.
+        ///// </summary>
+        //public String Tooltip {
+        //    get {
+        //        string tooltip = null;
 
-                try {
-                    tooltip = UnitTextBox.Attributes["title"];
+        //        try {
+        //            tooltip = UnitTextBox.Attributes["title"];
 
-                } catch { }
+        //        } catch { }
 
-                return tooltip;
-            }
-            set {
-                UnitTextBox.Attributes.Add("title", value);
-            }
-        }
+        //        return tooltip;
+        //    }
+        //    set {
+        //        UnitTextBox.Attributes.Add("title", value);
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets the value of the unit.
-        /// This is whatever the user entered, usually a number.
-        /// </summary>
-        public String Text {
-            get {
-                return UnitTextBox.Value;
-            }
-            set {
-                UnitTextBox.Value = value ?? string.Empty;
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the value of the unit.
+        ///// This is whatever the user entered, usually a number.
+        ///// </summary>
+        //public String Text {
+        //    get {
+        //        return UnitTextBox.Value;
+        //    }
+        //    set {
+        //        UnitTextBox.Value = value ?? string.Empty;
+        //    }
+        //}
 
-        /// <summary>
-        /// Sets the attribute that enables the group to collapse (show/hide).
-        /// </summary>
-        /// <param name="groupType"></param>
-        /// <param name="collapsed"></param>
-        public void SetCollapseAttribute(string groupType, bool collapsed = false) {
+        ///// <summary>
+        ///// Sets the attribute that enables the group to collapse (show/hide).
+        ///// </summary>
+        ///// <param name="groupType"></param>
+        ///// <param name="collapsed"></param>
+        //public void SetCollapseAttribute(string groupType, bool collapsed = false) {
 
-            string attributeGroupType = "collapse" + groupType;
-            string attributeCollapse = collapsed ? "collapse" : "in";
+        //    string attributeGroupType = "collapse" + groupType;
+        //    string attributeCollapse = collapsed ? "collapse" : "in";
 
-            UnitHeadElement.Attributes.Add("class",
-                string.Format("{0} {1} {2}", UnitHeadElement.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
-        }
+        //    UnitHeadElement.Attributes.Add("class",
+        //        string.Format("{0} {1} {2}", UnitHeadElement.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
+        //}
     }
 }

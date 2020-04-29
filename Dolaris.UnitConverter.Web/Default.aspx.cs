@@ -9,6 +9,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using System.Web.UI.HtmlControls;
 
 namespace Dolaris.UnitConverter.Web {
     public partial class Default : System.Web.UI.Page {
@@ -57,16 +58,57 @@ namespace Dolaris.UnitConverter.Web {
 
             var unitsForAnyUnitDropdown = new List<IUnit>();
 
+
+
+
+
+            //var inner = template.InnerHtml;
+
+            //var contrl = this.ParseControl(inner);
+
+
+
+            //template.Attributes.Remove("hidden");
+            //HtmlGenericControl g1 = new HtmlGenericControl("tag1");
+            //g1.Controls.Add(template);
+            //HtmlGenericControl g2 = new HtmlGenericControl("tag2");
+            //g2.Controls.Add(new Literal() { Text = "This is another title" });
+            //g2.Controls.Add(template);
+
+
+            //template.FindControl("TIME").Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
+            //PH1.InnerHtml += template.InnerText;
+
+            //template.FindControl("Title").Controls.Add(new Literal() { Text = "This is the title" });
+            //PH1.Controls.Add(g2);
+            //PH1.InnerHtml += template.InnerText;
+
+            //template.FindControl("Title").Controls.Add(new Literal() { Text = "This is another title" });
+            //PH1.Controls.Add(template);
+
+            //template.FindControl("TIME").Controls.Add(new Literal() { Text = "sdfs sdf" });
+            //PH1.Controls.Add(template);
+
+            //System.Threading.Thread.Sleep(1000);
+            //template.FindControl("TIME").Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
+            //PH1.Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
+
+
+            //PH1.Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
+
+
+
+
             foreach (WebUnitGroup webUnitGroup in _webManager.WebUnitGroups) {
 
                 if (webUnitGroup.Enabled == false) { continue; }
 
                 UnitGroupControl unitGroupControl = (UnitGroupControl)Page.LoadControl("~/UnitGroupControl.ascx");
-                unitGroupControl.Initialize(webUnitGroup);
+                unitGroupControl.Initialize(title: webUnitGroup.GroupName, description: webUnitGroup.Description);
 
                 // set a different background for each unit group
 
-                unitGroupControl.Background = _background[backgroundIndex];
+                //unitGroupControl.Background = _background[backgroundIndex];
 
                 backgroundIndex++;
                 if (backgroundIndex > _background.Count - 1) {
@@ -84,29 +126,24 @@ namespace Dolaris.UnitConverter.Web {
                         if (unit.Type == webUnitGroup.GroupType) {
 
                             UnitControl unitControl = (UnitControl)Page.LoadControl("~/UnitControl.ascx");
-                            unitControl.Initialize(unit, webUnitGroup.StartCollapsed);
+                            unitControl.Initialize(name: unit.Name, symbol: unit.Symbol);
                             unitGroupControl.AddUnitControl(unitControl);
 
-                            unitsForAnyUnitDropdown.Add(unit);
+                            //unitsForAnyUnitDropdown.Add(unit);
                         }
                     }
                 }
 
-                WebGroupsPlaceholder.Controls.Add(unitGroupControl);
+                //WebGroupsPlaceholder.Controls.Add(unitGroupControl);
+                PH2.Controls.Add(unitGroupControl);
             }
 
             // add units to "Any Units" dropdown
 
-            foreach (var unit in unitsForAnyUnitDropdown.OrderBy(p => p.Name)) {
-                AnyUnitLiteral.Text +=
-                    string.Format("<li value=\"{0}\"><a href=\"javascript: findUnitDropdownSelectionChanged('{0}');\">{1}</a></li>", unit.ID.ToString(), unit.Name);
-            }
-
-            //// DEBUG
-            //var lbl = new Label();
-            ////lbl.Text = DateTime.Now.ToString();
-            //lbl.Text = new Dolaris.UnitConverter.ViewModel.Class1().GetTestString();
-            //placeholder1.Controls.Add(lbl);
+            //foreach (var unit in unitsForAnyUnitDropdown.OrderBy(p => p.Name)) {
+            //    AnyUnitLiteral.Text +=
+            //        string.Format("<li value=\"{0}\"><a href=\"javascript: findUnitDropdownSelectionChanged('{0}');\">{1}</a></li>", unit.ID.ToString(), unit.Name);
+            //}
         }
 
         protected void Page_Load(object sender, EventArgs e) {

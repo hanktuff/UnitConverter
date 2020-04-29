@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Dolaris.UnitConverter.Web.Default" %>
 
+<%@ Register Src="~/UnitGroupControl.ascx" TagPrefix="uc1" TagName="UnitGroupControl" %>
+
+
 
 <!DOCTYPE html>
 
@@ -29,7 +32,7 @@
     <%--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />--%>
 
     <!-- Stylesheets -->
-<%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/slick.css" />
     <link rel="stylesheet" href="css/slick-theme.css" />
@@ -72,29 +75,29 @@
 
 
     <!-- Google Fonts -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
 
     <!-- CSS Global Compulsory -->
-    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css" />
 
     <!-- CSS Implementing Plugins -->
-    <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css">
-    <link rel="stylesheet" href="assets/vendor/icon-hs/style.css">
-    <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css">
-    <link rel="stylesheet" href="assets/vendor/animate.css">
-    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css">
-    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsscroller/scroller.css">
-    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/advancedscroller/plugin.css">
-    <link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css">
-    <link rel="stylesheet" href="assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css">
-    <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css">
+    <link rel="stylesheet" href="assets/vendor/icon-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendor/icon-line/css/simple-line-icons.css" />
+    <link rel="stylesheet" href="assets/vendor/icon-hs/style.css" />
+    <link rel="stylesheet" href="assets/vendor/hamburgers/hamburgers.min.css" />
+    <link rel="stylesheet" href="assets/vendor/animate.css" />
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsparallaxer.css" />
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/dzsscroller/scroller.css" />
+    <link rel="stylesheet" href="assets/vendor/dzsparallaxer/advancedscroller/plugin.css" />
+    <link rel="stylesheet" href="assets/vendor/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="assets/vendor/cubeportfolio-full/cubeportfolio/css/cubeportfolio.min.css" />
+    <link rel="stylesheet" href="assets/vendor/slick-carousel/slick/slick.css" />
 
     <!-- CSS Template -->
-    <link rel="stylesheet" href="assets/css/styles.op-app.css">
+    <link rel="stylesheet" href="assets/css/styles.op-app.css" />
 
     <!-- CSS Customization -->
-    <link rel="stylesheet" href="assets/css/custom.css">
+    <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="10">
@@ -237,66 +240,263 @@
     --%>
 
 
-    <div class="container-fluid wrap-container60 bg-info" hidden="hidden">
-        <div class="row col-center" style="min-height: 100px;">
 
-            <div class="col-lg-3 x-bg-success">
-                <h3><strong>Length</strong></h3>
-                <h6>Length is any quantity with dimension distance.</h6>
-                <h5 class="margin-top20">
-                    <span><i class="fa fa-clipboard" title="Copy to Clipboard" style="margin-right: 10px;"></i></span>
-                    <span><i class="fa fa-trash-o" title="Clear"></i></span>
-                </h5>
+    <section id="test2" class="g-bg-gray-dark-v3" style="min-height: 200px; background-color: seashell!important;" hidden="hidden">
+        <div class="d-flex flex-row py-3 justify-content-center align-items-stretch">
+
+            <div class="d-inline-flex flex-column mr-5">
+                <h2 class="mb-1"><strong>Length</strong></h2>
+                <h6 class="mb-3" style="max-width: 150px;">Length is any quantity with dimension distance.</h6>
+                <div class="d-flex flex-row">
+                    <button class="btn btn-xs btn-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
+                    <button class="btn btn-xs btn-secondary text-uppercase mr-2">Clear</button>
+                </div>
             </div>
 
-            <div class="col-lg-7 x-bg-warning">
-                <div class="container-fluid">
-                    <div class="row margin-bottom10">
-                        <div class="col-lg-2 aligncenter">
-                            <label id="UnitNameLabel" runat="server" class="">Meter:</label>
+            <div class="d-flex justify-content-center">
+                <%--<input class="form-control h-100 g-color-white g-placeholder-inherit g-bg-transparent g-bg-transparent--focus g-brd-white g-rounded-10 g-px-20 g-py-10" type="text" placeholder="Name" />--%>
+                <%--<input class="form-control text-danger" type="text" />--%>
+
+                <%--<h2 class="mb-1"><strong>Length</strong></h2>
+                <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
+                <div class="d-flex flex-row">
+                    <button class="btn btn-xs u-btn-outline-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
+                    <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2">Clear</button>
+                </div>--%>
+
+
+                <!-- Basic Table -->
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                        <%--<thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th class="hidden-sm">Last Name</th>
+                                    <th>Username</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>--%>
+
+                        <tbody>
+                            <%--<tr>
+                                    <td>1</td>
+                                    <td>Mark</td>
+                                    <td class="hidden-sm">Otto</td>
+                                    <td>@mdo</td>
+                                    <td>
+                                        <span class="u-label u-label-warning g-color-white">Expiring</span>
+                                    </td>
+                                </tr>--%>
+                            <%--<tr>
+                                    <td>2</td>
+                                    <td>Jacob</td>
+                                    <td class="hidden-sm">Thornton</td>
+                                    <td>@fat</td>
+                                    <td>
+                                        <span class="u-label u-label-success g-color-white">Success</span>
+                                    </td>
+                                </tr>--%>
+                            <%--<tr>
+                                    <td>3</td>
+                                    <td>Larry</td>
+                                    <td class="hidden-sm">the Bird</td>
+                                    <td>@twitter</td>
+                                    <td>
+                                        <span class="u-label u-label-danger g-color-white">Error!</span>
+                                    </td>
+                                </tr>--%>
+                            <%--<tr>
+                                    <td>4</td>
+                                    <td>htmlstream</td>
+                                    <td class="hidden-sm">Web Design</td>
+                                    <td>@htmlstream</td>
+                                    <td>
+                                        <span class="u-label u-label-info g-color-white">Pending</span>
+                                    </td>
+                                </tr>--%>
+                            <tr>
+                                <td class="align-middle">Meter:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">m</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Yard:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">yd</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Inch:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">in</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Lightyear:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">ly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section id="test3" class="g-theme-bg-gray-light-v1">
+        <div class="container-fluid py-5">
+            <%--<div id="PH1" runat="server"></div>--%>
+            <asp:PlaceHolder ID="PH2" runat="server" />
+        </div>
+    </section>
+
+
+    <div id="template" runat="server" class="row" hidden="hidden">
+
+        <div class="row">
+            <div class="col-lg-2 offset-lg-2">
+                <h4 class="mb-3"><div></div></h4>
+                <h2 class="mb-1"><strong>Length</strong></h2>
+                <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
+                <div class="d-flex flex-row">
+                    <button class="btn btn-xs btn-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
+                    <button class="btn btn-xs u-btn-yellow text-uppercase mr-2">Embed</button>
+                    <button class="btn btn-xs btn-secondary text-uppercase mr-2">Clear</button>
+                </div>
+            </div>
+
+            <div class="col-lg-3">
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="align-middle">Meter:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">m</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Yard:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">yd</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Inch:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">in</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">Lightyear:</td>
+                                <td>
+                                    <input class="form-control text-danger" type="text" /></td>
+                                <td class="align-middle">ly</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4"></div>
+        </div>
+
+    </div>
+
+    <%--<div class="bg-info mt-5 mb-3">
+        <div class="container">
+
+            <section id="home" class="g-theme-bg-gray-light-v1 g-pt-90">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-5 ml-lg-auto d-flex text-center text-md-left g-font-size-16">
+                            <div class="align-self-center">
+                                <h2 class="text-uppercase g-line-height-1_3 g-font-size-36 g-mb-20 g-mb-30--lg">We created
+                                    <br>
+                                    <strong>revolution in app</strong></h2>
+                                <p class="g-mb-20 g-mb-35--lg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                                <a href="#" class="btn btn-md u-btn-primary g-font-weight-700 text-uppercase text-left g-rounded-10 g-py-10 g-mb-15 g-mx-10 g-mx-0--md g-mr-30--md">
+                                    <span class="float-right g-font-size-13">Download App
+                    <span class="d-block g-font-size-10 g-font-weight-400 g-opacity-0_6">From App Store</span>
+                                    </span>
+                                    <i class="fa fa-apple float-left g-font-size-26 g-mr-15"></i>
+                                </a>
+                                <a href="#" class="btn btn-md u-btn-darkpurple g-font-weight-700 text-uppercase text-left g-rounded-10 g-py-10 g-mb-15 g-mx-10 g-mx-0--md">
+                                    <span class="float-right g-font-size-13">Download App
+                    <span class="d-block g-font-size-10 g-font-weight-400 g-opacity-0_6">From Play Market</span>
+                                    </span>
+                                    <i class="fa fa-android float-left g-font-size-26 g-mr-15"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-lg-7">
-                            <input type="text" id="UnitTextBox" runat="server" class="form-control"
-                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                        </div>
-                    </div>
-                    <div class="row margin-bottom10">
-                        <div class="col-lg-2 col-center">
-                            <label id="Label1" runat="server" class="">Centimeter:</label>
-                        </div>
-                        <div class="col-lg-7">
-                            <input type="text" id="Text1" runat="server" class="form-control"
-                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                        </div>
-                    </div>
-                    <div class="row margin-bottom10">
-                        <div class="col-lg-2 top-right">
-                            <label id="Label2" runat="server" class="">Millimeter:</label>
-                        </div>
-                        <div class="col-lg-7">
-                            <input type="text" id="Text2" runat="server" class="form-control"
-                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                        </div>
-                    </div>
-                    <div class="row margin-bottom10">
-                        <div class="col-lg-2">
-                            <label id="Label3" runat="server" class="">Yard:</label>
-                        </div>
-                        <div class="col-lg-7">
-                            <input type="text" id="Text3" runat="server" class="form-control"
-                                data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+
+                        <div class="col-md-6 col-lg-6 g-overflow-hidden">
+                            <img class="img-fluid slideInUp u-in-viewport" src="assets/img-temp/mockups/mockup1.png" alt="Image description" data-animation="slideInUp" style="animation-duration: 1000ms;">
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <%--<div class="input-group">
-                    <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
-                </div>--%>
+            <div class="row" style="min-height: 100px;">
+
+
+
+                <div class="col-lg-7 x-bg-warning">
+                    <div class="container-fluid">
+                        <div class="row margin-bottom10">
+                            <div class="col-lg-2 aligncenter">
+                                <label id="UnitNameLabel" runat="server" class="">Meter:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" id="UnitTextBox" runat="server" class="form-control"
+                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                            </div>
+                        </div>
+                        <div class="row margin-bottom10">
+                            <div class="col-lg-2 col-center">
+                                <label id="Label1" runat="server" class="">Centimeter:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" id="Text1" runat="server" class="form-control"
+                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                            </div>
+                        </div>
+                        <div class="row margin-bottom10">
+                            <div class="col-lg-2 top-right">
+                                <label id="Label2" runat="server" class="">Millimeter:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" id="Text2" runat="server" class="form-control"
+                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                            </div>
+                        </div>
+                        <div class="row margin-bottom10">
+                            <div class="col-lg-2">
+                                <label id="Label3" runat="server" class="">Yard:</label>
+                            </div>
+                            <div class="col-lg-7">
+                                <input type="text" id="Text3" runat="server" class="form-control"
+                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <div id="UnitTextBoxSymbol" runat="server" class="input-group-addon" style="width: 55px; border-width: 0px"></div>
+                    </div>
+                </div>
+
+                <%--<div class="col-lg-2 bg-danger">wrap-container60</div>
             </div>
-
-            <%--<div class="col-lg-2 bg-danger">wrap-container60</div>--%>
+            </div>
         </div>
-    </div>
+    </div>--%>
 
     <%--<div class="container bg-grey">
         <div class="row" style="min-height: 100px;">

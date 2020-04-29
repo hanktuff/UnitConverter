@@ -8,80 +8,26 @@
 //------------------------------------------------------------------------------
 
 namespace Dolaris.UnitConverter.Web {
-    
-    
+
+
     public partial class UnitControl {
-        
+
         /// <summary>
-        /// UnitHeadElement control.
+        /// UnitNamePlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitHeadElement;
-        
+        protected global::System.Web.UI.WebControls.PlaceHolder UnitNamePlaceHolder;
+
         /// <summary>
-        /// UnitNameLabel control.
+        /// UnitSymbolPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitNameLabel;
-        
-        /// <summary>
-        /// UnitTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText UnitTextBox;
-        
-        /// <summary>
-        /// UnitTextBoxSymbol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitTextBoxSymbol;
-        
-        /// <summary>
-        /// UnitHelper control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitHelper;
-        
-        /// <summary>
-        /// UnitHelperActionClean control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor UnitHelperActionClean;
-        
-        /// <summary>
-        /// UnitHelperActionMin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor UnitHelperActionMin;
-        
-        /// <summary>
-        /// UnitHelperActionMax control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor UnitHelperActionMax;
+        protected global::System.Web.UI.WebControls.PlaceHolder UnitSymbolPlaceHolder;
     }
 }

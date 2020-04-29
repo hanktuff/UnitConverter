@@ -18,14 +18,20 @@ namespace Dolaris.UnitConverter.Web {
         /// Initialize() is the preferred way of setting properties.
         /// </summary>
         /// <param name="webUnitGroup"></param>
-        public void Initialize(WebUnitGroup webUnitGroup) {
+        public void Initialize(string title, string description) {
 
-            Title = webUnitGroup.GroupName;
-            Description = webUnitGroup.Description;
-            Bookmark = webUnitGroup.GroupType.ToString();
+            Title = title;
+            UnitGroupTitle.Controls.Add(new Literal() { Text = title });
 
-            SetCollapseAttribute(webUnitGroup.GroupType.ToString(), webUnitGroup.StartCollapsed);
-            SetUtilitiesAttributes(webUnitGroup.GroupType.ToString());
+            Description = description;
+            UnitGroupDescription.Controls.Add(new Literal() { Text = description });
+
+            //Title = webUnitGroup.GroupName;
+            //Description = webUnitGroup.Description;
+            //Bookmark = webUnitGroup.GroupType.ToString();
+
+            //SetCollapseAttribute(webUnitGroup.GroupType.ToString(), webUnitGroup.StartCollapsed);
+            //SetUtilitiesAttributes(webUnitGroup.GroupType.ToString());
         }
 
         /// <summary>
@@ -40,51 +46,37 @@ namespace Dolaris.UnitConverter.Web {
         /// <summary>
         /// Gets or sets the name of the unit group.
         /// </summary>
-        public String Title {
-            get {
-                return UnitGroupTitle.InnerText;
-            }
-            set {
-                UnitGroupTitle.InnerText = value;
-            }
-        }
+        public String Title { get; set; }
 
         /// <summary>
         /// Gets or sets the description of the unit group.
         /// </summary>
-        public String Description {
-            get {
-                return UnitGroupDescription.InnerText;
-            }
-            set {
-                UnitGroupDescription.InnerText = value;
-            }
-        }
+        public String Description { get; set; }
 
-        /// <summary>
-        /// Gets or sets the Bookmark at the top of the control.
-        /// This can be used as a target when linking to the control.
-        /// </summary>
-        public String Bookmark {
-            get {
-                return MainDiv.ID;
-            }
-            set {
-                MainDiv.ID = value;
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the Bookmark at the top of the control.
+        ///// This can be used as a target when linking to the control.
+        ///// </summary>
+        //public String Bookmark {
+        //    get {
+        //        return MainDiv.ID;
+        //    }
+        //    set {
+        //        MainDiv.ID = value;
+        //    }
+        //}
 
-        /// <summary>
-        /// Gets or sets the background color for the unit group control.
-        /// </summary>
-        public String Background {
-            get {
-                return MainDiv.Attributes["class"];
-            }
-            set {
-                MainDiv.Attributes.Add("class", value);
-            }
-        }
+        ///// <summary>
+        ///// Gets or sets the background color for the unit group control.
+        ///// </summary>
+        //public String Background {
+        //    get {
+        //        return MainDiv.Attributes["class"];
+        //    }
+        //    set {
+        //        MainDiv.Attributes.Add("class", value);
+        //    }
+        //}
 
         /// <summary>
         /// Sets the attribute that enables the group to collapse (show/hide).
@@ -93,27 +85,27 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="collapsed"></param>
         public void SetCollapseAttribute(string groupType, bool collapsed = false) {
 
-            string attributeGroupType = "collapse" + groupType;
-            string attributeCollapse = collapsed ? "collapse" : "in";
+            //string attributeGroupType = "collapse" + groupType;
+            //string attributeCollapse = collapsed ? "collapse" : "in";
 
-            UnitGroupTitle.Attributes.Add("data-target", "." + attributeGroupType);
-            UnitGroupTitle.Style["cursor"] = "pointer";
-            UnitGroupTitle.Attributes.Add("title", Description);
+            //UnitGroupTitle.Attributes.Add("data-target", "." + attributeGroupType);
+            //UnitGroupTitle.Style["cursor"] = "pointer";
+            //UnitGroupTitle.Attributes.Add("title", Description);
 
-            UnitGroupDescription.Attributes.Add("class", 
-                string.Format("{0} {1} {2}", UnitGroupDescription.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
+            //UnitGroupDescription.Attributes.Add("class", 
+            //    string.Format("{0} {1} {2}", UnitGroupDescription.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
         }
 
-        /// <summary>
-        /// Sets the attributes for the utilities elements (copy, clear, ...) enabling them to work properly.
-        /// </summary>
-        /// <param name="groupType"></param>
-        public void SetUtilitiesAttributes(string groupType) {
+        ///// <summary>
+        ///// Sets the attributes for the utilities elements (copy, clear, ...) enabling them to work properly.
+        ///// </summary>
+        ///// <param name="groupType"></param>
+        //public void SetUtilitiesAttributes(string groupType) {
 
-            CopyLinkToClipboard.Attributes.Add("onclick", string.Format("copyLinkToClipboard('{0}')", groupType));
-            //CopyAnchorToClipboard.Attributes.Add("onclick", string.Format("copyAnchorToClipboard('{0}')", groupType));
+        //    CopyLinkToClipboard.Attributes.Add("onclick", string.Format("copyLinkToClipboard('{0}')", groupType));
+        //    //CopyAnchorToClipboard.Attributes.Add("onclick", string.Format("copyAnchorToClipboard('{0}')", groupType));
 
-            ClearAllFields.Attributes.Add("onclick", string.Format("clearUnitGroup('{0}')", groupType));
-        }
+        //    ClearAllFields.Attributes.Add("onclick", string.Format("clearUnitGroup('{0}')", groupType));
+        //}
     }
 }

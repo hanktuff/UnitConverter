@@ -8,19 +8,10 @@
 //------------------------------------------------------------------------------
 
 namespace Dolaris.UnitConverter.Web {
-    
-    
+
+
     public partial class UnitGroupControl {
-        
-        /// <summary>
-        /// MainDiv control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl MainDiv;
-        
+
         /// <summary>
         /// UnitGroupTitle control.
         /// </summary>
@@ -28,8 +19,8 @@ namespace Dolaris.UnitConverter.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitGroupTitle;
-        
+        protected global::System.Web.UI.WebControls.PlaceHolder UnitGroupTitle;
+
         /// <summary>
         /// UnitGroupDescription control.
         /// </summary>
@@ -37,44 +28,8 @@ namespace Dolaris.UnitConverter.Web {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UnitGroupDescription;
-        
-        /// <summary>
-        /// CopyUnitsToClipboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor CopyUnitsToClipboard;
-        
-        /// <summary>
-        /// CopyLinkToClipboard control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor CopyLinkToClipboard;
-        
-        /// <summary>
-        /// SetEmbedText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor SetEmbedText;
-        
-        /// <summary>
-        /// ClearAllFields control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ClearAllFields;
-        
+        protected global::System.Web.UI.WebControls.PlaceHolder UnitGroupDescription;
+
         /// <summary>
         /// UnitControlPlaceHolder control.
         /// </summary>
