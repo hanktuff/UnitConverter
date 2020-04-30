@@ -139,7 +139,7 @@
 
 
     <%--Navigation--%>
-    <nav id="navigation" class="navbar navbar-inverse navbar-fixed-top">
+    <%--<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top" hidden="hidden">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -150,9 +150,9 @@
                 </button>
                 <img src="images/UnitcandyIcon32.png" alt="Logo" class="navbar-brand" />
                 <a class="navbar-brand smooth-scroll" href="#info" title="UnitCandy lets you convert units of measurement.">UnitCandy</a>
-                <%--<div class="header-img">
+                <div class="header-img">
                     <img src="images/unitcandy_logo.gif" alt="Logo" style="width: 154px; height: 58px" />
-                </div>--%>
+                </div>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -181,22 +181,33 @@
                         <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
                         <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
                     </li>
-                    <%-- Copy to Clipboard --%>
-                    <%--<li><a href="javascript:void(0);" onclick="copyToClipboard()" data-toggle="modal" data-target="#modalCopyToClipboard"><i class="fa fa-copy text-success" data-toggle="tooltip" data-placement="bottom" title="Copy to Clipboard"></i></a></li>--%>
-                    <%-- Clear --%>
-                    <%--<li><a href="javascript:void(0);" onclick="clearLastUnitGroup()"><i class="fa fa-remove text-danger" data-toggle="tooltip" data-placement="bottom" title="Clear Input"></i></a></li>--%>
-                    <%-- Refresh --%>
-                    <%--<li><a href="https://www.unitcandy.com/"><i class="fa fa-refresh text-info" data-toggle="tooltip" data-placement="bottom" title="Refresh Site"></i></a></li>--%>
-                    <%-- Info --%>
-                    <%--<li><a href="#AboutUnitCandy" class="smooth-scroll"><i class="fa fa-info-circle" style="color: white" data-toggle="tooltip" data-placement="bottom" title="More Information"></i></a></li>--%>
+                     Copy to Clipboard 
+                    <li><a href="javascript:void(0);" onclick="copyToClipboard()" data-toggle="modal" data-target="#modalCopyToClipboard"><i class="fa fa-copy text-success" data-toggle="tooltip" data-placement="bottom" title="Copy to Clipboard"></i></a></li>
+                     Clear 
+                    <li><a href="javascript:void(0);" onclick="clearLastUnitGroup()"><i class="fa fa-remove text-danger" data-toggle="tooltip" data-placement="bottom" title="Clear Input"></i></a></li>
+                     Refresh 
+                    <li><a href="https://www.unitcandy.com/"><i class="fa fa-refresh text-info" data-toggle="tooltip" data-placement="bottom" title="Refresh Site"></i></a></li>
+                     Info 
+                    <li><a href="#AboutUnitCandy" class="smooth-scroll"><i class="fa fa-info-circle" style="color: white" data-toggle="tooltip" data-placement="bottom" title="More Information"></i></a></li>
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav>--%>
+
+
+    <section id="header">
+        <div class="d-flex justify-content-center align-items-center bg-dark py-1">
+            <img src="images/UnitcandyIcon32.png" alt="Logo" class="img-fluid mr-5" />
+            <h2 class="mr-5 g-color-white">UnitCandy</h2>
+            <button id="button-convert" class="btn btn-warning mr-4 text-uppercase">Convert</button>
+            <button id="button-info" class="btn btn-primary px-4 text-uppercase">Info</button>
+        </div>
+    </section>
+
 
 
     <%--Info Area--%>
-    <div id="info" class="wrap-container60 bg-primary" style="margin-top: 50px">
+    <div id="info" class="wrap-container60 bg-primary" style="margin-top: 50px" hidden="hidden">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
@@ -257,13 +268,6 @@
                 <%--<input class="form-control h-100 g-color-white g-placeholder-inherit g-bg-transparent g-bg-transparent--focus g-brd-white g-rounded-10 g-px-20 g-py-10" type="text" placeholder="Name" />--%>
                 <%--<input class="form-control text-danger" type="text" />--%>
 
-                <%--<h2 class="mb-1"><strong>Length</strong></h2>
-                <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
-                <div class="d-flex flex-row">
-                    <button class="btn btn-xs u-btn-outline-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
-                    <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2">Clear</button>
-                </div>--%>
-
 
                 <!-- Basic Table -->
                 <div class="table-responsive table-borderless">
@@ -286,24 +290,6 @@
                                     <td>@mdo</td>
                                     <td>
                                         <span class="u-label u-label-warning g-color-white">Expiring</span>
-                                    </td>
-                                </tr>--%>
-                            <%--<tr>
-                                    <td>2</td>
-                                    <td>Jacob</td>
-                                    <td class="hidden-sm">Thornton</td>
-                                    <td>@fat</td>
-                                    <td>
-                                        <span class="u-label u-label-success g-color-white">Success</span>
-                                    </td>
-                                </tr>--%>
-                            <%--<tr>
-                                    <td>3</td>
-                                    <td>Larry</td>
-                                    <td class="hidden-sm">the Bird</td>
-                                    <td>@twitter</td>
-                                    <td>
-                                        <span class="u-label u-label-danger g-color-white">Error!</span>
                                     </td>
                                 </tr>--%>
                             <%--<tr>
@@ -361,7 +347,9 @@
 
         <div class="row">
             <div class="col-lg-2 offset-lg-2">
-                <h4 class="mb-3"><div></div></h4>
+                <h4 class="mb-3">
+                    <div></div>
+                </h4>
                 <h2 class="mb-1"><strong>Length</strong></h2>
                 <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
                 <div class="d-flex flex-row">
@@ -434,10 +422,6 @@
                                     <i class="fa fa-android float-left g-font-size-26 g-mr-15"></i>
                                 </a>
                             </div>
-                        </div>
-
-                        <div class="col-md-6 col-lg-6 g-overflow-hidden">
-                            <img class="img-fluid slideInUp u-in-viewport" src="assets/img-temp/mockups/mockup1.png" alt="Image description" data-animation="slideInUp" style="animation-duration: 1000ms;">
                         </div>
                     </div>
                 </div>
@@ -516,15 +500,6 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="header-text">
-                                <div class="header-heading">
-                                    <h1 id="UnitGroupTitle" runat="server" data-toggle="collapse" data-target=".unitscollapse" class="animation" data-animation="animation-fade-in-left"></h1>
-                                    <h5 id="UnitGroupDescription" runat="server" class="unitscollapse animation" data-animation="animation-fade-in-left" data-delay="3000"></h5>
-                                    <style>
-                                        a, a:visited, a:hover, a:active {
-                                            color: inherit;
-                                        }
-                                    </style>
-                                </div>
                             </div>
                         </div>
                     </div>
