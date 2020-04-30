@@ -378,7 +378,7 @@
                             <tr>
                                 <td class="align-middle">Meter:</td>
                                 <td>
-                                    <input class="form-control text-danger" type="text" /></td>
+                                    <input class="form-control text-danger" type="text" data-unit="length-meter" /></td>
                                 <td class="align-middle">m</td>
                             </tr>
                             <tr>

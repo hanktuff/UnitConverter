@@ -11,7 +11,7 @@ class Recalculate {
 
     public recalculate(unitElement: JQuery): void {
 
-        const unitName = unitElement.data('unitname');  /* e.g. "Meter" */
+        const unitName = unitElement.data('unit-name');  /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         const unitValue = unitElement.val();  /* e.g. 3.5 */
 
@@ -28,7 +28,7 @@ class Recalculate {
                 $.each(data.d,
                     (index, result) => {
 
-                        const unitElement = $('[data-unitname="' + result.UnitName + '"]');
+                        const unitElement = $('[data-unit-name="' + result.UnitName + '"]');
 
                         unitElement.val(result.UnitValue);
                         unitElement.attr('placeholder', '');
@@ -54,16 +54,15 @@ class Recalculate {
 
 $(document).ready(() => {
 
-    const unitElements: JQuery = $('[data-id^="UnitTextBox-"]');
+    const unitElements: JQuery = $('[data-unit-name]');
 
     unitElements.on('focusout',
         (e) => {
 
-            const dataID = e.target.attributes['data-id'].value;
-            const elementUnit: JQuery = $('[data-id="' + dataID + '"]');
+            const element: JQuery = $('#' + e.target.id);
 
             recalculateUnit = new Recalculate();
-            recalculateUnit.recalculate(elementUnit);
+            recalculateUnit.recalculate(element);
         });
 
     unitElements.on('keypress',
@@ -73,11 +72,10 @@ $(document).ready(() => {
 
             if (key === 13) {
 
-                const dataID = e.target.attributes['data-id'].value;
-                const elementUnit: JQuery = $('[data-id="' + dataID + '"]');
+                const element: JQuery = $('#' + e.target.id);
 
                 recalculateUnit = new Recalculate();
-                recalculateUnit.recalculate(elementUnit);
+                recalculateUnit.recalculate(element);
             }
         });
 

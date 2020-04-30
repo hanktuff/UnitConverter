@@ -5,7 +5,7 @@ var Recalculate = /** @class */ (function () {
     function Recalculate() {
     }
     Recalculate.prototype.recalculate = function (unitElement) {
-        var unitName = unitElement.data('unitname'); /* e.g. "Meter" */
+        var unitName = unitElement.data('unit-name'); /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         var unitValue = unitElement.val(); /* e.g. 3.5 */
         $.ajax({
@@ -17,7 +17,7 @@ var Recalculate = /** @class */ (function () {
             beforeSend: function () { document.body.style.cursor = "wait"; },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
-                    var unitElement = $('[data-unitname="' + result.UnitName + '"]');
+                    var unitElement = $('[data-unit-name="' + result.UnitName + '"]');
                     unitElement.val(result.UnitValue);
                     unitElement.attr('placeholder', '');
                 });
@@ -35,20 +35,18 @@ var Recalculate = /** @class */ (function () {
     return Recalculate;
 }());
 $(document).ready(function () {
-    var unitElements = $('[data-id^="UnitTextBox-"]');
+    var unitElements = $('[data-unit-name]');
     unitElements.on('focusout', function (e) {
-        var dataID = e.target.attributes['data-id'].value;
-        var elementUnit = $('[data-id="' + dataID + '"]');
+        var element = $('#' + e.target.id);
         recalculateUnit = new Recalculate();
-        recalculateUnit.recalculate(elementUnit);
+        recalculateUnit.recalculate(element);
     });
     unitElements.on('keypress', function (e) {
         var key = e.keyCode || e.which;
         if (key === 13) {
-            var dataID = e.target.attributes['data-id'].value;
-            var elementUnit = $('[data-id="' + dataID + '"]');
+            var element = $('#' + e.target.id);
             recalculateUnit = new Recalculate();
-            recalculateUnit.recalculate(elementUnit);
+            recalculateUnit.recalculate(element);
         }
     });
     var elementAnyUnit = $('#inputFindUnit');

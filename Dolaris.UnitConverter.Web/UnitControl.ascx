@@ -31,7 +31,8 @@
         <asp:PlaceHolder ID="UnitNamePlaceHolder" runat="server" />
     </td>
     <td>
-        <input class="form-control text-danger" type="text" /></td>
+        <input id="UnitTextBox" runat="server" class="form-control text-dark" type="text" />
+    </td>
     <td class="align-middle">
         <asp:PlaceHolder ID="UnitSymbolPlaceHolder" runat="server" />
     </td>

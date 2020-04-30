@@ -22,6 +22,15 @@ namespace Dolaris.UnitConverter.Web {
         protected global::System.Web.UI.WebControls.PlaceHolder UnitNamePlaceHolder;
 
         /// <summary>
+        /// UnitTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText UnitTextBox;
+
+        /// <summary>
         /// UnitSymbolPlaceHolder control.
         /// </summary>
         /// <remarks>

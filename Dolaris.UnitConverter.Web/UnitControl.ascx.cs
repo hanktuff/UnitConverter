@@ -43,10 +43,12 @@ namespace Dolaris.UnitConverter.Web {
         /// Initialize() is the preferred way of setting properties.
         /// </summary>
         /// <param name="unit"></param>
-        public void Initialize(string name, string symbol) {
+        public void Initialize(string name, string symbol, string group) {
 
             Name = name;
             Symbol = symbol;
+
+            UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
 
             //this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
             //UnitName = unit.ID.ToString();
@@ -103,6 +105,8 @@ namespace Dolaris.UnitConverter.Web {
                 _name = value;
                 UnitNamePlaceHolder.Controls.Clear();
                 UnitNamePlaceHolder.Controls.Add(new Literal() { Text = value + ":" });
+
+                UnitTextBox.Attributes.Add("data-unit-name", value);
             }
         }
         private string _name;
@@ -152,11 +156,24 @@ namespace Dolaris.UnitConverter.Web {
             }
             set {
                 _symbol = value;
+
                 UnitSymbolPlaceHolder.Controls.Clear();
                 UnitSymbolPlaceHolder.Controls.Add(new Literal() { Text = value });
             }
         }
         private string _symbol;
+
+
+        public String Group {
+            get {
+                return _group;
+            }
+            set {
+                _group = value;
+                UnitTextBox.Attributes.Add("data-unit-group", value);
+            }
+        }
+        private string _group;
 
         ///// <summary>
         ///// Gets or sets the tooltip for the unit.

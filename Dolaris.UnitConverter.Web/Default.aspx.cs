@@ -126,7 +126,7 @@ namespace Dolaris.UnitConverter.Web {
                         if (unit.Type == webUnitGroup.GroupType) {
 
                             UnitControl unitControl = (UnitControl)Page.LoadControl("~/UnitControl.ascx");
-                            unitControl.Initialize(name: unit.Name, symbol: unit.Symbol);
+                            unitControl.Initialize(name: unit.Name, symbol: unit.Symbol, group: webUnitGroup.GroupName);
                             unitGroupControl.AddUnitControl(unitControl);
 
                             //unitsForAnyUnitDropdown.Add(unit);

@@ -43,7 +43,8 @@
 </div>--%>
 
 
-<div class="row">
+<div class="row mb-5">
+
     <div class="col-lg-2 offset-lg-2">
         <h2 class="mb-1"><strong>
             <asp:PlaceHolder ID="UnitGroupTitle" runat="server" />
@@ -53,7 +54,7 @@
         </h6>
         <div class="d-flex flex-row">
             <button class="btn btn-xs btn-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
-            <button class="btn btn-xs u-btn-yellow text-uppercase mr-2">Embed</button>
+            <button class="btn btn-xs u-btn-yellow text-uppercase mr-2" hidden="hidden">Embed</button>
             <button class="btn btn-xs btn-secondary text-uppercase mr-2">Clear</button>
         </div>
     </div>
@@ -81,17 +82,13 @@
                             <input class="form-control text-danger" type="text" /></td>
                         <td class="align-middle">in</td>
                     </tr>--%>
-                    <%--<tr>
-                        <td class="align-middle">Lightyear:</td>
-                        <td>
-                            <input class="form-control text-danger" type="text" /></td>
-                        <td class="align-middle">ly</td>
-                    </tr>--%>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <div class="col-lg-4"></div>
+    <div class="col-lg-5">
+        <div data-info="for future use"></div>
+    </div>
 </div>
 
