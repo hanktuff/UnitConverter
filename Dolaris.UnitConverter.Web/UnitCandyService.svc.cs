@@ -195,7 +195,7 @@ namespace Dolaris.UnitConverter.Web {
 
             if (unitID.HasValue) {
                 sourceUnit = WebManager.GetUnit(unitID.Value);
-                webUnitGroup = _webman.WebUnitGroups.FirstOrDefault(p => p.GroupType == sourceUnit.Type);
+                webUnitGroup = _webman.WebUnitGroups.FirstOrDefault(p => p.UnitType == sourceUnit.Type);
             }
 
             var formattedUnits = new List<FormattedUnit>();

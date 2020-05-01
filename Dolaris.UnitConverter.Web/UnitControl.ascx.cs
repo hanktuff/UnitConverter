@@ -43,12 +43,15 @@ namespace Dolaris.UnitConverter.Web {
         /// Initialize() is the preferred way of setting properties.
         /// </summary>
         /// <param name="unit"></param>
-        public void Initialize(string name, string symbol, string group) {
+        public void Initialize(WebUnit webUnit) {
 
-            Name = name;
-            Symbol = symbol;
+            Name = webUnit.Name;
+            Symbol = webUnit.Symbol;
 
+            UnitTextBox.Attributes.Add("data-unit-id", webUnit.UnitID.ToString());
             UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
+
+
 
             //this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
             //UnitName = unit.ID.ToString();
@@ -75,27 +78,8 @@ namespace Dolaris.UnitConverter.Web {
             //}
         }
 
-        //
-        //public String ID {
-        //    get {
-        //        string id = null;
-
-        //        try {
-        //            id = UnitTextBox.Attributes[_attributeID];
-
-        //        } catch (Exception) {
-        //        }
-
-        //        return id;
-        //    }
-        //    set {
-        //        UnitTextBox.Attributes.Add(_attributeID, value);
-        //    }
-        //}
-
         /// <summary>
-        /// Gets or sets the unit name.
-        /// For example: "Meter" is the name of a unit.
+        /// Gets or sets the name of the unit. For example: "Nautical Miles".
         /// </summary>
         public String Name {
             get {
@@ -103,10 +87,9 @@ namespace Dolaris.UnitConverter.Web {
             }
             set {
                 _name = value;
-                UnitNamePlaceHolder.Controls.Clear();
-                UnitNamePlaceHolder.Controls.Add(new Literal() { Text = value + ":" });
 
-                UnitTextBox.Attributes.Add("data-unit-name", value);
+                NamePlaceHolder.Controls.Clear();
+                NamePlaceHolder.Controls.Add(new Literal() { Text = value + ":" });
             }
         }
         private string _name;
@@ -147,8 +130,7 @@ namespace Dolaris.UnitConverter.Web {
         //}
 
         /// <summary>
-        /// Gets or sets the symbol of the unit.
-        /// For example: "m" is the symbol for Meter.
+        /// Gets or sets the symbol of the unit. For example: "m" is the symbol for Meter.
         /// </summary>
         public String Symbol {
             get {
@@ -157,8 +139,8 @@ namespace Dolaris.UnitConverter.Web {
             set {
                 _symbol = value;
 
-                UnitSymbolPlaceHolder.Controls.Clear();
-                UnitSymbolPlaceHolder.Controls.Add(new Literal() { Text = value });
+                SymbolPlaceHolder.Controls.Clear();
+                SymbolPlaceHolder.Controls.Add(new Literal() { Text = value });
             }
         }
         private string _symbol;

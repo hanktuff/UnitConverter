@@ -13,22 +13,31 @@ namespace Dolaris.UnitConverter.Web {
     public partial class UnitGroupControl {
 
         /// <summary>
-        /// UnitGroupTitle control.
+        /// AnchorPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder UnitGroupTitle;
+        protected global::System.Web.UI.WebControls.PlaceHolder AnchorPlaceholder;
 
         /// <summary>
-        /// UnitGroupDescription control.
+        /// TitlePlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder UnitGroupDescription;
+        protected global::System.Web.UI.WebControls.PlaceHolder TitlePlaceHolder;
+
+        /// <summary>
+        /// DescriptionPlaceHolder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder DescriptionPlaceHolder;
 
         /// <summary>
         /// UnitControlPlaceHolder control.

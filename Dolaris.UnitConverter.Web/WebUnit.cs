@@ -11,24 +11,27 @@ namespace Dolaris.UnitConverter.Web {
     [DebuggerDisplay("{UnitID}")]
     public class WebUnit {
 
-        private UnitID _unitID;
+        public WebUnit(Dolaris.UnitConverter.IUnit unit = null) {
 
+            if (unit != null) {
 
-        public WebUnit(UnitID unitID) {
-            _unitID = unitID;
-        }
-
-        
-        public UnitID UnitID {
-            get {
-                return _unitID;
+                Name = unit.Name;
+                Symbol = unit.Symbol;
+                UnitID = unit.ID;
             }
         }
 
+
+        public String Name { get; set; }
+
+        public String Symbol { get; set; }
+
+        public UnitID UnitID { get; protected set; }
+
         public Boolean Enabled { get; set; }
 
-        public String Description { get; set; }
-
         public Boolean IsMetric { get; set; }
+
+        public String Info { get; set; }
     }
 }

@@ -11,7 +11,7 @@ class Recalculate {
 
     public recalculate(unitElement: JQuery): void {
 
-        const unitName = unitElement.data('unit-name');  /* e.g. "Meter" */
+        const unitName = unitElement.data('unit-id');  /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         const unitValue = unitElement.val();  /* e.g. 3.5 */
 
@@ -28,7 +28,7 @@ class Recalculate {
                 $.each(data.d,
                     (index, result) => {
 
-                        const unitElement = $('[data-unit-name="' + result.UnitName + '"]');
+                        const unitElement = $('[data-unit-id="' + result.UnitName + '"]');
 
                         unitElement.val(result.UnitValue);
                         unitElement.attr('placeholder', '');
@@ -54,7 +54,7 @@ class Recalculate {
 
 $(document).ready(() => {
 
-    const unitElements: JQuery = $('[data-unit-name]');
+    const unitElements: JQuery = $('[data-unit-id]');
 
     unitElements.on('focusout',
         (e) => {

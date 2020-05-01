@@ -110,8 +110,6 @@ namespace Dolaris.UnitConverter.Web {
             webUnitGroups.Add(new WebUnitGroup("Volume", UnitType.Volume) { Description = Properties.Resources.VolumeDescription, Enabled = true });
             webUnitGroups.Add(new WebUnitGroup("Temperature", UnitType.Temperature) { Description = Properties.Resources.TemperatureDescription, Enabled = true });
             webUnitGroups.Add(new WebUnitGroup("Mass", UnitType.Mass) { Description = Properties.Resources.MassDescription, Enabled = true });
-
-            // these ones are in the dropdown
             webUnitGroups.Add(new WebUnitGroup("Speed", UnitType.Speed) { Description = Properties.Resources.SpeedDescription, Enabled = true, StartCollapsed = false });
             webUnitGroups.Add(new WebUnitGroup("Energy", UnitType.Energy) { Description = Properties.Resources.EnergyDescription, Enabled = true, StartCollapsed = false });
             webUnitGroups.Add(new WebUnitGroup("Power", UnitType.Power) { Description = Properties.Resources.PowerDescription, Enabled = true, StartCollapsed = false });
@@ -133,121 +131,121 @@ namespace Dolaris.UnitConverter.Web {
 
 
             // Length
-            webUnits.Add(new WebUnit(UnitID.Meter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Centimeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Millimeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Yard) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Foot) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Inch) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Kilometer) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Mile) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.NauticalMile) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Lightyear) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Meter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Centimeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Millimeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Yard)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Foot)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Inch)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilometer)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Mile)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.NauticalMile)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Lightyear)) { Enabled = true, IsMetric = true });
 
             // Area
-            webUnits.Add(new WebUnit(UnitID.SquareMeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.SquareFoot) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Acre) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.SquareKilometer) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Hectare) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareMeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareFoot)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Acre)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareKilometer)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Hectare)) { Enabled = true, IsMetric = true });
 
             // Volume
-            webUnits.Add(new WebUnit(UnitID.CubicMeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Liter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Milliliter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Gallon) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Quart) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Pint) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.CubicFoot) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.CubicInch) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.CubicMeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Liter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Milliliter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Gallon)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Quart)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Pint)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.CubicFoot)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.CubicInch)) { Enabled = true, IsMetric = true });
 
             // Temperature
-            webUnits.Add(new WebUnit(UnitID.Celsius) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Fahrenheit) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Kelvin) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Celsius)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Fahrenheit)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kelvin)) { Enabled = true, IsMetric = true });
 
             // Mass
-            webUnits.Add(new WebUnit(UnitID.Kilogram) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Gram) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Stone) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Pound) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Ounce) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilogram)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Gram)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Stone)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Pound)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Ounce)) { Enabled = true, IsMetric = true });
 
             // Speed
-            webUnits.Add(new WebUnit(UnitID.KilometerPerHour) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.MilePerHour) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.MeterPerSecond) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Knot) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Mach) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.KilometerPerHour)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.MilePerHour)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.MeterPerSecond)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Knot)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Mach)) { Enabled = true, IsMetric = false });
 
             //Energy
-            webUnits.Add(new WebUnit(UnitID.Joule) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Kilojoule) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Watthour) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Kilowatthour) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Calorie) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Kilocalorie) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.FootPound) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Megaelectronvolt) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Joule)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilojoule)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Watthour)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilowatthour)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Calorie)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilocalorie)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.FootPound)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Megaelectronvolt)) { Enabled = true, IsMetric = true });
 
             // Power
-            webUnits.Add(new WebUnit(UnitID.Watt) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Kilowatt) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Megawatt) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Horsepower) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Watt)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilowatt)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Megawatt)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Horsepower)) { Enabled = true, IsMetric = false });
 
             // Pressure
-            webUnits.Add(new WebUnit(UnitID.Pascal) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Bar) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Torr) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Atmosphere) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.PoundForcePerSquareInch) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Pascal)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Bar)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Torr)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Atmosphere)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.PoundForcePerSquareInch)) { Enabled = true, IsMetric = false });
 
             // Time
-            webUnits.Add(new WebUnit(UnitID.Second) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Minute) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Hour) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Day) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Year) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Second)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Minute)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Hour)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Day)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Year)) { Enabled = true, IsMetric = false });
 
             // Fuel Economy
-            webUnits.Add(new WebUnit(UnitID.MilesPerGallon) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.LitersPer100Kilometers) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.MilesPerGallon)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.LitersPer100Kilometers)) { Enabled = true, IsMetric = true });
 
             // Frequency
-            webUnits.Add(new WebUnit(UnitID.Hertz) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Kilohertz) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Megahertz) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Gigahertz) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Hertz)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilohertz)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Megahertz)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Gigahertz)) { Enabled = true, IsMetric = true });
 
             // Acceleration
-            webUnits.Add(new WebUnit(UnitID.MeterPerSecondSquared) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.FootPerSecondSquared) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.GForce) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Galileo) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.MeterPerSecondSquared)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.FootPerSecondSquared)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.GForce)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Galileo)) { Enabled = true, IsMetric = true });
 
             // Density
-            webUnits.Add(new WebUnit(UnitID.KilogramPerCubicMeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.GramPerCubicCentimeter) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.PoundPerCubicFoot) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.PoundPerCubicInch) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.KilogramPerCubicMeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.GramPerCubicCentimeter)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.PoundPerCubicFoot)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.PoundPerCubicInch)) { Enabled = true, IsMetric = false });
 
             // Angle
-            webUnits.Add(new WebUnit(UnitID.Degree) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Radian) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.Grad) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.MinuteOfArc) { Enabled = true, IsMetric = true });
-            webUnits.Add(new WebUnit(UnitID.SecondOfArc) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Degree)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Radian)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Grad)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.MinuteOfArc)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SecondOfArc)) { Enabled = true, IsMetric = true });
 
             // Digital Storage
-            webUnits.Add(new WebUnit(UnitID.Bit) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Kilobit) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Megabit) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Byte) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Kilobyte) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Megabyte) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Gigabyte) { Enabled = true, IsMetric = false });
-            webUnits.Add(new WebUnit(UnitID.Terabyte) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Bit)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilobit)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Megabit)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Byte)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Kilobyte)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Megabyte)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Gigabyte)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Terabyte)) { Enabled = true, IsMetric = false });
 
             return webUnits;
         }

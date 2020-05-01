@@ -13,13 +13,13 @@ namespace Dolaris.UnitConverter.Web {
         public WebUnitGroup(string name, UnitType unitType) {
 
             GroupName = name;
-            GroupType = unitType;
+            UnitType = unitType;
         }
 
 
         public String GroupName { get; }
 
-        public UnitType GroupType { get; }
+        public UnitType UnitType { get; }
 
         public Boolean Enabled { get; set; }
 

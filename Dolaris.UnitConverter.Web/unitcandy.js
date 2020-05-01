@@ -5,7 +5,7 @@ var Recalculate = /** @class */ (function () {
     function Recalculate() {
     }
     Recalculate.prototype.recalculate = function (unitElement) {
-        var unitName = unitElement.data('unit-name'); /* e.g. "Meter" */
+        var unitName = unitElement.data('unit-id'); /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         var unitValue = unitElement.val(); /* e.g. 3.5 */
         $.ajax({
@@ -17,7 +17,7 @@ var Recalculate = /** @class */ (function () {
             beforeSend: function () { document.body.style.cursor = "wait"; },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
-                    var unitElement = $('[data-unit-name="' + result.UnitName + '"]');
+                    var unitElement = $('[data-unit-id="' + result.UnitName + '"]');
                     unitElement.val(result.UnitValue);
                     unitElement.attr('placeholder', '');
                 });
@@ -35,7 +35,7 @@ var Recalculate = /** @class */ (function () {
     return Recalculate;
 }());
 $(document).ready(function () {
-    var unitElements = $('[data-unit-name]');
+    var unitElements = $('[data-unit-id]');
     unitElements.on('focusout', function (e) {
         var element = $('#' + e.target.id);
         recalculateUnit = new Recalculate();

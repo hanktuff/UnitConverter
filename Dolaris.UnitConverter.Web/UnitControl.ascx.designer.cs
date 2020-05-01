@@ -13,13 +13,13 @@ namespace Dolaris.UnitConverter.Web {
     public partial class UnitControl {
 
         /// <summary>
-        /// UnitNamePlaceHolder control.
+        /// NamePlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder UnitNamePlaceHolder;
+        protected global::System.Web.UI.WebControls.PlaceHolder NamePlaceHolder;
 
         /// <summary>
         /// UnitTextBox control.
@@ -31,12 +31,12 @@ namespace Dolaris.UnitConverter.Web {
         protected global::System.Web.UI.HtmlControls.HtmlInputText UnitTextBox;
 
         /// <summary>
-        /// UnitSymbolPlaceHolder control.
+        /// SymbolPlaceHolder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder UnitSymbolPlaceHolder;
+        protected global::System.Web.UI.WebControls.PlaceHolder SymbolPlaceHolder;
     }
 }

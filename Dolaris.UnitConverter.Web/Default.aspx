@@ -204,6 +204,34 @@
         </div>
     </section>
 
+    <section id="unit-buttons">
+        <div class="container py-5">
+            <div class="row col-8 offset-2">
+                <div class="d-flex flex-wrap" data-animation="slideInDown">
+                    <a href="#Length" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15">Length</a>
+                    <a href="#Area" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15">Area</a>
+                    <a href="#Volume" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Volume</a>
+                    <a href="#Temperature" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15">Temperature</a>
+                    <a href="#Mass" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15">Mass</a>
+                    <a href="#Speed" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15">Speed</a>
+                    <a href="#Energy" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15">Energy</a>
+                    <a href="#Power" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15">Power</a>
+                    <a href="#Pressure" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15">Pressure</a>
+                    <a href="#Time" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15">Time</a>
+                    <a href="#FuelEconomy<" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15">Fuel Economy</a>
+                    <a href="#Frequency" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15">Frequency</a>
+                    <a href="#Acceleration" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15">Acceleration</a>
+                    <a href="#Density" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15">Density</a>
+                    <a href="#Angle" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15">Angle</a>
+                    <a href="#DigitalStorage" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15">Digital Storage</a>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15">Blue Gray</a>--%>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15">Dark Gray</a>--%>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15">Black</a>--%>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
     <%--Info Area--%>
@@ -281,51 +309,6 @@
                                     <th>Status</th>
                                 </tr>
                             </thead>--%>
-
-                        <tbody>
-                            <%--<tr>
-                                    <td>1</td>
-                                    <td>Mark</td>
-                                    <td class="hidden-sm">Otto</td>
-                                    <td>@mdo</td>
-                                    <td>
-                                        <span class="u-label u-label-warning g-color-white">Expiring</span>
-                                    </td>
-                                </tr>--%>
-                            <%--<tr>
-                                    <td>4</td>
-                                    <td>htmlstream</td>
-                                    <td class="hidden-sm">Web Design</td>
-                                    <td>@htmlstream</td>
-                                    <td>
-                                        <span class="u-label u-label-info g-color-white">Pending</span>
-                                    </td>
-                                </tr>--%>
-                            <tr>
-                                <td class="align-middle">Meter:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">m</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle">Yard:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">yd</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle">Inch:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">in</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle">Lightyear:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">ly</td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
 
@@ -335,10 +318,12 @@
         </div>
     </section>
 
-    <section id="test3" class="g-theme-bg-gray-light-v1">
+
+
+    <!-- unit groups -->
+    <section class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
-            <%--<div id="PH1" runat="server"></div>--%>
-            <asp:PlaceHolder ID="PH2" runat="server" />
+            <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
         </div>
     </section>
 
@@ -347,9 +332,7 @@
 
         <div class="row">
             <div class="col-lg-2 offset-lg-2">
-                <h4 class="mb-3">
-                    <div></div>
-                </h4>
+                <h4 class="mb-3"></h4>
                 <h2 class="mb-1"><strong>Length</strong></h2>
                 <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
                 <div class="d-flex flex-row">
@@ -496,14 +479,6 @@
     <%--<div id="MainDiv" runat="server">
         <div class="wrap-container60">
             <div class="header-content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="header-text">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>--%>

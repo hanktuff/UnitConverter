@@ -45,77 +45,26 @@ namespace Dolaris.UnitConverter.Web {
 
         private WebManager _webManager = new WebManager();
 
-        private List<string> _background = new List<string>() { "bg-dark", "bg-info", "bg-color", "bg-grey", "bg-info", "bg-primary", "bg-success", "bg-warning" };
-
 
         public Default() {
         }
 
         protected override void OnInit(EventArgs e) {
 
-            int backgroundIndex = 0;
             var units = WebManager.GetUnits();
-
-            var unitsForAnyUnitDropdown = new List<IUnit>();
-
-
-
-
-
-            //var inner = template.InnerHtml;
-
-            //var contrl = this.ParseControl(inner);
-
-
-
-            //template.Attributes.Remove("hidden");
-            //HtmlGenericControl g1 = new HtmlGenericControl("tag1");
-            //g1.Controls.Add(template);
-            //HtmlGenericControl g2 = new HtmlGenericControl("tag2");
-            //g2.Controls.Add(new Literal() { Text = "This is another title" });
-            //g2.Controls.Add(template);
-
-
-            //template.FindControl("TIME").Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
-            //PH1.InnerHtml += template.InnerText;
-
-            //template.FindControl("Title").Controls.Add(new Literal() { Text = "This is the title" });
-            //PH1.Controls.Add(g2);
-            //PH1.InnerHtml += template.InnerText;
-
-            //template.FindControl("Title").Controls.Add(new Literal() { Text = "This is another title" });
-            //PH1.Controls.Add(template);
-
-            //template.FindControl("TIME").Controls.Add(new Literal() { Text = "sdfs sdf" });
-            //PH1.Controls.Add(template);
-
-            //System.Threading.Thread.Sleep(1000);
-            //template.FindControl("TIME").Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
-            //PH1.Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
-
-
-            //PH1.Controls.Add(new Literal() { Text = System.DateTime.Now.ToString() });
-
-
-
-
+            
             foreach (WebUnitGroup webUnitGroup in _webManager.WebUnitGroups) {
 
-                if (webUnitGroup.Enabled == false) { continue; }
-
-                UnitGroupControl unitGroupControl = (UnitGroupControl)Page.LoadControl("~/UnitGroupControl.ascx");
-                unitGroupControl.Initialize(title: webUnitGroup.GroupName, description: webUnitGroup.Description);
-
-                // set a different background for each unit group
-
-                //unitGroupControl.Background = _background[backgroundIndex];
-
-                backgroundIndex++;
-                if (backgroundIndex > _background.Count - 1) {
-                    backgroundIndex = 0;
+                if (webUnitGroup.Enabled == false) {
+                    continue;
                 }
 
-                // add all enabled units to the unit group control
+                // add a Unit Group (e.g. "Length", "Area") to the page
+
+                UnitGroupControl unitGroupControl = (UnitGroupControl)Page.LoadControl("~/UnitGroupControl.ascx");
+                unitGroupControl.Initialize(webUnitGroup);
+
+                // add all enabled Units (e.g. "Meter", "Yard") to the Unit Group control
 
                 foreach (WebUnit webUnit in _webManager.WebUnits) {
 
@@ -123,27 +72,17 @@ namespace Dolaris.UnitConverter.Web {
 
                         var unit = units.First(p => p.ID == webUnit.UnitID);
 
-                        if (unit.Type == webUnitGroup.GroupType) {
+                        if (unit.Type == webUnitGroup.UnitType) {
 
                             UnitControl unitControl = (UnitControl)Page.LoadControl("~/UnitControl.ascx");
-                            unitControl.Initialize(name: unit.Name, symbol: unit.Symbol, group: webUnitGroup.GroupName);
+                            unitControl.Initialize(webUnit);
                             unitGroupControl.AddUnitControl(unitControl);
-
-                            //unitsForAnyUnitDropdown.Add(unit);
                         }
                     }
                 }
 
-                //WebGroupsPlaceholder.Controls.Add(unitGroupControl);
-                PH2.Controls.Add(unitGroupControl);
+                UnitGroupsPlaceHolder.Controls.Add(unitGroupControl);
             }
-
-            // add units to "Any Units" dropdown
-
-            //foreach (var unit in unitsForAnyUnitDropdown.OrderBy(p => p.Name)) {
-            //    AnyUnitLiteral.Text +=
-            //        string.Format("<li value=\"{0}\"><a href=\"javascript: findUnitDropdownSelectionChanged('{0}');\">{1}</a></li>", unit.ID.ToString(), unit.Name);
-            //}
         }
 
         protected void Page_Load(object sender, EventArgs e) {
@@ -166,19 +105,6 @@ namespace Dolaris.UnitConverter.Web {
             }
         }
 
-        private void _getControlList<T>(ControlCollection controlCollection, List<T> resultCollection) where T : Control {
-
-            foreach (Control control in controlCollection) {
-                //if (control.GetType() == typeof(T))
-                if (control is T) {
-                    resultCollection.Add((T)control);
-                }
-
-                if (control.HasControls()) {
-                    _getControlList(control.Controls, resultCollection);
-                }
-            }
-        }
 
         private void _writeLog(HttpRequest request, string logfilename = "logfile.txt") {
 

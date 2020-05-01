@@ -18,17 +18,11 @@ namespace Dolaris.UnitConverter.Web {
         /// Initialize() is the preferred way of setting properties.
         /// </summary>
         /// <param name="webUnitGroup"></param>
-        public void Initialize(string title, string description) {
+        public void Initialize(WebUnitGroup webUnitGroup) {
 
-            Title = title;
-            UnitGroupTitle.Controls.Add(new Literal() { Text = title });
-
-            Description = description;
-            UnitGroupDescription.Controls.Add(new Literal() { Text = description });
-
-            //Title = webUnitGroup.GroupName;
-            //Description = webUnitGroup.Description;
-            //Bookmark = webUnitGroup.GroupType.ToString();
+            Title = webUnitGroup.GroupName;
+            Description = webUnitGroup.Description;
+            UnitType = webUnitGroup.UnitType;
 
             //SetCollapseAttribute(webUnitGroup.GroupType.ToString(), webUnitGroup.StartCollapsed);
             //SetUtilitiesAttributes(webUnitGroup.GroupType.ToString());
@@ -44,27 +38,49 @@ namespace Dolaris.UnitConverter.Web {
         }
 
         /// <summary>
-        /// Gets or sets the name of the unit group.
+        /// Gets or sets the title of the unit group. For example: "Length" or "Digital Storage".
         /// </summary>
-        public String Title { get; set; }
+        public String Title {
+            get {
+                return _title;
+            }
+            set {
+                _title = value;
+
+                TitlePlaceHolder.Controls.Clear();
+                TitlePlaceHolder.Controls.Add(new Literal() { Text = value });
+            } 
+        }
+        private string _title;
 
         /// <summary>
-        /// Gets or sets the description of the unit group.
+        /// Gets or sets the description of the unit group. For example: "Area is the extent of a shape in the plane.".
         /// </summary>
-        public String Description { get; set; }
+        public String Description {
+            get {
+                return _description;
+            }
+            set {
+                _description = value;
 
-        ///// <summary>
-        ///// Gets or sets the Bookmark at the top of the control.
-        ///// This can be used as a target when linking to the control.
-        ///// </summary>
-        //public String Bookmark {
-        //    get {
-        //        return MainDiv.ID;
-        //    }
-        //    set {
-        //        MainDiv.ID = value;
-        //    }
-        //}
+                DescriptionPlaceHolder.Controls.Clear();
+                DescriptionPlaceHolder.Controls.Add(new Literal() { Text = value });
+            }
+        }
+        private string _description;
+
+
+        public UnitType UnitType {
+            get {
+                return _unitType;
+            }
+            set {
+                _unitType = value;
+
+                AnchorPlaceholder.Controls.Add(new System.Web.UI.HtmlControls.HtmlGenericControl("div") { ID = value.ToString() });
+            }
+        }
+        private UnitType _unitType;
 
         ///// <summary>
         ///// Gets or sets the background color for the unit group control.
