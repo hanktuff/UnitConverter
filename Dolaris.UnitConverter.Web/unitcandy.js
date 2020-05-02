@@ -1,11 +1,12 @@
 /// <reference path="Scripts/typings/jquery/jquery.d.ts"/>
 /// <reference path="Scripts/typings/jqueryui/jqueryui.d.ts"/>
 var recalculateUnit;
+var UI;
 var Recalculate = /** @class */ (function () {
     function Recalculate() {
     }
     Recalculate.prototype.recalculate = function (unitElement) {
-        var unitName = unitElement.data('unit-id'); /* e.g. "Meter" */
+        var unitName = unitElement.data('unit-textbox'); /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         var unitValue = unitElement.val(); /* e.g. 3.5 */
         $.ajax({
@@ -14,18 +15,14 @@ var Recalculate = /** @class */ (function () {
             method: 'GET',
             data: { unitName: unitName, unitValue: unitValue },
             dataType: 'json',
-            beforeSend: function () { document.body.style.cursor = "wait"; },
+            beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 500); },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
-                    var unitElement = $('[data-unit-id="' + result.UnitName + '"]');
-                    unitElement.val(result.UnitValue);
-                    unitElement.attr('placeholder', '');
+                    UI.setUnitToValue(result.UnitName, result.UnitValue);
                 });
-                document.body.style.cursor = "auto";
                 return null;
             },
             error: function (xhr, status, error) {
-                document.body.style.cursor = "auto";
                 console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
                 //alert('Error: ' + xhr.statusText + xhr.responseText);
                 return null;
@@ -34,21 +31,76 @@ var Recalculate = /** @class */ (function () {
     };
     return Recalculate;
 }());
+var UnitCandyUI = /** @class */ (function () {
+    function UnitCandyUI() {
+        this.textboxUnit = $('[data-unit-textbox]');
+        this.buttonCopy = $('[data-button-copy]');
+        this.buttonEmbed = $('[data-button-embed]');
+        this.buttonClear = $('[data-button-clear]');
+        this.buttonGotoUnitGroup = $('[data-goto-unitgroup]');
+        this.initializeTextBoxes();
+        this.initializeClearButtons();
+        this.initializeGotoUnitgroupButtons();
+    }
+    /** sets the unit identified by unitID to the value
+        example: unitID = "NauticalMiles", value = "305.72" */
+    UnitCandyUI.prototype.setUnitToValue = function (unitID, value) {
+        var element = this.textboxUnit.filter('[data-unit-textbox="' + unitID + '"]');
+        element.val('');
+        setTimeout(function () { return element.val(value); }, Math.random() * 500);
+    };
+    /** sets the cursor to Wait */
+    UnitCandyUI.prototype.setWaitCursor = function () {
+        document.body.style.cursor = "wait";
+    };
+    /** sets the cursor to Auto */
+    UnitCandyUI.prototype.setAutoCursor = function () {
+        document.body.style.cursor = "auto";
+    };
+    UnitCandyUI.prototype.initializeTextBoxes = function () {
+        this.textboxUnit.on('keypress', function (e) {
+            var key = e.keyCode || e.which;
+            if (key === 13) {
+                var element = $(e.target);
+                recalculateUnit = new Recalculate();
+                recalculateUnit.recalculate(element);
+            }
+        });
+    };
+    UnitCandyUI.prototype.initializeClearButtons = function () {
+        var _this = this;
+        this.buttonClear.on('click', function (e) {
+            _this.GetUnitsOfSameType(e.target).each(function (index, item) { return setTimeout(function () { return $(item).val(''); }, Math.random() * 1000); });
+        });
+    };
+    UnitCandyUI.prototype.initializeGotoUnitgroupButtons = function () {
+        this.buttonGotoUnitGroup.on('click', function (e) {
+            var scrolllTarget = $(e.target).data('goto-unitgroup');
+            alert(scrolllTarget);
+        });
+    };
+    /** returns all units that are of the same type as the provided unit
+        for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
+    UnitCandyUI.prototype.GetUnitsOfSameType = function (unit) {
+        var result = new Array();
+        var unitType = $(unit).parents('[data-unit-type]').data('unit-type');
+        this.textboxUnit.each(function (index, item) {
+            if ($(item).parents('[data-unit-type="' + unitType + '"]').length > 0) {
+                result.push(item);
+            }
+        });
+        return $(result);
+    };
+    return UnitCandyUI;
+}());
 $(document).ready(function () {
-    var unitElements = $('[data-unit-id]');
-    unitElements.on('focusout', function (e) {
-        var element = $('#' + e.target.id);
-        recalculateUnit = new Recalculate();
-        recalculateUnit.recalculate(element);
-    });
-    unitElements.on('keypress', function (e) {
-        var key = e.keyCode || e.which;
-        if (key === 13) {
-            var element = $('#' + e.target.id);
-            recalculateUnit = new Recalculate();
-            recalculateUnit.recalculate(element);
-        }
-    });
+    //const unitElements: JQuery = $('[data-unit-id]');
+    //unitElements.on('focusout',
+    //    (e) => {
+    //        const element: JQuery = $('#' + e.target.id);
+    //        recalculateUnit = new Recalculate();
+    //        recalculateUnit.recalculate(element);
+    //    });
     var elementAnyUnit = $('#inputFindUnit');
     elementAnyUnit.on('keypress', function (e) {
         var key = e.keyCode || e.which;
@@ -76,15 +128,7 @@ $(document).ready(function () {
             });
         }
     });
-    // DEBUG
-    //data-test="isUnitElement"
-    var test = $('[data-id^="UnitTextBox-"]').parents('[data-test="isUnitElement"]');
-    try {
-    }
-    catch (e) {
-        var stopp = 3;
-    }
-    ////////
+    UI = new UnitCandyUI();
 });
 //var lastUnitName = '';
 //var lastUnitGroupName = '';

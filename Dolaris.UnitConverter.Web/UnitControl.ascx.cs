@@ -9,31 +9,6 @@ using Dolaris.UnitConverter;
 namespace Dolaris.UnitConverter.Web {
     public partial class UnitControl : System.Web.UI.UserControl {
 
-
-        /// <summary>
-        /// Name of attribute used to store the value of the unit name.
-        /// </summary>
-        private const string _attributeID = "data-id";
-
-        /// <summary>
-        /// Name of attribute used to store the value of the unit name.
-        /// </summary>
-        private const string _attributeUnitName = "data-unitname";
-
-        /// <summary>
-        /// Name of attribute used to store the value of the unit group name.
-        /// </summary>
-        private const string _attributeUnitGroupName = "data-unitgroupname";
-
-
-        private const string _attributeUnitSymbol = "data-unitsymbol";
-
-        /// <summary>
-        /// Name of attribute used to store the value of the helper.
-        /// </summary>
-        private const string _attributeUnitHelper = "data-helper";
-
-
         protected void Page_Load(object sender, EventArgs e) {
         }
 
@@ -47,9 +22,10 @@ namespace Dolaris.UnitConverter.Web {
 
             Name = webUnit.Name;
             Symbol = webUnit.Symbol;
+            UnitID = webUnit.UnitID;
 
-            UnitTextBox.Attributes.Add("data-unit-id", webUnit.UnitID.ToString());
-            UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
+            //UnitTextBox.Attributes.Add("data-unit-id", webUnit.UnitID.ToString());
+            //UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
 
 
 
@@ -94,27 +70,7 @@ namespace Dolaris.UnitConverter.Web {
         }
         private string _name;
 
-        ///// <summary>
-        ///// Gets or sets the unit group name.
-        ///// For example: "Length" is the name of a group of units.
-        ///// </summary>
-        //public String UnitGroupName {
-        //    get {
-        //        string unitGroupName = null;
-
-        //        try {
-        //            unitGroupName = UnitTextBox.Attributes[_attributeUnitGroupName];
-
-        //        } catch (Exception) {
-        //        }
-
-        //        return unitGroupName;
-        //    }
-        //    set {
-        //        // if the attribute already exists it will not be added a second time
-        //        UnitTextBox.Attributes.Add(_attributeUnitGroupName, value);
-        //    }
-        //}
+        
 
         ///// <summary>
         ///// Gets or sets the tag/label for the unit.
@@ -146,16 +102,15 @@ namespace Dolaris.UnitConverter.Web {
         private string _symbol;
 
 
-        public String Group {
+        public UnitID UnitID {
             get {
-                return _group;
+                return _unitID;
             }
             set {
-                _group = value;
-                UnitTextBox.Attributes.Add("data-unit-group", value);
+                _unitID = value;
             }
         }
-        private string _group;
+        private UnitID _unitID;
 
         ///// <summary>
         ///// Gets or sets the tooltip for the unit.
@@ -173,19 +128,6 @@ namespace Dolaris.UnitConverter.Web {
         //    }
         //    set {
         //        UnitTextBox.Attributes.Add("title", value);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// Gets or sets the value of the unit.
-        ///// This is whatever the user entered, usually a number.
-        ///// </summary>
-        //public String Text {
-        //    get {
-        //        return UnitTextBox.Value;
-        //    }
-        //    set {
-        //        UnitTextBox.Value = value ?? string.Empty;
         //    }
         //}
 

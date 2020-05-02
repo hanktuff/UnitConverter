@@ -3,6 +3,7 @@
 
 
 let recalculateUnit: Recalculate;
+let UI: UnitCandyUI;
 
 
 class Recalculate {
@@ -11,7 +12,7 @@ class Recalculate {
 
     public recalculate(unitElement: JQuery): void {
 
-        const unitName = unitElement.data('unit-id');  /* e.g. "Meter" */
+        const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
         const unitValue = unitElement.val();  /* e.g. 3.5 */
 
@@ -21,28 +22,19 @@ class Recalculate {
             method: 'GET',
             data: { unitName: unitName, unitValue: unitValue },
             dataType: 'json',
-            beforeSend: function () { document.body.style.cursor = "wait"; },
+            beforeSend: function () { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
 
             success: (data, status, xhr) => {
 
                 $.each(data.d,
                     (index, result) => {
-
-                        const unitElement = $('[data-unit-id="' + result.UnitName + '"]');
-
-                        unitElement.val(result.UnitValue);
-                        unitElement.attr('placeholder', '');
+                        UI.setUnitToValue(result.UnitName, result.UnitValue)
                     });
-
-
-                document.body.style.cursor = "auto";
 
                 return null;
             },
 
-            error: function (xhr, status, error) {
-
-                document.body.style.cursor = "auto";
+            error: (xhr, status, error) => {
                 console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
                 //alert('Error: ' + xhr.statusText + xhr.responseText);
                 return null;
@@ -52,32 +44,115 @@ class Recalculate {
 }
 
 
-$(document).ready(() => {
 
-    const unitElements: JQuery = $('[data-unit-id]');
+class UnitCandyUI {
 
-    unitElements.on('focusout',
-        (e) => {
+    public constructor() {
 
-            const element: JQuery = $('#' + e.target.id);
+        this.initializeTextBoxes();
+        this.initializeClearButtons();
+        this.initializeGotoUnitgroupButtons();
+    }
 
-            recalculateUnit = new Recalculate();
-            recalculateUnit.recalculate(element);
+    /** sets the unit identified by unitID to the value 
+        example: unitID = "NauticalMiles", value = "305.72" */
+    public setUnitToValue(unitID: string, value: string): void {
+
+        const element = this.textboxUnit.filter('[data-unit-textbox="' + unitID + '"]');
+
+        element.val('');
+        setTimeout(() => element.val(value), Math.random() * 500);
+    }
+
+    /** sets the cursor to Wait */
+    public setWaitCursor(): void {
+        document.body.style.cursor = "wait";
+    }
+
+    /** sets the cursor to Auto */
+    public setAutoCursor(): void {
+        document.body.style.cursor = "auto";
+    }
+
+
+    protected textboxUnit = $('[data-unit-textbox]');
+    protected buttonCopy = $('[data-button-copy]');
+    protected buttonEmbed = $('[data-button-embed]');
+    protected buttonClear = $('[data-button-clear]');
+    protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
+
+    protected initializeTextBoxes(): void {
+
+        this.textboxUnit.on('keypress',
+            (e) => {
+
+                const key = e.keyCode || e.which;
+
+                if (key === 13) {
+
+                    const element: JQuery = $(e.target);
+
+                    recalculateUnit = new Recalculate();
+                    recalculateUnit.recalculate(element);
+                }
+            });
+    }
+
+    protected initializeClearButtons(): void {
+
+        this.buttonClear.on('click',
+            (e) => {
+
+                this.GetUnitsOfSameType(e.target).each(
+                    (index, item) => setTimeout(() => $(item).val(''), Math.random() * 1000)
+                );
         });
+    }
 
-    unitElements.on('keypress',
-        (e) => {
+    protected initializeGotoUnitgroupButtons(): void {
 
-            const key = e.keyCode || e.which;
+        this.buttonGotoUnitGroup.on('click',
+            (e) => {
 
-            if (key === 13) {
+                const scrolllTarget = $(e.target).data('goto-unitgroup');
+                alert(scrolllTarget);
+            });
+    }
 
-                const element: JQuery = $('#' + e.target.id);
+    /** returns all units that are of the same type as the provided unit
+        for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
+    protected GetUnitsOfSameType(unit: Element): JQuery {
 
-                recalculateUnit = new Recalculate();
-                recalculateUnit.recalculate(element);
+        const result: Array<Element> = new Array<Element>();
+
+        const unitType = $(unit).parents('[data-unit-type]').data('unit-type');
+
+        this.textboxUnit.each((index, item) => {
+
+            if ($(item).parents('[data-unit-type="' + unitType + '"]').length > 0) {
+
+                result.push(item);
             }
         });
+
+        return $(result);
+    }
+}
+
+
+
+$(document).ready(() => {
+
+    //const unitElements: JQuery = $('[data-unit-id]');
+
+    //unitElements.on('focusout',
+    //    (e) => {
+
+    //        const element: JQuery = $('#' + e.target.id);
+
+    //        recalculateUnit = new Recalculate();
+    //        recalculateUnit.recalculate(element);
+    //    });
 
     const elementAnyUnit: JQuery = $('#inputFindUnit');
 
@@ -120,20 +195,7 @@ $(document).ready(() => {
         });
 
 
-    // DEBUG
-
-    //data-test="isUnitElement"
-
-        const test = $('[data-id^="UnitTextBox-"]').parents('[data-test="isUnitElement"]');
-    try {
-
-    } catch (e) {
-
-    const stopp = 3;
-    }
-
-
-    ////////
+    UI = new UnitCandyUI();
 });
 
 

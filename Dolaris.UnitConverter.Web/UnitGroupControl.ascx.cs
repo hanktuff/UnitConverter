@@ -76,23 +76,11 @@ namespace Dolaris.UnitConverter.Web {
             }
             set {
                 _unitType = value;
-
-                AnchorPlaceholder.Controls.Add(new System.Web.UI.HtmlControls.HtmlGenericControl("div") { ID = value.ToString() });
             }
         }
         private UnitType _unitType;
 
-        ///// <summary>
-        ///// Gets or sets the background color for the unit group control.
-        ///// </summary>
-        //public String Background {
-        //    get {
-        //        return MainDiv.Attributes["class"];
-        //    }
-        //    set {
-        //        MainDiv.Attributes.Add("class", value);
-        //    }
-        //}
+
 
         /// <summary>
         /// Sets the attribute that enables the group to collapse (show/hide).

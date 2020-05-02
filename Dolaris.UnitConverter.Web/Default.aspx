@@ -207,8 +207,9 @@
     <section id="unit-buttons">
         <div class="container py-5">
             <div class="row col-8 offset-2">
-                <div class="d-flex flex-wrap" data-animation="slideInDown">
+                <div class="d-flex flex-wrap" data-animation="fadeIn" data-animation-delay="1000" data-animation-duration="2000">
                     <a href="#Length" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15">Length</a>
+                    <input type="button" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15" value="Something" data-goto-unitgroup="#Time" />
                     <a href="#Area" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15">Area</a>
                     <a href="#Volume" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Volume</a>
                     <a href="#Temperature" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15">Temperature</a>
@@ -265,61 +266,6 @@
     </div>
 
 
-    <%-- Testing something --%>
-    <%-- 
-    <div id="x" class="wrap-container6020">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <asp:PlaceHolder ID="placeholder1" runat="server" />
-                </div>
-            </div>
-        </div>
-    </div>
-    --%>
-
-
-
-    <section id="test2" class="g-bg-gray-dark-v3" style="min-height: 200px; background-color: seashell!important;" hidden="hidden">
-        <div class="d-flex flex-row py-3 justify-content-center align-items-stretch">
-
-            <div class="d-inline-flex flex-column mr-5">
-                <h2 class="mb-1"><strong>Length</strong></h2>
-                <h6 class="mb-3" style="max-width: 150px;">Length is any quantity with dimension distance.</h6>
-                <div class="d-flex flex-row">
-                    <button class="btn btn-xs btn-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
-                    <button class="btn btn-xs btn-secondary text-uppercase mr-2">Clear</button>
-                </div>
-            </div>
-
-            <div class="d-flex justify-content-center">
-                <%--<input class="form-control h-100 g-color-white g-placeholder-inherit g-bg-transparent g-bg-transparent--focus g-brd-white g-rounded-10 g-px-20 g-py-10" type="text" placeholder="Name" />--%>
-                <%--<input class="form-control text-danger" type="text" />--%>
-
-
-                <!-- Basic Table -->
-                <div class="table-responsive table-borderless">
-                    <table class="table">
-                        <%--<thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th class="hidden-sm">Last Name</th>
-                                    <th>Username</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>--%>
-                    </table>
-                </div>
-
-
-            </div>
-
-        </div>
-    </section>
-
-
-
     <!-- unit groups -->
     <section class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
@@ -363,12 +309,6 @@
                                 <td>
                                     <input class="form-control text-danger" type="text" /></td>
                                 <td class="align-middle">in</td>
-                            </tr>
-                            <tr>
-                                <td class="align-middle">Lightyear:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">ly</td>
                             </tr>
                         </tbody>
                     </table>
@@ -426,15 +366,6 @@
                             </div>
                         </div>
                         <div class="row margin-bottom10">
-                            <div class="col-lg-2 col-center">
-                                <label id="Label1" runat="server" class="">Centimeter:</label>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="text" id="Text1" runat="server" class="form-control"
-                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                            </div>
-                        </div>
-                        <div class="row margin-bottom10">
                             <div class="col-lg-2 top-right">
                                 <label id="Label2" runat="server" class="">Millimeter:</label>
                             </div>
@@ -472,18 +403,6 @@
             <div class="col-lg-2 bg-danger">c</div>
         </div>
     </div>--%>
-
-
-
-
-    <%--<div id="MainDiv" runat="server">
-        <div class="wrap-container60">
-            <div class="header-content">
-            </div>
-        </div>
-    </div>--%>
-
-
 
 
 
