@@ -161,22 +161,6 @@
                     <li><a href="#Volume" class="smooth-scroll">Volume</a></li>
                     <li><a href="#Temperature" class="smooth-scroll">Temperature</a></li>
                     <li><a href="#Mass" class="smooth-scroll">Mass</a></li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="Click here for more units of measurement.">More...&nbsp;<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#Speed" class="smooth-scroll">Speed</a></li>
-                            <li><a href="#Energy" class="smooth-scroll">Energy</a></li>
-                            <li><a href="#Power" class="smooth-scroll">Power</a></li>
-                            <li><a href="#Pressure" class="smooth-scroll">Pressure</a></li>
-                            <li><a href="#Time" class="smooth-scroll">Time</a></li>
-                            <li><a href="#FuelEconomy" class="smooth-scroll">Fuel Economy</a></li>
-                            <li><a href="#Frequency" class="smooth-scroll">Frequency</a></li>
-                            <li><a href="#Acceleration" class="smooth-scroll">Acceleration</a></li>
-                            <li><a href="#Density" class="smooth-scroll">Density</a></li>
-                            <li><a href="#Angle" class="smooth-scroll">Angle</a></li>
-                            <li><a href="#DigitalStorage" class="smooth-scroll">Digital Storage</a></li>
-                        </ul>
-                    </li>
                     <li>
                         <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
                         <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
@@ -223,7 +207,7 @@
                     <a href="#" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15" data-goto-unitgroup="Acceleration">Acceleration</a>
                     <a href="#" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15" data-goto-unitgroup="Density">Density</a>
                     <a href="#" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15" data-goto-unitgroup="Angle">Angle</a>
-                    <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15">Digital Storage</a>
+                    <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
                     <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15">Blue Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15">Dark Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15">Black</a>--%>
@@ -271,6 +255,20 @@
             <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
         </div>
     </section>
+
+
+
+
+    <%--<a class="js-copy u-link-v5  g-color-main  g-color-primary--hover" href="#" data-content-target="#info" data-success-text="Copied">
+        <i class="fa fa-clone"></i>
+        Copy code
+    </a>--%>
+
+
+
+
+
+
 
 
     <div id="template" runat="server" class="row" hidden="hidden">
@@ -329,24 +327,6 @@
 
                 <div class="col-lg-7 x-bg-warning">
                     <div class="container-fluid">
-                        <div class="row margin-bottom10">
-                            <div class="col-lg-2 aligncenter">
-                                <label id="UnitNameLabel" runat="server" class="">Meter:</label>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="text" id="UnitTextBox" runat="server" class="form-control"
-                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                            </div>
-                        </div>
-                        <div class="row margin-bottom10">
-                            <div class="col-lg-2 top-right">
-                                <label id="Label2" runat="server" class="">Millimeter:</label>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="text" id="Text2" runat="server" class="form-control"
-                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                            </div>
-                        </div>
                     </div>
 
                     <div class="input-group">
@@ -359,16 +339,6 @@
             </div>
         </div>
     </div>--%>
-
-    <%--<div class="container bg-grey">
-        <div class="row" style="min-height: 100px;">
-            <div class="col-lg-3 bg-success">a</div>
-            <div class="col-lg-7 bg-warning">b</div>
-            <div class="col-lg-2 bg-danger">c</div>
-        </div>
-    </div>--%>
-
-
 
 
     <!-- Main Form -->
@@ -628,7 +598,6 @@
     <script src="assets/vendor/fancybox/jquery.fancybox.js"></script>
     <script src="assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
     <script src="assets/vendor/slick-carousel/slick/slick.js"></script>
-    <%-- TODO: add jquery.easing.min.js --%>
 
     <!-- JS Unify -->
     <script src="assets/js/hs.core.js"></script>
@@ -641,6 +610,7 @@
     <script src="assets/js/components/hs.popup.js"></script>
     <script src="assets/js/components/hs.carousel.js"></script>
     <script src="assets/js/components/hs.go-to.js"></script>
+
 
     <!-- JS Customization -->
     <%--<script src="../../assets/js/custom.js"></script>--%>
@@ -734,18 +704,6 @@
     <%-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="js/smoothscroll.js"></script>
-    <script type="text/javascript" src="js/response.min.js"></script>
-    <script type="text/javascript" src="js/jquery.placeholder.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="js/jquery.imgpreload.min.js"></script>
-    <script type="text/javascript" src="js/waypoints.min.js"></script>
-    <script type="text/javascript" src="js/slick.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mousewheel-3.0.6.pack.js"></script>
-    <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
-    <script type="text/javascript" src="js/parallax.min.js"></script>
-    <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
     <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>--%>
 

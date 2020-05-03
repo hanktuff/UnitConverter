@@ -90,15 +90,7 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="collapsed"></param>
         public void SetCollapseAttribute(string groupType, bool collapsed = false) {
 
-            //string attributeGroupType = "collapse" + groupType;
-            //string attributeCollapse = collapsed ? "collapse" : "in";
-
-            //UnitGroupTitle.Attributes.Add("data-target", "." + attributeGroupType);
-            //UnitGroupTitle.Style["cursor"] = "pointer";
-            //UnitGroupTitle.Attributes.Add("title", Description);
-
-            //UnitGroupDescription.Attributes.Add("class", 
-            //    string.Format("{0} {1} {2}", UnitGroupDescription.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
+            
         }
 
         ///// <summary>

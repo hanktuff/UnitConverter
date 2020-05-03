@@ -89,10 +89,9 @@ class UnitCandyUI {
     public constructor() {
 
         this.initializeUnitElements();
+        this.initializeCopyButtons();
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
-
-        //this.lastRecalculatedUnit = this.units[0];
     }
 
 
@@ -118,11 +117,31 @@ class UnitCandyUI {
         document.body.style.cursor = "auto";
     }
 
+    // copy to clipboard
+    public copyTextToClipboard(text: string): void {
 
-    //protected textboxUnit = $('[data-unit-textbox]');
-    protected buttonCopy = $('[data-button-copy]');
-    protected buttonEmbed = $('[data-button-embed]');
-    protected buttonClear = $('[data-button-clear]');
+        const textarea = document.createElement("textarea");
+
+        try {
+            document.activeElement.appendChild(textarea);
+
+            textarea.value = text;
+            textarea.textContent = text;
+            textarea.select();
+
+            document.execCommand("copy");
+
+            textarea.parentElement.removeChild(textarea);
+
+        } catch (e) {
+            textarea.parentElement.removeChild(textarea);
+        }
+    }
+
+
+    protected copyButtons = $('[data-button-copy]');
+    /* protected embedButtons = $('[data-button-embed]'); to be implemented later */
+    protected clearButtons = $('[data-button-clear]');
     protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
 
     public lastRecalculatedUnit: UnitElement;
@@ -172,9 +191,32 @@ class UnitCandyUI {
         });
     }
 
+    protected initializeCopyButtons(): void {
+
+        this.copyButtons.click((e) => {
+
+            const element = $(e.target);
+            const type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
+            const unitsOfSameType = this.getUnitsOfSameType(type);
+
+            let text: string = type + '\n';
+
+            for (let i = 0; i < unitsOfSameType.length; i++) {
+
+                text += unitsOfSameType[i].ID + ': ' + unitsOfSameType[i].value + '\n';
+            }
+
+            text += 'https://wwww.unitcandy.com';
+
+            this.copyTextToClipboard(text);
+
+            this.lastFocusedUnit.element.focus();
+        });
+    }
+
     protected initializeClearButtons(): void {
 
-        this.buttonClear.click((e) => {
+        this.clearButtons.click((e) => {
 
             const element = $(e.target);
             const type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
@@ -206,7 +248,7 @@ class UnitCandyUI {
         for (let i = 0; i < sectionUnitGroups.length; i++) {
 
             if ($(sectionUnitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType ?? '') {
-                $(sectionUnitGroups[i]).show();
+                $(sectionUnitGroups[i]).fadeIn(500);
 
             } else {
                 $(sectionUnitGroups[i]).hide();
@@ -386,15 +428,7 @@ $(document).ready(() => {
 //}
 
 
-//function findUnitKeyPressed(e) {
 
-//    lastUnitName = 'AnyUnit';
-
-//    var key = e.keyCode || e.which;
-//    if (key === 13) {
-//        findUnit();
-//    }
-//};
 
 //function findUnitDropdownSelectionChanged(value) {
 //    anyUnitSelectedValue = value;

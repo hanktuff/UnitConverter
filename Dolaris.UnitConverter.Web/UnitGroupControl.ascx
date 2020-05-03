@@ -1,8 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UnitGroupControl.ascx.cs" Inherits="Dolaris.UnitConverter.Web.UnitGroupControl" ClientIDMode="Static" %>
 
 
-<div id="<% = UnitType.ToString() %>" data-unit-type="<% = UnitType.ToString() %>" class="row mb-5" 
-    data-animation="fadeIn" data-animation-delay="200" data-animation-duration="1000">
+<div id="<% = UnitType.ToString() %>" data-unit-type="<% = UnitType.ToString() %>" class="row mb-5">
 
     <div class="col-lg-2 offset-lg-2">
         <h2 class="mb-1"><strong>
@@ -33,11 +32,7 @@
         <li><a id="CopyUnitsToClipboard" runat="server" href="javascript:void(0)" onclick="copyUnitsToClipboard()">Copy</a></li>
         <li><a id="CopyLinkToClipboard" runat="server" href="javascript:void(0)" onclick="copyLinkToClipboard('')">Copy Link</a></li>
         <li><a id="CopyAnchorToClipboard" runat="server" href="javascript:void(0)" onclick="copyAnchorToClipboard('')">Copy Anchor</a></li>
-        <li role="separator" class="divider"></li>
-        <li class="disabled"><a id="SetEmbedText" runat="server" href="javascript:void(0)" onclick="">Embed</a></li>
     </ul>
-    <a id="ClearAllFields" runat="server" class="h3" href="javascript:void(0);" onclick="clearLastUnitGroup()" style="">
-        <i class="fa fa-trash" data-toggle="tooltip" title="Clear"></i>
-    </a>--%>
+        --%>
 </div>
 

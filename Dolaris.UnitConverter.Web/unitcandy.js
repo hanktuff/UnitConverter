@@ -60,15 +60,14 @@ var UnitElement = /** @class */ (function () {
 var UnitCandyUI = /** @class */ (function () {
     function UnitCandyUI() {
         this.units = new Array();
-        //protected textboxUnit = $('[data-unit-textbox]');
-        this.buttonCopy = $('[data-button-copy]');
-        this.buttonEmbed = $('[data-button-embed]');
-        this.buttonClear = $('[data-button-clear]');
+        this.copyButtons = $('[data-button-copy]');
+        /* protected embedButtons = $('[data-button-embed]'); to be implemented later */
+        this.clearButtons = $('[data-button-clear]');
         this.buttonGotoUnitGroup = $('[data-goto-unitgroup]');
         this.initializeUnitElements();
+        this.initializeCopyButtons();
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
-        //this.lastRecalculatedUnit = this.units[0];
     }
     /** sets the unit identified by unitID to the value
         example: unitID = "NauticalMiles", value = "305.72" */
@@ -84,6 +83,21 @@ var UnitCandyUI = /** @class */ (function () {
     /** sets the cursor to Auto */
     UnitCandyUI.prototype.setAutoCursor = function () {
         document.body.style.cursor = "auto";
+    };
+    // copy to clipboard
+    UnitCandyUI.prototype.copyTextToClipboard = function (text) {
+        var textarea = document.createElement("textarea");
+        try {
+            document.activeElement.appendChild(textarea);
+            textarea.value = text;
+            textarea.textContent = text;
+            textarea.select();
+            document.execCommand("copy");
+            textarea.parentElement.removeChild(textarea);
+        }
+        catch (e) {
+            textarea.parentElement.removeChild(textarea);
+        }
     };
     UnitCandyUI.prototype.initializeUnitElements = function () {
         var _this = this;
@@ -113,9 +127,24 @@ var UnitCandyUI = /** @class */ (function () {
             _this.units.push(unit);
         });
     };
+    UnitCandyUI.prototype.initializeCopyButtons = function () {
+        var _this = this;
+        this.copyButtons.click(function (e) {
+            var element = $(e.target);
+            var type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
+            var unitsOfSameType = _this.getUnitsOfSameType(type);
+            var text = type + '\n';
+            for (var i = 0; i < unitsOfSameType.length; i++) {
+                text += unitsOfSameType[i].ID + ': ' + unitsOfSameType[i].value + '\n';
+            }
+            text += 'https://wwww.unitcandy.com';
+            _this.copyTextToClipboard(text);
+            _this.lastFocusedUnit.element.focus();
+        });
+    };
     UnitCandyUI.prototype.initializeClearButtons = function () {
         var _this = this;
-        this.buttonClear.click(function (e) {
+        this.clearButtons.click(function (e) {
             var element = $(e.target);
             var type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
             var unitsOfSameType = _this.getUnitsOfSameType(type);
@@ -140,7 +169,7 @@ var UnitCandyUI = /** @class */ (function () {
         var sectionUnitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
         for (var i = 0; i < sectionUnitGroups.length; i++) {
             if ((_a = $(sectionUnitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType) !== null && _a !== void 0 ? _a : '') {
-                $(sectionUnitGroups[i]).show();
+                $(sectionUnitGroups[i]).fadeIn(500);
             }
             else {
                 $(sectionUnitGroups[i]).hide();
@@ -255,13 +284,6 @@ $(document).ready(function () {
 //        textarea.parentElement.removeChild(textarea);
 //    }
 //}
-//function findUnitKeyPressed(e) {
-//    lastUnitName = 'AnyUnit';
-//    var key = e.keyCode || e.which;
-//    if (key === 13) {
-//        findUnit();
-//    }
-//};
 //function findUnitDropdownSelectionChanged(value) {
 //    anyUnitSelectedValue = value;
 //    findUnit();
