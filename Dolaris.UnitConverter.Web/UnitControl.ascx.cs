@@ -24,6 +24,7 @@ namespace Dolaris.UnitConverter.Web {
             Symbol = webUnit.Symbol;
             UnitID = webUnit.UnitID;
 
+
             //UnitTextBox.Attributes.Add("data-unit-id", webUnit.UnitID.ToString());
             //UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
 
@@ -70,20 +71,10 @@ namespace Dolaris.UnitConverter.Web {
         }
         private string _name;
 
-        
-
-        ///// <summary>
-        ///// Gets or sets the tag/label for the unit.
-        ///// For example: the label "Meter:" is used for meters.
-        ///// </summary>
-        //public String UnitNameTag {
-        //    get {
-        //        return UnitNameLabel.InnerText;
-        //    }
-        //    set {
-        //        UnitNameLabel.InnerText = value;
-        //    }
-        //}
+        /// <summary>
+        /// Gets or sets the value of the unit. For example: 12.3
+        /// </summary>
+        public String Value { get; set; }
 
         /// <summary>
         /// Gets or sets the symbol of the unit. For example: "m" is the symbol for Meter.
@@ -112,24 +103,6 @@ namespace Dolaris.UnitConverter.Web {
         }
         private UnitID _unitID;
 
-        ///// <summary>
-        ///// Gets or sets the tooltip for the unit.
-        ///// </summary>
-        //public String Tooltip {
-        //    get {
-        //        string tooltip = null;
-
-        //        try {
-        //            tooltip = UnitTextBox.Attributes["title"];
-
-        //        } catch { }
-
-        //        return tooltip;
-        //    }
-        //    set {
-        //        UnitTextBox.Attributes.Add("title", value);
-        //    }
-        //}
 
         ///// <summary>
         ///// Sets the attribute that enables the group to collapse (show/hide).

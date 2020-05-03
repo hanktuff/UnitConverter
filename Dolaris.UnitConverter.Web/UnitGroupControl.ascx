@@ -2,7 +2,7 @@
 
 
 <div id="<% = UnitType.ToString() %>" data-unit-type="<% = UnitType.ToString() %>" class="row mb-5" 
-    data-animation="fadeIn" data-animation-delay="400" data-animation-duration="1200">
+    data-animation="fadeIn" data-animation-delay="200" data-animation-duration="1000">
 
     <div class="col-lg-2 offset-lg-2">
         <h2 class="mb-1"><strong>

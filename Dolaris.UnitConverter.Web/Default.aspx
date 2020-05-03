@@ -207,24 +207,23 @@
     <section id="unit-buttons">
         <div class="container py-5">
             <div class="row col-8 offset-2">
-                <div class="d-flex flex-wrap" data-animation="fadeIn" data-animation-delay="1000" data-animation-duration="2000">
-                    <a href="#Length" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15">Length</a>
-                    <input type="button" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15" value="Something" data-goto-unitgroup="#Time" />
-                    <a href="#Area" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15">Area</a>
-                    <a href="#Volume" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15">Volume</a>
-                    <a href="#Temperature" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15">Temperature</a>
-                    <a href="#Mass" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15">Mass</a>
-                    <a href="#Speed" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15">Speed</a>
-                    <a href="#Energy" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15">Energy</a>
-                    <a href="#Power" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15">Power</a>
-                    <a href="#Pressure" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15">Pressure</a>
-                    <a href="#Time" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15">Time</a>
-                    <a href="#FuelEconomy<" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15">Fuel Economy</a>
-                    <a href="#Frequency" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15">Frequency</a>
-                    <a href="#Acceleration" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15">Acceleration</a>
-                    <a href="#Density" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15">Density</a>
-                    <a href="#Angle" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15">Angle</a>
-                    <a href="#DigitalStorage" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15">Digital Storage</a>
+                <div class="d-flex flex-wrap" data-animation="fadeIn" data-animation-delay="500" data-animation-duration="1000">
+                    <a href="#" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15" data-goto-unitgroup="Length">Length</a>
+                    <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15" data-goto-unitgroup="Area">Area</a>
+                    <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15" data-goto-unitgroup="Volume">Volume</a>
+                    <a href="#" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15" data-goto-unitgroup="Temperature">Temperature</a>
+                    <a href="#" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15" data-goto-unitgroup="Mass">Mass</a>
+                    <a href="#" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15" data-goto-unitgroup="Speed">Speed</a>
+                    <a href="#" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15" data-goto-unitgroup="Energy">Energy</a>
+                    <a href="#" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15" data-goto-unitgroup="Power">Power</a>
+                    <a href="#" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15" data-goto-unitgroup="Pressure">Pressure</a>
+                    <a href="#" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15" data-goto-unitgroup="Time">Time</a>
+                    <a href="#" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
+                    <a href="#" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15" data-goto-unitgroup="Frequency">Frequency</a>
+                    <a href="#" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15" data-goto-unitgroup="Acceleration">Acceleration</a>
+                    <a href="#" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15" data-goto-unitgroup="Density">Density</a>
+                    <a href="#" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15" data-goto-unitgroup="Angle">Angle</a>
+                    <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15">Digital Storage</a>
                     <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15">Blue Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15">Dark Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15">Black</a>--%>
@@ -323,32 +322,6 @@
     <%--<div class="bg-info mt-5 mb-3">
         <div class="container">
 
-            <section id="home" class="g-theme-bg-gray-light-v1 g-pt-90">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6 col-lg-5 ml-lg-auto d-flex text-center text-md-left g-font-size-16">
-                            <div class="align-self-center">
-                                <h2 class="text-uppercase g-line-height-1_3 g-font-size-36 g-mb-20 g-mb-30--lg">We created
-                                    <br>
-                                    <strong>revolution in app</strong></h2>
-                                <p class="g-mb-20 g-mb-35--lg">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-                                <a href="#" class="btn btn-md u-btn-primary g-font-weight-700 text-uppercase text-left g-rounded-10 g-py-10 g-mb-15 g-mx-10 g-mx-0--md g-mr-30--md">
-                                    <span class="float-right g-font-size-13">Download App
-                    <span class="d-block g-font-size-10 g-font-weight-400 g-opacity-0_6">From App Store</span>
-                                    </span>
-                                    <i class="fa fa-apple float-left g-font-size-26 g-mr-15"></i>
-                                </a>
-                                <a href="#" class="btn btn-md u-btn-darkpurple g-font-weight-700 text-uppercase text-left g-rounded-10 g-py-10 g-mb-15 g-mx-10 g-mx-0--md">
-                                    <span class="float-right g-font-size-13">Download App
-                    <span class="d-block g-font-size-10 g-font-weight-400 g-opacity-0_6">From Play Market</span>
-                                    </span>
-                                    <i class="fa fa-android float-left g-font-size-26 g-mr-15"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <div class="row" style="min-height: 100px;">
 
@@ -371,15 +344,6 @@
                             </div>
                             <div class="col-lg-7">
                                 <input type="text" id="Text2" runat="server" class="form-control"
-                                    data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
-                            </div>
-                        </div>
-                        <div class="row margin-bottom10">
-                            <div class="col-lg-2">
-                                <label id="Label3" runat="server" class="">Yard:</label>
-                            </div>
-                            <div class="col-lg-7">
-                                <input type="text" id="Text3" runat="server" class="form-control"
                                     data-id="" data-unitname="" data-unitgroupname="" data-unitsymbol="" data-toggle="tooltip" data-placement="top" title="" />
                             </div>
                         </div>
@@ -664,6 +628,7 @@
     <script src="assets/vendor/fancybox/jquery.fancybox.js"></script>
     <script src="assets/vendor/cubeportfolio-full/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
     <script src="assets/vendor/slick-carousel/slick/slick.js"></script>
+    <%-- TODO: add jquery.easing.min.js --%>
 
     <!-- JS Unify -->
     <script src="assets/js/hs.core.js"></script>
@@ -727,6 +692,29 @@
             setTimeout(function () {
                 $.HSCore.components.HSTabs.init('[role="tablist"]');
             }, 200);
+        });
+
+        // Add smooth scrolling to all links
+        $("a").on('click', function (event) {
+
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function () {
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
         });
     </script>
 

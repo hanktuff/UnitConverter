@@ -6,7 +6,7 @@
         <asp:PlaceHolder ID="NamePlaceHolder" runat="server" />
     </td>
     <td>
-        <input class="form-control text-dark" type="text" data-unit-textbox="<% = UnitID.ToString() %>" />
+        <input class="form-control text-dark" type="text" data-unit-textbox="<% = UnitID.ToString() %>" value="<% = Value %>" />
     </td>
     <td class="align-middle">
         <asp:PlaceHolder ID="SymbolPlaceHolder" runat="server" />

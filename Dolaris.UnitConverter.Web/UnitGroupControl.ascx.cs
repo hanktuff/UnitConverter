@@ -24,6 +24,7 @@ namespace Dolaris.UnitConverter.Web {
             Description = webUnitGroup.Description;
             UnitType = webUnitGroup.UnitType;
 
+
             //SetCollapseAttribute(webUnitGroup.GroupType.ToString(), webUnitGroup.StartCollapsed);
             //SetUtilitiesAttributes(webUnitGroup.GroupType.ToString());
         }
