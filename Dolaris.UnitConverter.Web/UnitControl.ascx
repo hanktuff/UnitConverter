@@ -1,18 +1,21 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UnitControl.ascx.cs" Inherits="Dolaris.UnitConverter.Web.UnitControl" %>
 
-
 <tr>
     <td class="align-middle">
-        <asp:PlaceHolder ID="NamePlaceHolder" runat="server" />
+        <% = Name %>:
     </td>
     <td>
-        <input class="form-control text-dark" type="text" data-unit-textbox="<% = UnitID.ToString() %>" value="<% = Value %>" />
+        <input class="form-control text-dark" type="text" value="<% = Value %>"
+            data-unit-textbox="<% = UnitID.ToString() %>"
+            data-unit-name="<% = Name %>"
+            data-unit-plural="<% = Plural %>"
+            data-unit-symbol="<% = Symbol %>"
+            data-unit-baseunit="<% = IsBaseUnit %>" />
     </td>
     <td class="align-middle">
-        <asp:PlaceHolder ID="SymbolPlaceHolder" runat="server" />
+        <% = Symbol %>
     </td>
 </tr>
-
 
 <%--
 <li><a href="javascript:void(0)" tabindex="-1" onclick="unitChangedWithHelperAction('+1',event)" class="help-block label label-info" title="add one">+1</a></li>

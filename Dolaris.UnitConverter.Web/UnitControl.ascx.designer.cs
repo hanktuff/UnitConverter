@@ -11,23 +11,5 @@ namespace Dolaris.UnitConverter.Web {
 
 
     public partial class UnitControl {
-
-        /// <summary>
-        /// NamePlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder NamePlaceHolder;
-
-        /// <summary>
-        /// SymbolPlaceHolder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder SymbolPlaceHolder;
     }
 }

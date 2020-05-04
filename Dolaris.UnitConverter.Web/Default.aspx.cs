@@ -13,41 +13,13 @@ using System.Web.UI.HtmlControls;
 
 namespace Dolaris.UnitConverter.Web {
     public partial class Default : System.Web.UI.Page {
-
-
-        #region TODO
-        // ***********************************************************************************************
-        //
-        // TODO: add hit counter
-        //
-        //
-        // --- Completed Tasks ---
-        //
-        // Done: copy to clipboard
-        // Done: add Clear button
-        // Done: add page for About Us or similar
-        // Done: add Google Analytics
-        // Done: add unit of measurement "speed"
-        // Done: only update unit group of unit that has changed
-        // Done: tooltips for units (plurals, symbol)
-        // Done: add proper ID to unit classes
-        // Done: fix problem only 5 digits accepted as input before decimal point
-        // Done: update icon
-        // Done: update title
-        // Done: add unit of measurement "energy"
-        // Done: add error page
-        // Done: use AJAX when updating numbers
-        // Done: on top add links to units
-        //
-        // ***********************************************************************************************
-        #endregion
+        
+        public Default() {
+        }
 
 
         private WebManager _webManager = new WebManager();
 
-
-        public Default() {
-        }
 
         protected override void OnInit(EventArgs e) {
 

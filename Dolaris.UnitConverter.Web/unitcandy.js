@@ -35,10 +35,13 @@ var UnitElement = /** @class */ (function () {
     function UnitElement(element) {
         this.ID = this.type = '';
         if (element !== null) {
+            this.element = element;
             this.ID = element.data(UnitElement.UnitTextboxAttr);
             this.type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            this.element = element;
-            this.value = element.val();
+            this.name = element.data('unit-name');
+            this.plural = element.data('unit-plural');
+            this.symbol = element.data('unit-symbol');
+            this.isBaseUnit = element.data('unit-baseunit') === 'true' ? true : false;
         }
     }
     Object.defineProperty(UnitElement.prototype, "value", {
@@ -135,9 +138,9 @@ var UnitCandyUI = /** @class */ (function () {
             var unitsOfSameType = _this.getUnitsOfSameType(type);
             var text = type + '\n';
             for (var i = 0; i < unitsOfSameType.length; i++) {
-                text += unitsOfSameType[i].ID + ': ' + unitsOfSameType[i].value + '\n';
+                text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
-            text += 'https://wwww.unitcandy.com';
+            text += 'https://wwww.unitcandy.com' + '\n';
             _this.copyTextToClipboard(text);
             _this.lastFocusedUnit.element.focus();
         });

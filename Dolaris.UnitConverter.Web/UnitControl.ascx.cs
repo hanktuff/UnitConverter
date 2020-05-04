@@ -20,24 +20,13 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="unit"></param>
         public void Initialize(WebUnit webUnit) {
 
-            Name = webUnit.Name;
-            Symbol = webUnit.Symbol;
             UnitID = webUnit.UnitID;
+            Name = webUnit.Name;
+            Plural = webUnit.Plural;
+            Symbol = webUnit.Symbol;
+            IsBaseUnit = webUnit.IsBaseUnit;
+            Value = string.Empty;
 
-
-            //UnitTextBox.Attributes.Add("data-unit-id", webUnit.UnitID.ToString());
-            //UnitTextBox.ClientIDMode = ClientIDMode.AutoID;
-
-
-
-            //this.ID = $"UnitTextBox-{unit.Type.ToString()}-{unit.Name}";
-            //UnitName = unit.ID.ToString();
-            //UnitGroupName = unit.Type.ToString();
-            //UnitNameTag = unit.Name + ":";
-            //UnitSymbol = unit.Symbol;
-            //Tooltip = unit.GetPlural();
-
-            //SetCollapseAttribute(unit.Type.ToString(), startCollapsed);
 
             //// show or hide the helper links (+1, -1, ...)
 
@@ -54,68 +43,36 @@ namespace Dolaris.UnitConverter.Web {
             //    UnitHelperActionMax.Visible = true;
             //}
         }
+        
 
         /// <summary>
-        /// Gets or sets the name of the unit. For example: "Nautical Miles".
+        /// Gets or sets the unit ID.  For example: "NauticalMile".
         /// </summary>
-        public String Name {
-            get {
-                return _name;
-            }
-            set {
-                _name = value;
-
-                NamePlaceHolder.Controls.Clear();
-                NamePlaceHolder.Controls.Add(new Literal() { Text = value + ":" });
-            }
-        }
-        private string _name;
+        public UnitID UnitID { get; set; }
 
         /// <summary>
-        /// Gets or sets the value of the unit. For example: 12.3
+        /// Gets or sets the name of the unit. For example: "Nautical Mile".
         /// </summary>
-        public String Value { get; set; }
+        public String Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the plural of the name of the unit. For example: "Feet".
+        /// </summary>
+        public String Plural { get; set; }
 
         /// <summary>
         /// Gets or sets the symbol of the unit. For example: "m" is the symbol for Meter.
         /// </summary>
-        public String Symbol {
-            get {
-                return _symbol;
-            }
-            set {
-                _symbol = value;
+        public String Symbol { get; set; }
+        
+        /// <summary>
+        /// Returns True if the unit is a base unit. Base units are "Meter", "Joule", "Watt", etc. .
+        /// </summary>
+        public Boolean IsBaseUnit { get; set; }
 
-                SymbolPlaceHolder.Controls.Clear();
-                SymbolPlaceHolder.Controls.Add(new Literal() { Text = value });
-            }
-        }
-        private string _symbol;
-
-
-        public UnitID UnitID {
-            get {
-                return _unitID;
-            }
-            set {
-                _unitID = value;
-            }
-        }
-        private UnitID _unitID;
-
-
-        ///// <summary>
-        ///// Sets the attribute that enables the group to collapse (show/hide).
-        ///// </summary>
-        ///// <param name="groupType"></param>
-        ///// <param name="collapsed"></param>
-        //public void SetCollapseAttribute(string groupType, bool collapsed = false) {
-
-        //    string attributeGroupType = "collapse" + groupType;
-        //    string attributeCollapse = collapsed ? "collapse" : "in";
-
-        //    UnitHeadElement.Attributes.Add("class",
-        //        string.Format("{0} {1} {2}", UnitHeadElement.Attributes["class"], attributeGroupType, attributeCollapse).Trim());
-        //}
+        /// <summary>
+        /// Gets or sets the value of the unit. For example: "12.3".
+        /// </summary>
+        public String Value { get; set; }
     }
 }

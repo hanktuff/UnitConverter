@@ -15,18 +15,23 @@ namespace Dolaris.UnitConverter.Web {
 
             if (unit != null) {
 
-                Name = unit.Name;
-                Symbol = unit.Symbol;
                 UnitID = unit.ID;
+                Name = unit.Name;
+                Plural = unit.GetPlural();
+                Symbol = unit.Symbol;
+                IsBaseUnit = unit.Sloap == 1 && unit.Intercept == 0 ? true : false;
             }
         }
 
+        public UnitID UnitID { get; protected set; }
 
         public String Name { get; set; }
 
+        public String Plural { get; set; }
+
         public String Symbol { get; set; }
 
-        public UnitID UnitID { get; protected set; }
+        public Boolean IsBaseUnit { get; set; }
 
         public Boolean Enabled { get; set; }
 

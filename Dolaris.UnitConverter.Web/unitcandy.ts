@@ -53,10 +53,13 @@ class UnitElement {
 
         if (element !== null) {
 
+            this.element = element;
             this.ID = element.data(UnitElement.UnitTextboxAttr);
             this.type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            this.element = element;
-            this.value = element.val();
+            this.name = element.data('unit-name');
+            this.plural = element.data('unit-plural');
+            this.symbol = element.data('unit-symbol');
+            this.isBaseUnit = element.data('unit-baseunit') === 'true' ? true : false;
         }
     }
 
@@ -68,6 +71,14 @@ class UnitElement {
     public ID: string;
 
     public type: string;
+
+    public name: string;
+
+    public plural: string;
+
+    public symbol: string;
+
+    public isBaseUnit: boolean;
 
     public element: JQuery;
 
@@ -203,10 +214,10 @@ class UnitCandyUI {
 
             for (let i = 0; i < unitsOfSameType.length; i++) {
 
-                text += unitsOfSameType[i].ID + ': ' + unitsOfSameType[i].value + '\n';
+                text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
 
-            text += 'https://wwww.unitcandy.com';
+            text += 'https://wwww.unitcandy.com' + '\n';
 
             this.copyTextToClipboard(text);
 
