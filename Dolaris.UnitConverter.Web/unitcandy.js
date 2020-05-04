@@ -41,7 +41,7 @@ var UnitElement = /** @class */ (function () {
             this.name = element.data('unit-name');
             this.plural = element.data('unit-plural');
             this.symbol = element.data('unit-symbol');
-            this.isBaseUnit = element.data('unit-baseunit') === 'true' ? true : false;
+            this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
         }
     }
     Object.defineProperty(UnitElement.prototype, "value", {
@@ -64,7 +64,7 @@ var UnitCandyUI = /** @class */ (function () {
     function UnitCandyUI() {
         this.units = new Array();
         this.copyButtons = $('[data-button-copy]');
-        /* protected embedButtons = $('[data-button-embed]'); to be implemented later */
+        this.embedButtons = $('[data-button-embed]');
         this.clearButtons = $('[data-button-clear]');
         this.buttonGotoUnitGroup = $('[data-goto-unitgroup]');
         this.initializeUnitElements();
@@ -76,7 +76,10 @@ var UnitCandyUI = /** @class */ (function () {
         example: unitID = "NauticalMiles", value = "305.72" */
     UnitCandyUI.prototype.setUnitToValue = function (unitID, unitValue) {
         var unit = this.getUnitById(unitID);
-        if (unit.ID !== this.lastRecalculatedUnit.ID) {
+        if (unit.ID === this.lastRecalculatedUnit.ID) {
+            unit.value = unitValue;
+        }
+        else {
             unit.value = '';
             setTimeout(function () { return unit.value = unitValue; }, Math.random() * 500);
         }
@@ -130,15 +133,22 @@ var UnitCandyUI = /** @class */ (function () {
                     _this.recalculateUnit(unitToRecalculate);
                 }
             });
-            unit.element.focusin(function (e) {
-                UI.lastFocusedUnit = new UnitElement($(e.target));
-                $('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
-            });
-            unit.element.on('focusout', function (e) {
-                //const element = $(e.target);
-                //const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                //this.recalculateUnit(unit);
-            });
+            // focusin and -out is just too much trouble
+            //unit.element.on('focusout',
+            //    (e) => {
+            //        const element = $(e.target);
+            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+            //        this.recalculateUnit(unit);
+            //    });
+            //unit.element.on('focusin',
+            //    (e) => {
+            //        const element = $(e.target);
+            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+            //        //UI.lastFocusedUnit = new UnitElement($(e.target));
+            //        //$('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
+            //        UI.lastRecalculatedUnit = unit;
+            //        UI.lastRecalculatedUnit.previousValue = unit.value;
+            //    });
             _this.units.push(unit);
         });
     };
@@ -154,7 +164,7 @@ var UnitCandyUI = /** @class */ (function () {
             }
             text += 'https://www.unitcandy.com?#' + type + '\n';
             _this.copyTextToClipboard(text);
-            _this.lastFocusedUnit.element.focus();
+            _this.lastRecalculatedUnit.element.focus();
         });
     };
     UnitCandyUI.prototype.initializeClearButtons = function () {
@@ -169,25 +179,30 @@ var UnitCandyUI = /** @class */ (function () {
             for (var i = 0; i < unitsOfSameType.length; i++) {
                 _loop_1(i);
             }
-            _this.lastFocusedUnit.element.focus();
+            _this.lastRecalculatedUnit.element.focus();
         });
     };
     UnitCandyUI.prototype.initializeGotoUnitgroupButtons = function () {
         var _this = this;
         this.buttonGotoUnitGroup.on('click', function (e) {
             var unitgroupType = $(e.target).data('goto-unitgroup');
-            _this.showOnlyUnitGroup(unitgroupType);
+            _this.showUnitGroup(unitgroupType);
+            var units = _this.getUnitsOfSameType(unitgroupType);
+            _this.getBaseUnitOrDefault(units).element.focus();
         });
     };
-    UnitCandyUI.prototype.showOnlyUnitGroup = function (unitGroupType) {
+    /** shows only the unit group of the provided type and hides all others;
+     * unitGroupType = "DigitalStorage"
+     * Null hides all; "all" shows all */
+    UnitCandyUI.prototype.showUnitGroup = function (unitGroupType) {
         var _a;
-        var sectionUnitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
-        for (var i = 0; i < sectionUnitGroups.length; i++) {
-            if ((_a = $(sectionUnitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType) !== null && _a !== void 0 ? _a : '') {
-                $(sectionUnitGroups[i]).fadeIn(500);
+        var unitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
+        for (var i = 0; i < unitGroups.length; i++) {
+            if (((_a = $(unitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType) !== null && _a !== void 0 ? _a : '') || unitGroupType === 'all') {
+                $(unitGroups[i]).fadeIn(500);
             }
             else {
-                $(sectionUnitGroups[i]).hide();
+                $(unitGroups[i]).hide();
             }
         }
     };
@@ -198,6 +213,14 @@ var UnitCandyUI = /** @class */ (function () {
             }
         }
         return null;
+    };
+    UnitCandyUI.prototype.getBaseUnitOrDefault = function (units) {
+        for (var i = 0; i < units.length; i++) {
+            if (units[i].isBaseUnit === true) {
+                return units[i];
+            }
+        }
+        return units[0];
     };
     /** returns all units that are of the same type as the provided unit
         for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
@@ -252,17 +275,6 @@ $(document).ready(function () {
 //    } catch (e) {
 //    }
 //    return false;
-//}
-//function copyUnitsToClipboard() {
-//    var text = "";
-//    var controls = $('[data-unitgroupname=' + lastUnitGroupName + ']');
-//    for (var i = 0; i < controls.length; i++) {
-//        text += controls[i].dataset.unitname + ":\t" + controls[i].value + controls[i].dataset.unitsymbol + "\n";
-//    }
-//    if (lastUnitGroupName != '') {
-//        text += "\n" + getLinkToUnit(lastUnitGroupName);
-//    }
-//    copyToClipboard(text);
 //}
 //function sendFeedback() {
 //    var email = $('#emailAddr')[0].value;
@@ -390,12 +402,6 @@ $(document).ready(function () {
 //    if (unitname !== null) {
 //        $('[data-helper]').hide();
 //        $('[data-helper=' + unitname + ']').show();
-//    }
-//});
-//// on very small screens hide the menu after clicking on an item
-//$(document).on('click', '.navbar-collapse.in', function (e) {
-//    if ($(e.target).is('a')) {
-//        $(this).collapse('hide');
 //    }
 //});
 //$(function () {

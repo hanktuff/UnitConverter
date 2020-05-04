@@ -511,14 +511,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
-                    <form id="formEmail" class="form-horizontal">
-                        <h5 class="col-sm-offset-3">Contact UnitCandy:</h5>
-                        <br />
-                        <div class="col-sm-offset-3">
-                            <button id="sendFeedbackButton" type="button" onclick="sendFeedback()" class="btn btn-default btn-blue">Send</button>
-                        </div>
-                        <br />
-                    </form>
                     <br />
                     <h2><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter" style="color: #00aced;"></i></a></h2>
                     <h3>
@@ -531,14 +523,6 @@
             <div class="row">
                 <div class="col-md-2 wrap-container20">
                     <img src="images/UnitcandyIcon128.png" />
-                </div>
-                <div class="col-md-4 wrap-container20">
-                    <h5>UnitCandy is located at this address:</h5>
-                    <h4>Dolaris<br />
-                        P.O. Box 1801<br />
-                        Bellevue, WA 98009<br />
-                        United States<br />
-                    </h4>
                 </div>
             </div>
             <div class="row">
@@ -581,10 +565,6 @@
                     <p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyse our Service.</p>
                     <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
                     <p>Examples of Cookies we use:</p>
-
-                    <h2>Use of Data</h2>
-                    <p>Dolaris uses the collected data for various purposes:</p>
-
 
                     <h2>Transfer of Data</h2>
                     <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>

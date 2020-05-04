@@ -59,7 +59,7 @@ class UnitElement {
             this.name = element.data('unit-name');
             this.plural = element.data('unit-plural');
             this.symbol = element.data('unit-symbol');
-            this.isBaseUnit = element.data('unit-baseunit') === 'true' ? true : false;
+            this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
         }
     }
 
@@ -116,8 +116,10 @@ class UnitCandyUI {
 
         const unit = this.getUnitById(unitID);
 
-        if (unit.ID !== this.lastRecalculatedUnit.ID) {
+        if (unit.ID === this.lastRecalculatedUnit.ID) {
+            unit.value = unitValue
 
+        } else {
             unit.value = '';
             setTimeout(() => unit.value = unitValue, Math.random() * 500);
         }
@@ -173,12 +175,11 @@ class UnitCandyUI {
 
 
     protected copyButtons = $('[data-button-copy]');
-    /* protected embedButtons = $('[data-button-embed]'); to be implemented later */
+    protected embedButtons = $('[data-button-embed]');
     protected clearButtons = $('[data-button-clear]');
     protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
 
     public lastRecalculatedUnit: UnitElement;
-    public lastFocusedUnit: UnitElement;
 
 
     protected initializeUnitElements(): void {
@@ -201,20 +202,29 @@ class UnitCandyUI {
                     }
                 });
 
-            unit.element.focusin((e) => {
+            // focusin and -out is just too much trouble
 
-                UI.lastFocusedUnit = new UnitElement($(e.target));
-                $('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
-            });
+            //unit.element.on('focusout',
+            //    (e) => {
 
-            unit.element.on('focusout',
-                (e) => {
+            //        const element = $(e.target);
+            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-                    //const element = $(e.target);
-                    //const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+            //        this.recalculateUnit(unit);
+            //    });
 
-                    //this.recalculateUnit(unit);
-                });
+            //unit.element.on('focusin',
+            //    (e) => {
+
+            //        const element = $(e.target);
+            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+
+            //        //UI.lastFocusedUnit = new UnitElement($(e.target));
+            //        //$('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
+
+            //        UI.lastRecalculatedUnit = unit;
+            //        UI.lastRecalculatedUnit.previousValue = unit.value;
+            //    });
 
             this.units.push(unit);
         });
@@ -239,7 +249,7 @@ class UnitCandyUI {
 
             this.copyTextToClipboard(text);
 
-            this.lastFocusedUnit.element.focus();
+            this.lastRecalculatedUnit.element.focus();
         });
     }
 
@@ -256,7 +266,7 @@ class UnitCandyUI {
                 setTimeout(() => unitsOfSameType[i].value = '', Math.random() * 500);
             }
 
-            this.lastFocusedUnit.element.focus();
+            this.lastRecalculatedUnit.element.focus();
         });
     }
 
@@ -266,21 +276,27 @@ class UnitCandyUI {
             (e) => {
 
                 const unitgroupType = $(e.target).data('goto-unitgroup');
-                this.showOnlyUnitGroup(unitgroupType);
+                this.showUnitGroup(unitgroupType);
+
+                const units = this.getUnitsOfSameType(unitgroupType);
+                this.getBaseUnitOrDefault(units).element.focus();
             });
     }
 
-    protected showOnlyUnitGroup(unitGroupType: string): void {
+    /** shows only the unit group of the provided type and hides all others;
+     * unitGroupType = "DigitalStorage"
+     * Null hides all; "all" shows all */
+    protected showUnitGroup(unitGroupType: string): void {
 
-        const sectionUnitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
+        const unitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
 
-        for (let i = 0; i < sectionUnitGroups.length; i++) {
+        for (let i = 0; i < unitGroups.length; i++) {
 
-            if ($(sectionUnitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType ?? '') {
-                $(sectionUnitGroups[i]).fadeIn(500);
+            if (($(unitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType ?? '') || unitGroupType === 'all') {
+                $(unitGroups[i]).fadeIn(500);
 
             } else {
-                $(sectionUnitGroups[i]).hide();
+                $(unitGroups[i]).hide();
             }
         }
     }
@@ -295,6 +311,18 @@ class UnitCandyUI {
         }
 
         return null;
+    }
+
+    protected getBaseUnitOrDefault(units: Array<UnitElement>): UnitElement {
+
+        for (let i = 0; i < units.length; i++) {
+
+            if (units[i].isBaseUnit === true) {
+                return units[i];
+            }
+        }
+
+        return units[0];
     }
 
     /** returns all units that are of the same type as the provided unit
@@ -383,26 +411,6 @@ $(document).ready(() => {
 
 //    return false;
 //}
-
-
-//function copyUnitsToClipboard() {
-
-//    var text = "";
-
-//    var controls = $('[data-unitgroupname=' + lastUnitGroupName + ']');
-
-//    for (var i = 0; i < controls.length; i++) {
-
-//        text += controls[i].dataset.unitname + ":\t" + controls[i].value + controls[i].dataset.unitsymbol + "\n";
-//    }
-
-//    if (lastUnitGroupName != '') {
-//        text += "\n" + getLinkToUnit(lastUnitGroupName);
-//    }
-
-//    copyToClipboard(text);
-//}
-
 
 
 //function sendFeedback() {
@@ -604,12 +612,7 @@ $(document).ready(() => {
 //    }
 //});
 
-//// on very small screens hide the menu after clicking on an item
-//$(document).on('click', '.navbar-collapse.in', function (e) {
-//    if ($(e.target).is('a')) {
-//        $(this).collapse('hide');
-//    }
-//});
+
 
 //$(function () {
 //    $('[data-toggle="tooltip"]').tooltip({ delay: { show: 250, hide: 500 } })
