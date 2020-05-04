@@ -6,14 +6,14 @@ var Recalculate = /** @class */ (function () {
     function Recalculate() {
     }
     Recalculate.prototype.recalculate = function (unitElement) {
-        var unitName = unitElement.data('unit-textbox'); /* e.g. "Meter" */
+        //const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
-        var unitValue = unitElement.val(); /* e.g. 3.5 */
+        //const unitValue = unitElement.val();  /* e.g. 3.5 */
         $.ajax({
             url: 'UnitCandyService.svc/Recalculate',
             async: true,
             method: 'GET',
-            data: { unitName: unitName, unitValue: unitValue },
+            data: { unitName: unitElement.name, unitValue: unitElement.value },
             dataType: 'json',
             beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 500); },
             success: function (data, status, xhr) {
@@ -76,8 +76,24 @@ var UnitCandyUI = /** @class */ (function () {
         example: unitID = "NauticalMiles", value = "305.72" */
     UnitCandyUI.prototype.setUnitToValue = function (unitID, unitValue) {
         var unit = this.getUnitById(unitID);
-        unit.value = '';
-        setTimeout(function () { return unit.value = unitValue; }, Math.random() * 500);
+        if (unit.ID !== this.lastRecalculatedUnit.ID) {
+            unit.value = '';
+            setTimeout(function () { return unit.value = unitValue; }, Math.random() * 500);
+        }
+    };
+    UnitCandyUI.prototype.recalculateUnit = function (unit, forceRecalc) {
+        if (forceRecalc === void 0) { forceRecalc = false; }
+        if (forceRecalc === false) {
+            if (this.lastRecalculatedUnit !== undefined) {
+                if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
+                    return;
+                }
+            }
+        }
+        UI.lastRecalculatedUnit = unit;
+        UI.lastRecalculatedUnit.previousValue = unit.value;
+        recalculateUnit = new Recalculate();
+        recalculateUnit.recalculate(unit);
     };
     /** sets the cursor to Wait */
     UnitCandyUI.prototype.setWaitCursor = function () {
@@ -106,26 +122,22 @@ var UnitCandyUI = /** @class */ (function () {
         var _this = this;
         $('[data-' + UnitElement.UnitTextboxAttr + ']').each(function (index, item) {
             var unit = new UnitElement($(item));
-            unit.element.keypress(function (e) {
+            unit.element.on('keypress', function (e) {
                 var key = e.keyCode || e.which;
                 if (key === 13) {
                     var element = $(e.target);
-                    UI.lastRecalculatedUnit = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                    recalculateUnit = new Recalculate();
-                    recalculateUnit.recalculate(element);
+                    var unitToRecalculate = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                    _this.recalculateUnit(unitToRecalculate);
                 }
             });
             unit.element.focusin(function (e) {
                 UI.lastFocusedUnit = new UnitElement($(e.target));
+                $('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
             });
-            unit.element.focusout(function (e) {
-                var element = $(e.target);
-                var unit = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                if (unit.value !== UI.lastRecalculatedUnit.value) {
-                    UI.lastRecalculatedUnit = unit;
-                    recalculateUnit = new Recalculate();
-                    recalculateUnit.recalculate(element);
-                }
+            unit.element.on('focusout', function (e) {
+                //const element = $(e.target);
+                //const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                //this.recalculateUnit(unit);
             });
             _this.units.push(unit);
         });
@@ -140,7 +152,7 @@ var UnitCandyUI = /** @class */ (function () {
             for (var i = 0; i < unitsOfSameType.length; i++) {
                 text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
-            text += 'https://wwww.unitcandy.com' + '\n';
+            text += 'https://www.unitcandy.com?#' + type + '\n';
             _this.copyTextToClipboard(text);
             _this.lastFocusedUnit.element.focus();
         });
@@ -251,14 +263,6 @@ $(document).ready(function () {
 //        text += "\n" + getLinkToUnit(lastUnitGroupName);
 //    }
 //    copyToClipboard(text);
-//}
-//function copyLinkToClipboard(unitGroupName) {
-//    if (unitGroupName === null) return;
-//    if (unitGroupName === '') return;
-//    var text = getLinkToUnit(unitGroupName);
-//    if (text !== null) {
-//        copyToClipboard(text);
-//    }
 //}
 //function sendFeedback() {
 //    var email = $('#emailAddr')[0].value;

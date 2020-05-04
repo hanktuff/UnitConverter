@@ -200,6 +200,7 @@
                     <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15">Blue Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15">Dark Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15">Black</a>--%>
+                    <%--<h5 id="DEBUG_lastfocus"></h5>--%>
                 </div>
             </div>
         </div>
@@ -268,12 +269,6 @@
                     <table class="table">
                         <tbody>
                             <tr>
-                                <td class="align-middle">Meter:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" data-unit="length-meter" /></td>
-                                <td class="align-middle">m</td>
-                            </tr>
-                            <tr>
                                 <td class="align-middle">Yard:</td>
                                 <td>
                                     <input class="form-control text-danger" type="text" /></td>
@@ -302,7 +297,6 @@
         <asp:PlaceHolder ID="WebGroupsPlaceholder" runat="server" />
 
     </form>
-
 
     <!-- About -->
     <section id="about">
@@ -336,6 +330,31 @@
                 <h4>Privacy</h4>
                 <a href="#privacy-policy" class="text-dark" data-toggle="collapse" data-target="#privacy-policy">Click here to read<br />
                     our privacy policy.</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Links -->
+    <section id="links">
+        <div class="d-flex justify-content-center g-bg-beige py-4">
+
+            <div class="m-5">
+                <h1><a href="https://www.facebook.com/UnitCandycom-331411840674514/" target="_blank"><i class="fa fa-facebook-square g-color-facebook"></i></a></h1>
+            </div>
+
+            <div class="m-5">
+                <h1><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter g-color-twitter"></i></a></h1>
+            </div>
+
+            <div class="m-5">
+                <div class="d-flex flex-column align-items-baseline">
+                    <h1><a href="https://itunes.apple.com/us/app/unitcandy/id1225441184?mt=8" target="_blank" style="display: inline-block; overflow: hidden; background: url(//linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat; width: 135px; height: 40px; background-size: contain;"></a></h1>
+                </div>
+            </div>
+
+            <div class="m-5">
+                <h1><a href="mailto:unitcandycom@gmail.com"><i class="fa fa-envelope g-color-yellow"></i></a></h1>
             </div>
 
         </div>
@@ -495,26 +514,10 @@
                     <form id="formEmail" class="form-horizontal">
                         <h5 class="col-sm-offset-3">Contact UnitCandy:</h5>
                         <br />
-                        <div class="form-group">
-                            <label for="emailAddr" class="control-label col-sm-3">Your Email:</label>
-                            <div class="col-sm-9">
-                                <input id="emailAddr" type="email" class="form-control" placeholder="optional" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-3">Message:</label>
-                            <div class="col-sm-9" style="margin-left: 0px">
-                                <textarea id="feedbackMsg" rows="4" placeholder="Suggestions, problems, inaccuracies, or anything else." style="min-width: 100%; margin-left: 0px"></textarea>
-                            </div>
-                        </div>
                         <div class="col-sm-offset-3">
                             <button id="sendFeedbackButton" type="button" onclick="sendFeedback()" class="btn btn-default btn-blue">Send</button>
                         </div>
                         <br />
-                        <div id="EmailFailure" class="col-sm-offset-3 alert alert-warning alert-dismissable fade in">
-                            <a href="#" class="close" aria-label="close" onclick="$('#EmailFailure').hide();return false;">×</a>
-                            <strong>Warning!</strong><div id="EmailFailureMessage"></div>
-                        </div>
                     </form>
                     <br />
                     <h2><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter" style="color: #00aced;"></i></a></h2>
@@ -559,25 +562,11 @@
 
                     <p>This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
 
-                    <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, the terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from http://www.unitcandy.com/ </p>
-
                     <h2>Definitions</h2>
                     <ul>
                         <li>
-                            <p><strong>Service</strong></p>
-                            <p>Service is the https://www.unitcandy.com/ website operated by Dolaris</p>
-                        </li>
-                        <li>
                             <p><strong>Personal Data</strong></p>
                             <p>Personal Data means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</p>
-                        </li>
-                        <li>
-                            <p><strong>Usage Data</strong></p>
-                            <p>Usage Data is data collected automatically either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
-                        </li>
-                        <li>
-                            <p><strong>Cookies</strong></p>
-                            <p>Cookies are small files stored on your device (computer or mobile device).</p>
                         </li>
                     </ul>
 
@@ -592,25 +581,9 @@
                     <p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyse our Service.</p>
                     <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
                     <p>Examples of Cookies we use:</p>
-                    <ul>
-                        <li><strong>Session Cookies.</strong> We use Session Cookies to operate our Service.</li>
-                        <li><strong>Preference Cookies.</strong> We use Preference Cookies to remember your preferences and various settings.</li>
-                        <li><strong>Security Cookies.</strong> We use Security Cookies for security purposes.</li>
-                        <li><strong>Advertising Cookies.</strong> Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.</li>
-                    </ul>
 
                     <h2>Use of Data</h2>
                     <p>Dolaris uses the collected data for various purposes:</p>
-                    <ul>
-                        <li>To provide and maintain our Service</li>
-                        <li>To notify you about changes to our Service</li>
-                        <li>To allow you to participate in interactive features of our Service when you choose to do so</li>
-                        <li>To provide customer support</li>
-                        <li>To gather analysis or valuable information so that we can improve our Service</li>
-                        <li>To monitor the usage of our Service</li>
-                        <li>To detect, prevent and address technical issues</li>
-                    </ul>
-
 
 
                     <h2>Transfer of Data</h2>

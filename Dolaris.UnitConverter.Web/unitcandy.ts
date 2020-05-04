@@ -10,17 +10,17 @@ class Recalculate {
 
     public constructor() { }
 
-    public recalculate(unitElement: JQuery): void {
+    public recalculate(unitElement: UnitElement): void {
 
-        const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
+        //const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
         //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
-        const unitValue = unitElement.val();  /* e.g. 3.5 */
+        //const unitValue = unitElement.val();  /* e.g. 3.5 */
 
         $.ajax({
             url: 'UnitCandyService.svc/Recalculate',
             async: true,
             method: 'GET',
-            data: { unitName: unitName, unitValue: unitValue },
+            data: { unitName: unitElement.name, unitValue: unitElement.value },
             dataType: 'json',
             beforeSend: function () { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
 
@@ -92,6 +92,8 @@ class UnitElement {
             this.element.val(s);
         }
     }
+
+    public previousValue: string;
 }
 
 
@@ -114,8 +116,28 @@ class UnitCandyUI {
 
         const unit = this.getUnitById(unitID);
 
-        unit.value = '';
-        setTimeout(() => unit.value = unitValue, Math.random() * 500);
+        if (unit.ID !== this.lastRecalculatedUnit.ID) {
+
+            unit.value = '';
+            setTimeout(() => unit.value = unitValue, Math.random() * 500);
+        }
+    }
+
+    public recalculateUnit(unit: UnitElement, forceRecalc = false): void {
+
+        if (forceRecalc === false) {
+            if (this.lastRecalculatedUnit !== undefined) {
+                if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
+                    return;
+                }
+            }
+        }
+
+        UI.lastRecalculatedUnit = unit;
+        UI.lastRecalculatedUnit.previousValue = unit.value;
+
+        recalculateUnit = new Recalculate();
+        recalculateUnit.recalculate(unit);
     }
 
     /** sets the cursor to Wait */
@@ -165,38 +187,34 @@ class UnitCandyUI {
 
             const unit = new UnitElement($(item));
 
-            unit.element.keypress((e) => {
+            unit.element.on('keypress',
+                (e) => {
 
-                const key = e.keyCode || e.which;
+                    const key = e.keyCode || e.which;
 
-                if (key === 13) {
+                    if (key === 13) {
 
-                    const element = $(e.target);
-                    UI.lastRecalculatedUnit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                        const element = $(e.target);
+                        const unitToRecalculate = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-                    recalculateUnit = new Recalculate();
-                    recalculateUnit.recalculate(element);
-                }
-            });
+                        this.recalculateUnit(unitToRecalculate);
+                    }
+                });
 
             unit.element.focusin((e) => {
 
                 UI.lastFocusedUnit = new UnitElement($(e.target));
+                $('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
             });
 
-            unit.element.focusout((e) => {
+            unit.element.on('focusout',
+                (e) => {
 
-                const element = $(e.target);
-                const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                    //const element = $(e.target);
+                    //const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-                if (unit.value !== UI.lastRecalculatedUnit.value) {
-
-                    UI.lastRecalculatedUnit = unit;
-
-                    recalculateUnit = new Recalculate();
-                    recalculateUnit.recalculate(element);
-                }
-            });
+                    //this.recalculateUnit(unit);
+                });
 
             this.units.push(unit);
         });
@@ -217,7 +235,7 @@ class UnitCandyUI {
                 text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
 
-            text += 'https://wwww.unitcandy.com' + '\n';
+            text += 'https://www.unitcandy.com?#' + type + '\n';
 
             this.copyTextToClipboard(text);
 
@@ -385,17 +403,7 @@ $(document).ready(() => {
 //    copyToClipboard(text);
 //}
 
-//function copyLinkToClipboard(unitGroupName) {
 
-//    if (unitGroupName === null) return;
-//    if (unitGroupName === '') return;
-
-//    var text = getLinkToUnit(unitGroupName);
-
-//    if (text !== null) {
-//        copyToClipboard(text);
-//    }
-//}
 
 //function sendFeedback() {
 
