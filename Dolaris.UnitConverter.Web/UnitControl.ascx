@@ -1,10 +1,11 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UnitControl.ascx.cs" Inherits="Dolaris.UnitConverter.Web.UnitControl" %>
 
 <tr>
-    <td class="align-middle">
+    <td class="align-middle g-hidden-lg-down">
         <% = Name %>:
     </td>
     <td>
+        <div class="g-hidden-xl-up"><% = Name %> (<% = Symbol %>):</div>
         <input class="form-control text-dark" type="text" value="<% = Value %>"
             data-unit-textbox="<% = UnitID.ToString() %>"
             data-unit-name="<% = Name %>"
@@ -12,7 +13,7 @@
             data-unit-symbol="<% = Symbol %>"
             data-unit-baseunit="<% = IsBaseUnit %>" />
     </td>
-    <td class="align-middle">
+    <td class="align-middle g-hidden-lg-down">
         <% = Symbol %>
     </td>
 </tr>

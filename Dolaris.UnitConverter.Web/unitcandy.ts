@@ -12,15 +12,11 @@ class Recalculate {
 
     public recalculate(unitElement: UnitElement): void {
 
-        //const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
-        //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
-        //const unitValue = unitElement.val();  /* e.g. 3.5 */
-
         $.ajax({
             url: 'UnitCandyService.svc/Recalculate',
             async: true,
             method: 'GET',
-            data: { unitName: unitElement.name, unitValue: unitElement.value },
+            data: { unitName: unitElement.ID, unitValue: unitElement.value },
             dataType: 'json',
             beforeSend: function () { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
 
@@ -434,27 +430,6 @@ $(document).ready(() => {
 //        $('#EmailFailureMessage').text(result);
 //    }
 //}
-
-//function copyToClipboard(text) {
-
-//    var textarea = document.createElement("textarea");
-
-//    try {
-//        document.activeElement.appendChild(textarea);
-
-//        textarea.value = text;
-//        textarea.select();
-
-//        document.execCommand("copy");
-
-//        textarea.parentElement.removeChild(textarea);
-
-//    } catch (e) {
-//        textarea.parentElement.removeChild(textarea);
-//    }
-//}
-
-
 
 
 //function findUnitDropdownSelectionChanged(value) {

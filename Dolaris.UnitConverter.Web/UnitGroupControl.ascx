@@ -3,8 +3,8 @@
 <div id="<% = UnitType.ToString() %>" data-unit-type="<% = UnitType.ToString() %>" class="row mb-5">
 
     <div class="col-lg-2 offset-lg-2">
-        <h2 class="mb-1"><strong><% = Title %></strong></h2>
-        <h6 class="mb-3"><% = Description %></h6>
+        <div><h2 class="mb-1"><strong><% = Title %></strong></h2></div>
+        <div class="g-hidden-sm-down"><h6 class="mb-3"><% = Description %></h6></div>
         <div class="d-flex flex-row">
             <button class="btn btn-xs u-btn-outline-blue text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard" data-button-copy="">Copy</button>
             <button class="btn btn-xs u-btn-outline-yellow text-uppercase mr-2" data-button-embed="" hidden="hidden">Embed</button>

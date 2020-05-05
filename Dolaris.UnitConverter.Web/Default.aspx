@@ -178,34 +178,48 @@
     </section>
 
     <section id="unit-buttons">
-        <div class="container pt-4 pb-2">
-            <div class="row col-8 offset-2">
-                <div class="d-flex flex-wrap" data-animation="fadeIn" data-animation-delay="500" data-animation-duration="1000">
-                    <a href="#" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15" data-goto-unitgroup="Length">Length</a>
-                    <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15" data-goto-unitgroup="Area">Area</a>
-                    <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15" data-goto-unitgroup="Volume">Volume</a>
-                    <a href="#" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15" data-goto-unitgroup="Temperature">Temperature</a>
-                    <a href="#" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15" data-goto-unitgroup="Mass">Mass</a>
-                    <a href="#" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15" data-goto-unitgroup="Speed">Speed</a>
-                    <a href="#" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15" data-goto-unitgroup="Energy">Energy</a>
-                    <a href="#" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15" data-goto-unitgroup="Power">Power</a>
-                    <a href="#" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15" data-goto-unitgroup="Pressure">Pressure</a>
-                    <a href="#" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15" data-goto-unitgroup="Time">Time</a>
-                    <a href="#" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
-                    <a href="#" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15" data-goto-unitgroup="Frequency">Frequency</a>
-                    <a href="#" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15" data-goto-unitgroup="Acceleration">Acceleration</a>
-                    <a href="#" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15" data-goto-unitgroup="Density">Density</a>
-                    <a href="#" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15" data-goto-unitgroup="Angle">Angle</a>
-                    <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
-                    <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15">Blue Gray</a>--%>
-                    <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15">Dark Gray</a>--%>
-                    <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15">Black</a>--%>
-                    <%--<h5 id="DEBUG_lastfocus"></h5>--%>
+        <div class="container-fluid pt-4 pb-2">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3" data-animation="fadeIn">
+                    <a href="#" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Length">Length</a>
+                    <a href="#" class="btn btn-sm u-btn-primary g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
+                    <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Area">Area</a>
+                    <a href="#" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
+                    <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Volume">Volume</a>
+                    <a href="#" class="btn btn-sm u-btn-lightred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>
+                    <a href="#" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Temperature">Temperature</a>
+                    <a href="#" class="btn btn-sm u-btn-darkred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>
+                    <a href="#" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Mass">Mass</a>
+                    <a href="#" class="btn btn-sm u-btn-blue g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>
+                    <a href="#" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Speed">Speed</a>
+                    <a href="#" class="btn btn-sm u-btn-indigo g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>
+                    <a href="#" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Energy">Energy</a>
+                    <a href="#" class="btn btn-sm u-btn-purple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>
+                    <a href="#" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Power">Power</a>
+                    <a href="#" class="btn btn-sm u-btn-darkpurple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>
+                    <a href="#" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Pressure">Pressure</a>
+                    <a href="#" class="btn btn-sm u-btn-pink g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>
+                    <a href="#" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Time">Time</a>
+                    <a href="#" class="btn btn-sm u-btn-orange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>
+                    <a href="#" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
+                    <a href="#" class="btn btn-sm u-btn-deeporange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
+                    <a href="#" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Frequency">Frequency</a>
+                    <a href="#" class="btn btn-sm u-btn-aqua g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>
+                    <a href="#" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Acceleration">Acceleration</a>
+                    <a href="#" class="btn btn-sm u-btn-yellow g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>
+                    <a href="#" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Density">Density</a>
+                    <a href="#" class="btn btn-sm u-btn-cyan g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>
+                    <a href="#" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Angle">Angle</a>
+                    <a href="#" class="btn btn-sm u-btn-teal g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>
+                    <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
+                    <a href="#" class="btn btn-sm u-btn-brown g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15 g-hidden-sm-down">Blue Gray</a>--%>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15 g-hidden-sm-down">Dark Gray</a>--%>
+                    <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15 g-hidden-sm-down">Black</a>--%>
                 </div>
             </div>
         </div>
     </section>
-
 
 
     <%--Info Area--%>
@@ -239,6 +253,99 @@
     </div>
 
 
+
+
+    <div id="template" runat="server" class="row" hidden="hidden">
+        <div class="container" hidden="hidden">
+
+            <div class="row">
+                <div class="col-2">
+                    <h4 class="mb-3"></h4>
+                    <h2 class="mb-1"><strong>Length</strong></h2>
+                    <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
+                </div>
+
+                <div class="col-6">
+                    <div class="row mb-2">
+                        <div class="col col-3">
+                            <p class="align-self-center">Meter:</p>
+                        </div>
+                        <div class="col-5">
+                            <p>...</p>
+                            <p>...</p>
+                            <input type="text" class="form-control" />
+                            <p>...</p>
+                            <p>...</p>
+                        </div>
+                        <div class="col-1">
+                            <p>m</p>
+                        </div>
+                    </div>
+                    <div class="row mb-2 align-middle">
+                        <div class="col-3 align-middle">
+                            <p class="align-middle">Nautical Mile:</p>
+                        </div>
+                        <div class="col-5">
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-1">
+                            <p>nmi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <p>The right side.</p>
+            </div>
+        </div>
+        <br />
+        <div class="container-fluid py-5">
+            <div class="row">
+                <div class="col-lg-2 offset-lg-2">
+                    <h2 class="mb-1"><strong>Temperature</strong></h2>
+                    <h6 class="mb-3">Temperature is a comparative measurement of hot or cold. The coldest temperature is zero degrees Kelvin.</h6>
+                    <div class="d-flex flex-row">
+                        <button class="btn btn-xs u-btn-outline-blue text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard" data-button-copy="">Copy</button>
+                        <button class="btn btn-xs u-btn-outline-yellow text-uppercase mr-2" data-button-embed="" hidden="hidden">Embed</button>
+                        <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2" data-button-clear="">Clear</button>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="table-responsive table-borderless">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="align-middle g-hidden-lg-down">Celsius:</td>
+                                    <td>
+                                        <div class="g-hidden-xl-up">Celsius (cel):</div>
+                                        <input class="form-control text-dark" type="text" value="25" /></td>
+                                    <td class="align-middle g-hidden-lg-down">cel</td>
+                                </tr>
+                                <tr>
+                                    <td class="align-middle g-hidden-lg-down">Fahrenheit:</td>
+                                    <td>
+                                        <div class="g-hidden-xl-up">Fahrenheit (Deg F):</div>
+                                        <input class="form-control text-dark" type="text" value="" /></td>
+                                    <td class="align-middle g-hidden-lg-down">Deg F</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
     <!-- unit groups -->
     <section class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
@@ -249,40 +356,6 @@
 
 
 
-
-    <div id="template" runat="server" class="row" hidden="hidden">
-
-        <div class="row">
-            <div class="col-lg-2 offset-lg-2">
-                <h4 class="mb-3"></h4>
-                <h2 class="mb-1"><strong>Length</strong></h2>
-                <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
-                <div class="d-flex flex-row">
-                    <button class="btn btn-xs btn-primary text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard">Copy</button>
-                    <button class="btn btn-xs u-btn-yellow text-uppercase mr-2">Embed</button>
-                    <button class="btn btn-xs btn-secondary text-uppercase mr-2">Clear</button>
-                </div>
-            </div>
-
-            <div class="col-lg-3">
-                <div class="table-responsive table-borderless">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td class="align-middle">Yard:</td>
-                                <td>
-                                    <input class="form-control text-danger" type="text" /></td>
-                                <td class="align-middle">yd</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="col-lg-4"></div>
-        </div>
-
-    </div>
 
 
     <!-- Main Form -->
@@ -611,12 +684,6 @@
                     <h3>Advertising</h3>
                     <p>We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.</p>
                     <ul>
-                        <li>
-                            <p><strong>Bing Ads</strong></p>
-                            <p>Bing Ads is an advertising service provided by Microsoft Inc.</p>
-                            <p>You can opt-out from Bing Ads by following the instructions on Bing Ads Opt-out page: <a href="https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads">https://advertise.bingads.microsoft.com/en-us/resources/policies/personalized-ads</a></p>
-                            <p>For more information about Bing Ads, please visit their Privacy Policy: <a href="https://privacy.microsoft.com/en-us/PrivacyStatement">https://privacy.microsoft.com/en-us/PrivacyStatement</a></p>
-                        </li>
                     </ul>
 
 

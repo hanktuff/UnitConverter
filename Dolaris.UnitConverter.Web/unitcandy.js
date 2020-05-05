@@ -6,14 +6,11 @@ var Recalculate = /** @class */ (function () {
     function Recalculate() {
     }
     Recalculate.prototype.recalculate = function (unitElement) {
-        //const unitName = unitElement.data('unit-textbox');  /* e.g. "Meter" */
-        //const unitGroupName = unitElement.data('unitgroupname'); /* e.g. "Length" */
-        //const unitValue = unitElement.val();  /* e.g. 3.5 */
         $.ajax({
             url: 'UnitCandyService.svc/Recalculate',
             async: true,
             method: 'GET',
-            data: { unitName: unitElement.name, unitValue: unitElement.value },
+            data: { unitName: unitElement.ID, unitValue: unitElement.value },
             dataType: 'json',
             beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 500); },
             success: function (data, status, xhr) {
@@ -289,18 +286,6 @@ $(document).ready(function () {
 //        $('#EmailSuccess').hide();
 //        $('#EmailFailure').show();
 //        $('#EmailFailureMessage').text(result);
-//    }
-//}
-//function copyToClipboard(text) {
-//    var textarea = document.createElement("textarea");
-//    try {
-//        document.activeElement.appendChild(textarea);
-//        textarea.value = text;
-//        textarea.select();
-//        document.execCommand("copy");
-//        textarea.parentElement.removeChild(textarea);
-//    } catch (e) {
-//        textarea.parentElement.removeChild(textarea);
 //    }
 //}
 //function findUnitDropdownSelectionChanged(value) {
