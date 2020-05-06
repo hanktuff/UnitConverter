@@ -343,20 +343,12 @@
 
 
 
-
-
-
     <!-- unit groups -->
     <section class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
             <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
         </div>
     </section>
-
-
-
-
-
 
     <!-- Main Form -->
     <form id="mainform" runat="server" action="/" method="post">
@@ -580,7 +572,7 @@
 
 
     <%-- Contact UnitCandy --%>
-    <div id="ContactUnitCandy" class="wrap-container6020" hidden="hidden">
+    <div id="ContactUnitCandy" class="wrap-container6020 " hidden="hidden">
         <div class="container">
             <div class="row">
                 <div class="col-md-7">
@@ -685,14 +677,6 @@
                     <p>We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.</p>
                     <ul>
                     </ul>
-
-
-
-
-
-                    <h2>Links to Other Sites</h2>
-                    <p>Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit.</p>
-                    <p>We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
 
 
                     <h2>Children's Privacy</h2>

@@ -37,6 +37,34 @@ class Recalculate {
             }
         });
     }
+
+    public recalculateWithHelperAction(unitElement: UnitElement, helperAction: string): void {
+
+        $.ajax({
+            url: 'UnitCandyService.svc/RecalculateWithHelperAction',
+            async: true,
+            method: 'GET',
+            data: { unitName: unitElement.ID, unitValue: unitElement.value, action: helperAction },
+            dataType: 'json',
+            beforeSend: function () { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
+
+            success: (data, status, xhr) => {
+
+                $.each(data.d,
+                    (index, result) => {
+                        UI.setUnitToValue(result.UnitName, result.UnitValue)
+                    });
+
+                return null;
+            },
+
+            error: (xhr, status, error) => {
+                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                //alert('Error: ' + xhr.statusText + xhr.responseText);
+                return null;
+            }
+        });
+    }
 }
 
 
@@ -56,12 +84,14 @@ class UnitElement {
             this.plural = element.data('unit-plural');
             this.symbol = element.data('unit-symbol');
             this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
+            this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
         }
     }
 
 
     public static UnitTextboxAttr = 'unit-textbox';
     public static UnitTypeAttr = 'unit-type';
+    public static UnitHelperGroupAttr = 'unit-helper-group';
 
 
     public ID: string;
@@ -77,6 +107,8 @@ class UnitElement {
     public isBaseUnit: boolean;
 
     public element: JQuery;
+
+    public elementHelperGroup: JQuery;
 
     public get value(): string {
         return this.element !== null ? this.element.val() : '';
@@ -112,12 +144,13 @@ class UnitCandyUI {
 
         const unit = this.getUnitById(unitID);
 
-        if (unit.ID === this.lastRecalculatedUnit.ID) {
-            unit.value = unitValue
+        if (this.lastRecalculatedUnit === undefined || unit.ID !== this.lastRecalculatedUnit.ID) {
 
-        } else {
             unit.value = '';
             setTimeout(() => unit.value = unitValue, Math.random() * 500);
+
+        } else {
+            unit.value = unitValue
         }
     }
 
@@ -170,13 +203,14 @@ class UnitCandyUI {
     }
 
 
+    protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
     protected copyButtons = $('[data-button-copy]');
     protected embedButtons = $('[data-button-embed]');
     protected clearButtons = $('[data-button-clear]');
-    protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
+    protected unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
 
     public lastRecalculatedUnit: UnitElement;
-
+    public lastUnitHelperGroup: JQuery;
 
     protected initializeUnitElements(): void {
 
@@ -198,31 +232,33 @@ class UnitCandyUI {
                     }
                 });
 
-            // focusin and -out is just too much trouble
+            unit.element.on('focusin',
+                (e) => {
 
-            //unit.element.on('focusout',
-            //    (e) => {
+                    const element = $(e.target);
+                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-            //        const element = $(e.target);
-            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                    if (this.lastUnitHelperGroup !== undefined) {
+                        this.lastUnitHelperGroup.hide();
+                    }
 
-            //        this.recalculateUnit(unit);
-            //    });
-
-            //unit.element.on('focusin',
-            //    (e) => {
-
-            //        const element = $(e.target);
-            //        const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-
-            //        //UI.lastFocusedUnit = new UnitElement($(e.target));
-            //        //$('#DEBUG_lastfocus').text(UI.lastFocusedUnit.ID);
-
-            //        UI.lastRecalculatedUnit = unit;
-            //        UI.lastRecalculatedUnit.previousValue = unit.value;
-            //    });
+                    unit.elementHelperGroup.show();
+                    this.lastUnitHelperGroup = unit.elementHelperGroup;
+                });
 
             this.units.push(unit);
+        });
+
+        $('[data-unit-helper-action]').on('click', (e) => {
+
+            const element = $(e.target);
+
+            const unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
+            const unit = this.getUnitById(unitID);
+
+            const helperAction = element.data('unit-helper-action');
+
+            recalculateUnit.recalculateWithHelperAction(unit, helperAction);
         });
     }
 
@@ -342,6 +378,7 @@ class UnitCandyUI {
 
 $(document).ready(() => {
 
+    recalculateUnit = new Recalculate();
     UI = new UnitCandyUI();
 
 
@@ -390,63 +427,9 @@ $(document).ready(() => {
 
 
 
-
-//function unitChangedWithHelperAction(action, e) {
-
-//    try {
-//        var unitName = e.srcElement.parentElement.parentElement.parentElement.dataset.helper;
-//        var controls = $('[data-unitname=' + unitName + ']');
-//        var unitValue = controls[0].value;
-
-//        document.body.style.cursor = "wait";
-
-//        var recalc = www.unitcandy.com.ws.UnitCandyService.RecalculateWithHelperAction(unitName, unitValue, action, unitChangedCompleted, unitChangedError);
-
-//    } catch (e) {
-//    }
-
-//    return false;
-//}
-
-
-//function sendFeedback() {
-
-//    var email = $('#emailAddr')[0].value;
-//    var msg = $('#feedbackMsg')[0].value;
-
-//    www.unitcandy.com.ws.UnitCandyService.SendFeedbackMail(email, msg, sendFeedbackCompleted);
-//}
-
-//function sendFeedbackCompleted(result) {
-
-//    if (result === "") {
-//        $('#EmailSuccess').show();
-//        $('#EmailFailure').hide();
-
-//    } else {
-//        $('#EmailSuccess').hide();
-//        $('#EmailFailure').show();
-
-//        $('#EmailFailureMessage').text(result);
-//    }
-//}
-
-
 //function findUnitDropdownSelectionChanged(value) {
 //    anyUnitSelectedValue = value;
 //    findUnit();
-//}
-
-//function findUnit() {
-
-//    var controls = $('#inputFindUnit');
-//    var dropdown = $('#AnyUnitDropdown');
-
-//    if (controls.length === 1) {
-//        var f = www.unitcandy.com.ws.UnitCandyService.FindUnit(controls[0].value, anyUnitSelectedValue, findUnitComplete, findUnitError);
-//    }
-
-//    return false;
 //}
 
 //function findUnitComplete(result) {
@@ -471,15 +454,6 @@ $(document).ready(() => {
 //    }
 
 //    return false;
-//}
-
-//function findUnitError(err) {
-
-//    var controls = $('#inputFindUnit');
-
-//    if (controls.length === 1) {
-//        controls[0].value = '???';
-//    }
 //}
 
 

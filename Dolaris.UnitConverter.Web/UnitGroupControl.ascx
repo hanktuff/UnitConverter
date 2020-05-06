@@ -13,7 +13,7 @@
     </div>
 
     <div class="col-lg-3">
-        <div class="table-responsive table-borderless">
+        <div class="table-responsive table-borderless  table-sm">
             <table class="table">
                 <tbody>
                     <asp:PlaceHolder ID="UnitControlPlaceHolder" runat="server" />

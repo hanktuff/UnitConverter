@@ -17,13 +17,17 @@
         <% = Symbol %>
     </td>
 </tr>
-
-<%--
-<li><a href="javascript:void(0)" tabindex="-1" onclick="unitChangedWithHelperAction('+1',event)" class="help-block label label-info" title="add one">+1</a></li>
-<li><a href="javascript:void(0)" tabindex="-1" onclick="javascript:unitChangedWithHelperAction('-1',event);" class="help-block label label-info" title="subtract one">-1</a></li>
-<li><a href="javascript:void(0)" tabindex="-1" onclick="javascript:unitChangedWithHelperAction('x10',event);" class="help-block label label-info" title="multiply by ten">x10</a></li>
-<li><a href="javascript:void(0)" tabindex="-1" onclick="javascript:unitChangedWithHelperAction('/10',event);" class="help-block label label-info" title="divide by ten">&divide;10</a></li>
-<li><a id="UnitHelperActionClean" runat="server" tabindex="-1" href="javascript:void(0)" onclick="javascript:unitChangedWithHelperAction('Clear',event);" class="help-block label label-info" title="set to zero">Zero</a></li>
-<li><a id="UnitHelperActionMin" runat="server" tabindex="-1" href="javascript:void(0)" onclick="javascript:unitChangedWithHelperAction('Min',event);" class="help-block label label-info" title="smallest value">Min</a></li>
-<li><a id="UnitHelperActionMax" runat="server" tabindex="-1" href="javascript:void(0)" onclick="javascript:unitChangedWithHelperAction('Max',event);" class="help-block label label-info" title="greatest value">Max</a></li>
---%>
+<tr class="collapse" data-unit-helper-group="<% = UnitID.ToString() %>">
+    <td></td>
+    <td>
+        <div class="ml-2">
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Add One" data-placement="bottom" data-unit-helper-action="+1">+1</span></a>
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Subtract One" data-placement="bottom" data-unit-helper-action="-1">-1</span></a>
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Multiply by Ten" data-placement="bottom" data-unit-helper-action="x10">x10</span></a>
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Divide by Ten" data-placement="bottom" data-unit-helper-action="/10">&divide;10</span></a>
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Double Value" data-placement="bottom" data-unit-helper-action="x2">x2</span></a>
+            <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Half Value" data-placement="bottom" data-unit-helper-action="/2">&divide;2</span></a>
+        </div>
+    </td>
+    <td></td>
+</tr>

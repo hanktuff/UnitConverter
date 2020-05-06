@@ -157,6 +157,12 @@ namespace Dolaris.UnitConverter.Web {
                     case "/10":
                         unitValue = (double.Parse(unitValue) / 10).ToString();
                         break;
+                    case "x2":
+                        unitValue = (double.Parse(unitValue) * 2).ToString();
+                        break;
+                    case "/2":
+                        unitValue = (double.Parse(unitValue) / 2).ToString();
+                        break;
                     case "Clear":
                         unitValue = "0";
                         break;

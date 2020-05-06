@@ -26,22 +26,6 @@ namespace Dolaris.UnitConverter.Web {
             Symbol = webUnit.Symbol;
             IsBaseUnit = webUnit.IsBaseUnit;
             Value = string.Empty;
-
-
-            //// show or hide the helper links (+1, -1, ...)
-
-            //UnitHelperActionClean.Visible = UnitHelperActionMin.Visible = UnitHelperActionMax.Visible = false;
-
-            //if (unit.MinValue == 0) {
-            //    UnitHelperActionClean.Visible = true;
-
-            //} else if (unit.MinValue < 0) {
-            //    UnitHelperActionMin.Visible = true;
-            //}
-
-            //if (unit.MaxValue != double.MaxValue) {
-            //    UnitHelperActionMax.Visible = true;
-            //}
         }
         
 
