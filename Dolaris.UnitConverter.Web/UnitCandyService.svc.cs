@@ -246,8 +246,6 @@ namespace Dolaris.UnitConverter.Web {
         /// <param name="inputstring"></param>
         /// <param name="unitName"></param>
         /// <returns></returns>
-        //[OperationContract]
-        //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public FormattedUnit FindUnit(string inputstring, string unitName) {
 

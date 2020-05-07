@@ -3,7 +3,6 @@
 <%@ Register Src="~/UnitGroupControl.ascx" TagPrefix="uc1" TagName="UnitGroupControl" %>
 
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -145,11 +144,6 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="#Length" class="smooth-scroll">Length</a></li>
-                    <li><a href="#Area" class="smooth-scroll">Area</a></li>
-                    <li><a href="#Volume" class="smooth-scroll">Volume</a></li>
-                    <li><a href="#Temperature" class="smooth-scroll">Temperature</a></li>
-                    <li><a href="#Mass" class="smooth-scroll">Mass</a></li>
                     <li>
                         <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
                         <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
@@ -168,14 +162,199 @@
     </nav>--%>
 
 
-    <section id="header">
+
+    <!-- Navigation -->
+    <%--<nav id="n" class="navbar navbar-fixed-top">
+        <h3 class="nav-item">Navbar</h3>
+    </nav>--%>
+
+    <!-- Header -->
+    <%--<header id="js-header" class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance u-shadow-v19">
+        <div class="u-header__section g-bg-white g-transition-0_3">
+            <nav class="js-mega-menu navbar navbar-expand-lg g-pa-0">
+                <div class="container">
+                    <!-- Logo -->
+                    <a class="navbar-brand g-pl-15 py-3" href="home-page-1.html">
+                        <img class="g-width-95" src="assets/img/logo/logo.png" alt="Logo">
+                    </a>
+                    <!-- End Logo -->
+
+                    <!-- Responsive Toggle Button -->
+                    <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pos-abs g-top-10 g-right-0 g-pa-0 g-mt-2" type="button"
+                        aria-label="Toggle navigation"
+                        aria-expanded="false"
+                        aria-controls="navBar"
+                        data-toggle="collapse"
+                        data-target="#navBar">
+                        <span class="hamburger hamburger--slider g-px-15">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </span>
+                    </button>
+                    <!-- End Responsive Toggle Button -->
+
+                    <!-- Navigation -->
+                    <div id="navBar" class="collapse navbar-collapse align-items-center flex-sm-row">
+                        <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
+                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="home-page-1.html">Home
+                                </a>
+                            </li>
+
+                            <!-- About - Submenu -->
+                            <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a id="nav-link--page" class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="#"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                                    aria-controls="nav-submenu--page">About
+                                </a>
+
+                                <!-- Submenu -->
+                                <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
+                                    aria-labelledby="nav-link--page">
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-services-1.html">Services</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-works-1.html">Works</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-hire-us-1.html">Hire Us</a>
+                                    </li>
+                                    <li class="dropdown-item">
+                                        <a class="nav-link g-color-text g-font-weight-600" href="page-careers-1.html">Careers</a>
+                                    </li>
+                                </ul>
+                                <!-- End Submenu -->
+                            </li>
+                            <!-- End About - Submenu -->
+
+                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-help-1.html">Help
+                                </a>
+                            </li>
+                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-pricing-1.html">Pricing
+                                </a>
+                            </li>
+                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
+                                </a>
+                            </li>
+                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                                <a class="nav-link d-inline-block rounded g-brd-around g-brd-2 g-brd-primary g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-20 g-py-8" href="../../index.html">Main</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- End Navigation -->
+
+                    <!-- Social Icons -->
+                    <ul class="col-auto list-inline g-pos-abs g-right-0 g-pos-rel--lg g-top-minus-3 g-py-20 g-py-6--lg g-pr-5 g-mr-60 g-mr-0--lg ml-auto ml-lg-0 mb-0">
+                        <li class="list-inline-item g-mx-0">
+                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li class="list-inline-item g-mx-0">
+                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="list-inline-item g-mx-0">
+                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-pinterest"></i></a>
+                        </li>
+                    </ul>
+                    <!-- End Social Icons -->
+
+                    <div class="col-auto g-hidden-md-down g-pr-0">
+                        <div class="g-bg-main g-cursor-pointer g-px-25 g-py-20">
+                            <span class="d-block g-color-primary g-font-size-11 mb-1">(0161) 347 8854</span>
+                            <span class="d-block g-color-primary"><i class="mr-2 fa fa-phone"></i>Request a Call</span>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>--%>
+    <!-- End Header -->
+
+    <%--<nav id="navBar" class="collapse navbar-collapse align-items-center flex-sm-row">
+        <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
+            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="home-page-1.html">Home
+                </a>
+            </li>
+
+            <!-- About - Submenu -->
+            <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a id="nav-link--page" class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="#"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    aria-controls="nav-submenu--page">About
+                </a>
+
+                <!-- Submenu -->
+                <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
+                    aria-labelledby="nav-link--page">
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-services-1.html">Services</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-works-1.html">Works</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-hire-us-1.html">Hire Us</a>
+                    </li>
+                    <li class="dropdown-item">
+                        <a class="nav-link g-color-text g-font-weight-600" href="page-careers-1.html">Careers</a>
+                    </li>
+                </ul>
+                <!-- End Submenu -->
+            </li>
+            <!-- End About - Submenu -->
+
+            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-help-1.html">Help
+                </a>
+            </li>
+            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-pricing-1.html">Pricing
+                </a>
+            </li>
+            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
+                </a>
+            </li>
+            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
+                <a class="nav-link d-inline-block rounded g-brd-around g-brd-2 g-brd-primary g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-20 g-py-8" href="../../index.html">Main</a>
+            </li>
+        </ul>
+    </nav>--%>
+    <!-- End Navigation -->
+
+
+
+
+
+
+
+    <%--<section id="header">
         <div class="d-flex justify-content-center align-items-center bg-dark py-1">
             <img src="images/UnitcandyIcon32.png" alt="Logo" class="img-fluid mr-5" />
             <h2 class="mr-5 g-color-white">UnitCandy</h2>
             <button id="button-convert" class="btn btn-warning mr-4 text-uppercase">Convert</button>
             <button id="button-info" class="btn btn-primary px-4 text-uppercase">Info</button>
         </div>
-    </section>
+    </section>--%>
 
     <section id="unit-buttons">
         <div class="container-fluid pt-4 pb-2">
@@ -218,111 +397,35 @@
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15 g-hidden-sm-down">Black</a>--%>
                 </div>
             </div>
+            <div class="row py-3">
+                <div class="col-4 offset-4">
+                    <input id="any-unit" class="form-control text-dark" type="text" value="" 
+                        data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
+                </div>
+            </div>
         </div>
     </section>
 
 
-    <%--Info Area--%>
-    <div id="info" class="wrap-container60 bg-primary" style="margin-top: 50px" hidden="hidden">
+    
+    <div id="infoOLD" class="wrap-container60 bg-primary" style="margin-top: 50px" hidden="hidden">
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h1 style="color: white">UnitCandy</h1>
-                    <h4 style="color: white">Convert Units of Measurement</h4>
-                    <div class="fb-like" data-href="https://www.unitcandy.com/" data-layout="button_count" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
                 </div>
                 <div class="col-md-7">
-                    <p>UnitCandy is a utility that helps you convert units of measurement from one system to another. We hope UnitCandy is accurate, complete and easy to use.</p>
-                    <p>A unit of measurement is for example “five yards” which represents a length. “Meter” is another unit of length and you can use UnitCandy to convert 5 yards into x meters.</p>
                     <div class="input-group" style="max-width: 375px">
-                        <input id="inputFindUnit" type="text" class="form-control" onkeypress="findUnitKeyPressed(event)" autofocus="autofocus" />
-                        <div class="input-group-addon">
-                            <a id="AnyUnitDropdown" class="dropdown-toggle" data-toggle="dropdown" href="#" title="Select unit of measurement.">Unit&nbsp;<span class="caret"></span></a>
-                            <ul class="dropdown-menu dropdown-menu-right pre-scrollable">
-                                <asp:Literal ID="AnyUnitLiteral" Text="" runat="server" />
-                            </ul>
-                        </div>
                     </div>
                     <p class="help-block" style="color: white">Enter, for example, "24in", "60 Fahrenheit", etc.</p>
                 </div>
-                <div class="col-md-2">
-                    <input type="hidden" name="IL_IN_ARTICLE" />
-                </div>
             </div>
         </div>
     </div>
-
-
-
-
-    <div id="template" runat="server" class="row" hidden="hidden">
-        <div class="container" hidden="hidden">
-
-            <div class="row">
-
-                <div class="col-6">
-                    <div class="row mb-2">
-                        <div class="row mb-2 align-middle">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-4">
-                    <p>The right side.</p>
-                </div>
-            </div>
-            <br />
-            <div class="container-fluid py-5">
-                <div class="row">
-                    <div class="col-lg-2 offset-lg-2">
-                        <h2 class="mb-1"><strong>Temperature</strong></h2>
-                        <h6 class="mb-3">Temperature is a comparative measurement of hot or cold. The coldest temperature is zero degrees Kelvin.</h6>
-                        <div class="d-flex flex-row">
-                            <button class="btn btn-xs u-btn-outline-blue text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard" data-button-copy="">Copy</button>
-                            <button class="btn btn-xs u-btn-outline-yellow text-uppercase mr-2" data-button-embed="" hidden="hidden">Embed</button>
-                            <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2" data-button-clear="">Clear</button>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="table-responsive table-borderless">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td class="align-middle g-hidden-lg-down">Celsius:</td>
-                                        <td>
-                                            <div class="g-hidden-xl-up">Celsius (cel):</div>
-                                            <input class="form-control text-dark" type="text" value="25" /></td>
-                                        <td class="align-middle g-hidden-lg-down">cel</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="align-middle g-hidden-lg-down">Fahrenheit:</td>
-                                        <td>
-                                            <div class="g-hidden-xl-up">Fahrenheit (Deg F):</div>
-                                            <input class="form-control text-dark" type="text" value="" /></td>
-                                        <td class="align-middle g-hidden-lg-down">Deg F</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
     <!-- unit groups -->
     <section id="unit-groups" class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
             <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
-        </div>
-    </section>
-
-    <!-- Ads -->
-    <section id="ads-in-article">
-        <div class="d-flex justify-content-center g-theme-bg-gray-light-v1">
-            <input type="hidden" name="IL_IN_ARTICLE" />
         </div>
     </section>
 
@@ -338,6 +441,20 @@
         <asp:PlaceHolder ID="WebGroupsPlaceholder" runat="server" />
 
     </form>
+
+    <!-- Info -->
+    <section id="info">
+        <div class="container py-3">
+            <div class="row">
+                <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+                    <div class="justify-content-center">
+                        <p>UnitCandy is a utility that helps you convert units of measurement from one system to another. We hope UnitCandy is accurate, complete and easy to use.</p>
+                        <p>A unit of measurement is for example “five yards” which represents a length. “Meter” is another unit of length and you can use UnitCandy to convert 5 yards into x meters.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About -->
     <section id="about">
@@ -426,10 +543,6 @@
                         <li>
                             <p><strong>Usage Data</strong></p>
                             <p>Usage Data is data collected automatically either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
-                        </li>
-                        <li>
-                            <p><strong>Cookies</strong></p>
-                            <p>Cookies are small files stored on your device (computer or mobile device).</p>
                         </li>
                     </ul>
 
@@ -553,67 +666,12 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
 
-                    <h2>Definitions</h2>
-                    <ul>
-                        <li>
-                            <p><strong>Personal Data</strong></p>
-                            <p>Personal Data means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</p>
-                        </li>
-                    </ul>
-
-                    <h4>Tracking & Cookies Data</h4>
-                    <p>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information.</p>
-                    <p>Cookies are files with a small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Other tracking technologies are also used such as beacons, tags and scripts to collect and track information and to improve and analyse our Service.</p>
-                    <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
-                    <p>Examples of Cookies we use:</p>
-
-                    <h2>Transfer of Data</h2>
-                    <p>Your information, including Personal Data, may be transferred to — and maintained on — computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>
-                    <p>If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there.</p>
-                    <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
-                    <p>Dolaris will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
-
-                    <h2>Disclosure of Data</h2>
-
-
-                    <h3>Legal Requirements</h3>
-                    <p>Dolaris may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
-                    <ul>
-                        <li>To comply with a legal obligation</li>
-                        <li>To protect and defend the rights or property of Dolaris</li>
-                        <li>To prevent or investigate possible wrongdoing in connection with the Service</li>
-                        <li>To protect the personal safety of users of the Service or the public</li>
-                        <li>To protect against legal liability</li>
-                    </ul>
-
-                    <h2>Security of Data</h2>
-                    <p>The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
-
-                    <h2>Our Policy on "Do Not Track" Signals under the California Online Protection Act (CalOPPA)</h2>
-                    <p>We do not support Do Not Track ("DNT"). Do Not Track is a preference you can set in your web browser to inform websites that you do not want to be tracked.</p>
-                    <p>You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.</p>
-
-
                     <h2>Service Providers</h2>
                     <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), provide the Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.</p>
                     <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
 
                     <h3>Analytics</h3>
                     <p>We may use third-party Service Providers to monitor and analyse the use of our Service.</p>
-                    <ul>
-                        <li>
-                            <p><strong>Google Analytics</strong></p>
-                            <p>Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualise and personalise the ads of its own advertising network.</p>
-                            <p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js and dc.js) from sharing information with Google Analytics about visits activity.</p>
-                            <p>For more information on the privacy practices of Google, please visit the Google Privacy & Terms web page: <a href="https://policies.google.com/privacy?hl=en">https://policies.google.com/privacy?hl=en</a></p>
-                        </li>
-                    </ul>
-
-                    <h3>Advertising</h3>
-                    <p>We may use third-party Service Providers to show advertisements to you to help support and maintain our Service.</p>
-                    <ul>
-                    </ul>
-
 
                     <h2>Children's Privacy</h2>
                     <p>Our Service does not address anyone under the age of 18 ("Children").</p>
@@ -624,15 +682,6 @@
                     <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
                     <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.</p>
                     <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-
-
-                    <h2>Contact Us</h2>
-                    <p>If you have any questions about this Privacy Policy, please contact us:</p>
-                    <ul>
-                        <li>By email: unitcandycom@gmail.com</li>
-                        <li>By visiting this page on our website: https://www.unitcandy.com/</li>
-
-                    </ul>
                 </div>
             </div>
         </div>
@@ -742,16 +791,6 @@
             } // End if
         });
     </script>
-
-
-
-
-
-
-
-
-
-
 
 
 

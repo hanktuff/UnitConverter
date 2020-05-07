@@ -47,6 +47,27 @@ var Recalculate = /** @class */ (function () {
             }
         });
     };
+    Recalculate.prototype.findUnit = function (findstr) {
+        $.ajax({
+            url: 'UnitCandyService.svc/FindUnit',
+            async: true,
+            method: 'GET',
+            data: { inputstring: findstr, unitName: null },
+            dataType: 'json',
+            beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 1000); },
+            success: function (data, status, xhr) {
+                var unitName = data.d !== null ? data.d.UnitName : null;
+                var unitValue = data.d !== null ? data.d.UnitValue : null;
+                UI.setUnitFromFindstr(unitName, unitValue);
+                return null;
+            },
+            error: function (xhr, status, error) {
+                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
+                //alert('Error: ' + xhr.statusText + xhr.responseText);
+                return null;
+            }
+        });
+    };
     return Recalculate;
 }());
 var UnitElement = /** @class */ (function () {
@@ -88,10 +109,12 @@ var UnitCandyUI = /** @class */ (function () {
         this.embedButtons = $('[data-button-embed]');
         this.clearButtons = $('[data-button-clear]');
         this.unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
+        this.anyUnitTextBox = $('#any-unit');
         this.initializeUnitElements();
         this.initializeCopyButtons();
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
+        this.initializeAnyUnitTextBox();
     }
     /** sets the unit identified by unitID to the value
         example: unitID = "NauticalMiles", value = "305.72" */
@@ -103,6 +126,21 @@ var UnitCandyUI = /** @class */ (function () {
         }
         else {
             unit.value = unitValue;
+        }
+    };
+    UnitCandyUI.prototype.setUnitFromFindstr = function (unitID, unitValue) {
+        var _this = this;
+        if (unitID !== null) {
+            var unit = this.getUnitById(unitID);
+            unit.value = unitValue;
+            this.showUnitGroup(unit.type);
+            this.recalculateUnit(unit, true);
+            this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
+        }
+        else {
+            this.anyUnitTextBox.val('');
+            this.anyUnitTextBox.popover('show');
+            setTimeout(function () { return _this.anyUnitTextBox.popover('hide'); }, 3000);
         }
     };
     UnitCandyUI.prototype.recalculateUnit = function (unit, forceRecalc) {
@@ -212,6 +250,15 @@ var UnitCandyUI = /** @class */ (function () {
             _this.getBaseUnitOrDefault(units).element.focus();
         });
     };
+    UnitCandyUI.prototype.initializeAnyUnitTextBox = function () {
+        this.anyUnitTextBox.on('keypress', function (e) {
+            var key = e.keyCode || e.which;
+            if (key === 13) {
+                var findstr = $(e.target).val();
+                recalculateUnit.findUnit(findstr);
+            }
+        });
+    };
     /** shows only the unit group of the provided type and hides all others;
      * unitGroupType = "DigitalStorage"
      * Null hides all; "all" shows all */
@@ -259,92 +306,6 @@ var UnitCandyUI = /** @class */ (function () {
 $(document).ready(function () {
     recalculateUnit = new Recalculate();
     UI = new UnitCandyUI();
-    var elementAnyUnit = $('#inputFindUnit');
-    elementAnyUnit.on('keypress', function (e) {
-        var key = e.keyCode || e.which;
-        if (key === 13) {
-            $.ajax({
-                url: 'UnitCandyService.svc/FindUnit',
-                async: true,
-                method: 'GET',
-                data: { inputstring: elementAnyUnit.val(), unitName: null },
-                dataType: 'json',
-                beforeSend: function () { document.body.style.cursor = "wait"; },
-                success: function (data, status, xhr) {
-                    var dataID = 'UnitTextBox-' + data.d.UnitType + '-' + data.d.UnitName;
-                    var unitElement = $('[data-id="' + dataID + '"]');
-                    unitElement.val(data.d.UnitValue).focus().trigger($.Event("keypress", { which: 13 }));
-                    document.body.style.cursor = "auto";
-                    return null;
-                },
-                error: function (xhr, status, error) {
-                    document.body.style.cursor = "auto";
-                    console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                    //alert('Error: ' + xhr.statusText + xhr.responseText);
-                    return null;
-                }
-            });
-        }
-    });
+    $('[data-toggle="popover"]').popover();
 });
-//function findUnitDropdownSelectionChanged(value) {
-//    anyUnitSelectedValue = value;
-//    findUnit();
-//}
-//function clearLastUnitGroup() {
-//    if (lastUnitGroupName !== '') {
-//        var lastUnitTextboxes = $('[data-unitgroupname=' + lastUnitGroupName + ']');
-//        for (var i = 0; i < lastUnitTextboxes.length; i++) {
-//            lastUnitTextboxes[i].value = '';
-//        }
-//    }
-//    var controls = $('#inputFindUnit');
-//    if (controls.length === 1) {
-//        controls[0].value = '';
-//        anyUnitSelectedValue = '';
-//    }
-//}
-//function clearUnitGroup(unitGroupName) {
-//    var lastUnitTextboxes = $('[data-unitgroupname=' + unitGroupName + ']');
-//    for (var i = 0; i < lastUnitTextboxes.length; i++) {
-//        lastUnitTextboxes[i].value = '';
-//    }
-//}
-//function clearAllUnitGroups() {
-//    var unitTextboxes = $('[data-unitgroupname]');
-//    for (var i = 0; i < unitTextboxes.length; i++) {
-//        unitTextboxes[i].value = '';
-//    }
-//}
-//function getLinkToUnit(unitGroupName) {
-//    var text = null;
-//    if (lastUnitName != '' && lastUnitValue !== '') {
-//        text = document.location.origin + "?" + lastUnitValue + lastUnitName;
-//    } else if (unitGroupName !== null) {
-//        text = document.location.origin + "#" + unitGroupName;
-//    }
-//    return text;
-//}
-//window.onload = function () {
-//    var myUrl = '';
-//    var uc1 = 'https://www.unitcandy.com';
-//    var uc2 = uc1 + '/';
-//    if (myUrl.toUpperCase() === uc1.toUpperCase() || myUrl.toUpperCase() === uc2.toUpperCase()) {
-//        // there is not parameter in the URL so no need to go to the server
-//        return;
-//    }
-//    //www.unitcandy.com.ws.UnitCandyService.FindUnitFromUrl(window.location.href, findUnitComplete, findUnitError);
-//    $('#EmailSuccess').hide();
-//    $('#EmailFailure').hide();
-//}
-//$('input').on('focus', function (e) {
-//    var unitname = e.srcElement.dataset.unitname;
-//    if (unitname !== null) {
-//        $('[data-helper]').hide();
-//        $('[data-helper=' + unitname + ']').show();
-//    }
-//});
-//$(function () {
-//    $('[data-toggle="tooltip"]').tooltip({ delay: { show: 250, hide: 500 } })
-//})
 //# sourceMappingURL=unitcandy.js.map
