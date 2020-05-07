@@ -291,36 +291,6 @@ $(document).ready(function () {
 //    anyUnitSelectedValue = value;
 //    findUnit();
 //}
-//function findUnitComplete(result) {
-//    try {
-//        var controls = $('#inputFindUnit');
-//        if (controls.length === 1) {
-//            controls[0].value = result.UnitValue + ' ' + result.UnitName;
-//        }
-//        var recalc = www.unitcandy.com.ws.UnitCandyService.Recalculate(result.UnitName, result.UnitValue, unitChangedCompleted, unitChangedError);
-//        var aTag = $('#' + result.UnitType);
-//        $('html,body').animate({ scrollTop: aTag.offset().top }, 'easeInOutExpo');
-//        anyUnitSelectedValue = '';
-//        lastUnitName = result.UnitName;
-//        lastUnitGroupName = result.UnitType;
-//    } catch (e) {
-//    }
-//    return false;
-//}
-//function setFocusToLastUnitControl() {
-//    if (lastUnitName === 'AnyUnit') {
-//        findUnit();
-//    } else if (lastUnitName !== '') {
-//        var controls = $('[data-unitname=' + lastUnitName + ']');
-//        if (controls.length === 1) {
-//            try {
-//                controls[0].focus();
-//                controls[0].select();
-//            } catch (e) {
-//            }
-//        }
-//    }
-//}
 //function clearLastUnitGroup() {
 //    if (lastUnitGroupName !== '') {
 //        var lastUnitTextboxes = $('[data-unitgroupname=' + lastUnitGroupName + ']');

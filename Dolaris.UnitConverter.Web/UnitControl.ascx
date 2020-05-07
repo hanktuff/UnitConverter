@@ -18,8 +18,8 @@
     </td>
 </tr>
 <tr class="collapse" data-unit-helper-group="<% = UnitID.ToString() %>">
-    <td></td>
-    <td>
+    <td class="g-hidden-lg-down"></td>
+    <td colspan="2">
         <div class="ml-2">
             <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Add One" data-placement="bottom" data-unit-helper-action="+1">+1</span></a>
             <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Subtract One" data-placement="bottom" data-unit-helper-action="-1">-1</span></a>
@@ -29,5 +29,5 @@
             <a href="#"><span class="small g-color-black align-top mr-2" data-toggle="tooltip" title="Half Value" data-placement="bottom" data-unit-helper-action="/2">&divide;2</span></a>
         </div>
     </td>
-    <td></td>
+    <td class="g-hidden-lg-down"></td>
 </tr>

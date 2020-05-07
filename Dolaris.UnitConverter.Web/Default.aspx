@@ -246,7 +246,7 @@
                     <p class="help-block" style="color: white">Enter, for example, "24in", "60 Fahrenheit", etc.</p>
                 </div>
                 <div class="col-md-2">
-                    <input type="hidden" name="IL_IN_ARTICLE">
+                    <input type="hidden" name="IL_IN_ARTICLE" />
                 </div>
             </div>
         </div>
@@ -259,94 +259,70 @@
         <div class="container" hidden="hidden">
 
             <div class="row">
-                <div class="col-2">
-                    <h4 class="mb-3"></h4>
-                    <h2 class="mb-1"><strong>Length</strong></h2>
-                    <h6 class="mb-3">Length is any quantity with dimension distance.</h6>
-                </div>
 
                 <div class="col-6">
                     <div class="row mb-2">
-                        <div class="col col-3">
-                            <p class="align-self-center">Meter:</p>
-                        </div>
-                        <div class="col-5">
-                            <p>...</p>
-                            <p>...</p>
-                            <input type="text" class="form-control" />
-                            <p>...</p>
-                            <p>...</p>
-                        </div>
-                        <div class="col-1">
-                            <p>m</p>
-                        </div>
-                    </div>
-                    <div class="row mb-2 align-middle">
-                        <div class="col-3 align-middle">
-                            <p class="align-middle">Nautical Mile:</p>
-                        </div>
-                        <div class="col-5">
-                            <input type="text" class="form-control" />
-                        </div>
-                        <div class="col-1">
-                            <p>nmi</p>
+                        <div class="row mb-2 align-middle">
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-4">
-                <p>The right side.</p>
-            </div>
-        </div>
-        <br />
-        <div class="container-fluid py-5">
-            <div class="row">
-                <div class="col-lg-2 offset-lg-2">
-                    <h2 class="mb-1"><strong>Temperature</strong></h2>
-                    <h6 class="mb-3">Temperature is a comparative measurement of hot or cold. The coldest temperature is zero degrees Kelvin.</h6>
-                    <div class="d-flex flex-row">
-                        <button class="btn btn-xs u-btn-outline-blue text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard" data-button-copy="">Copy</button>
-                        <button class="btn btn-xs u-btn-outline-yellow text-uppercase mr-2" data-button-embed="" hidden="hidden">Embed</button>
-                        <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2" data-button-clear="">Clear</button>
-                    </div>
+                <div class="col-4">
+                    <p>The right side.</p>
                 </div>
-                <div class="col-lg-3">
-                    <div class="table-responsive table-borderless">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="align-middle g-hidden-lg-down">Celsius:</td>
-                                    <td>
-                                        <div class="g-hidden-xl-up">Celsius (cel):</div>
-                                        <input class="form-control text-dark" type="text" value="25" /></td>
-                                    <td class="align-middle g-hidden-lg-down">cel</td>
-                                </tr>
-                                <tr>
-                                    <td class="align-middle g-hidden-lg-down">Fahrenheit:</td>
-                                    <td>
-                                        <div class="g-hidden-xl-up">Fahrenheit (Deg F):</div>
-                                        <input class="form-control text-dark" type="text" value="" /></td>
-                                    <td class="align-middle g-hidden-lg-down">Deg F</td>
-                                </tr>
-                            </tbody>
-                        </table>
+            </div>
+            <br />
+            <div class="container-fluid py-5">
+                <div class="row">
+                    <div class="col-lg-2 offset-lg-2">
+                        <h2 class="mb-1"><strong>Temperature</strong></h2>
+                        <h6 class="mb-3">Temperature is a comparative measurement of hot or cold. The coldest temperature is zero degrees Kelvin.</h6>
+                        <div class="d-flex flex-row">
+                            <button class="btn btn-xs u-btn-outline-blue text-uppercase mr-2" data-toggle="tooltip" title="Copy to Clipboard" data-button-copy="">Copy</button>
+                            <button class="btn btn-xs u-btn-outline-yellow text-uppercase mr-2" data-button-embed="" hidden="hidden">Embed</button>
+                            <button class="btn btn-xs u-btn-outline-red text-uppercase mr-2" data-button-clear="">Clear</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="table-responsive table-borderless">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="align-middle g-hidden-lg-down">Celsius:</td>
+                                        <td>
+                                            <div class="g-hidden-xl-up">Celsius (cel):</div>
+                                            <input class="form-control text-dark" type="text" value="25" /></td>
+                                        <td class="align-middle g-hidden-lg-down">cel</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-middle g-hidden-lg-down">Fahrenheit:</td>
+                                        <td>
+                                            <div class="g-hidden-xl-up">Fahrenheit (Deg F):</div>
+                                            <input class="form-control text-dark" type="text" value="" /></td>
+                                        <td class="align-middle g-hidden-lg-down">Deg F</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
 
 
-
-
-
     <!-- unit groups -->
-    <section class="g-theme-bg-gray-light-v1">
+    <section id="unit-groups" class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
             <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
+        </div>
+    </section>
+
+    <!-- Ads -->
+    <section id="ads-in-article">
+        <div class="d-flex justify-content-center g-theme-bg-gray-light-v1">
+            <input type="hidden" name="IL_IN_ARTICLE" />
         </div>
     </section>
 
@@ -575,41 +551,7 @@
     <div id="ContactUnitCandy" class="wrap-container6020 " hidden="hidden">
         <div class="container">
             <div class="row">
-                <div class="col-md-7">
-                    <br />
-                    <h2><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter" style="color: #00aced;"></i></a></h2>
-                    <h3>
-                        <a href="https://itunes.apple.com/us/app/unitcandy/id1225441184?mt=8" style="display: inline-block; overflow: hidden; background: url(//linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat; width: 135px; height: 40px; background-size: contain;"></a>
-                    </h3>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2 wrap-container20">
-                    <img src="images/UnitcandyIcon128.png" />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 wrap-container20">
-                    <h5>© 2017 Copyright. All Rights Reserved.</h5>
-                    <h5>Created by Dolaris.</h5>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
-
-
-
-                    <h1>Privacy Policy</h1>
-
-
-                    <p>Effective date: July 18, 2019</p>
-
-
-                    <p>Dolaris ("us", "we", or "our") operates the https://www.unitcandy.com/ website (hereinafter referred to as the "Service").</p>
-
-                    <p>This page informs you of our policies regarding the collection, use and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
 
                     <h2>Definitions</h2>
                     <ul>
@@ -618,12 +560,6 @@
                             <p>Personal Data means data about a living individual who can be identified from those data (or from those and other information either in our possession or likely to come into our possession).</p>
                         </li>
                     </ul>
-
-
-                    <h2>Information Collection and Use</h2>
-                    <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
-
-                    <h3>Types of Data Collected</h3>
 
                     <h4>Tracking & Cookies Data</h4>
                     <p>We use cookies and similar tracking technologies to track the activity on our Service and we hold certain information.</p>
