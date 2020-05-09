@@ -119,23 +119,9 @@
         }
     </script>
 
-    <style>
-        #UnitTextBox {
-            /*font-size: 18px;*/
-        }
-    </style>
-
-
-    <%--Navigation--%>
     <%--<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top" hidden="hidden">
         <div class="container">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="sr-only">Menu</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
                 <img src="images/UnitcandyIcon32.png" alt="Logo" class="navbar-brand" />
                 <a class="navbar-brand smooth-scroll" href="#info" title="UnitCandy lets you convert units of measurement.">UnitCandy</a>
                 <div class="header-img">
@@ -148,9 +134,6 @@
                         <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
                         <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
                     </li>
-                     Copy to Clipboard 
-                    <li><a href="javascript:void(0);" onclick="copyToClipboard()" data-toggle="modal" data-target="#modalCopyToClipboard"><i class="fa fa-copy text-success" data-toggle="tooltip" data-placement="bottom" title="Copy to Clipboard"></i></a></li>
-                     Clear 
                     <li><a href="javascript:void(0);" onclick="clearLastUnitGroup()"><i class="fa fa-remove text-danger" data-toggle="tooltip" data-placement="bottom" title="Clear Input"></i></a></li>
                      Refresh 
                     <li><a href="https://www.unitcandy.com/"><i class="fa fa-refresh text-info" data-toggle="tooltip" data-placement="bottom" title="Refresh Site"></i></a></li>
@@ -162,62 +145,52 @@
     </nav>--%>
 
 
+    <!--navigation -->
+    <nav class="navbar navbar-expand-sm sticky-top navbar-light">
+        <div class="container">
 
-    <!-- Navigation -->
-    <%--<nav id="n" class="navbar navbar-fixed-top">
-        <h3 class="nav-item">Navbar</h3>
-    </nav>--%>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler1" aria-controls="navbar-toggler1" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar-toggler1">
+                <%--<a class="navbar-brand" href="#">Hidden brand</a>--%>
+                <img src="images/UnitcandyIcon32.png" class="img-fluid" />
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+                <input id="any-unit" class="form-control text-dark" type="text"
+                    data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
+            </div>
+
+        </div>
+    </nav>
+
 
     <!-- Header -->
     <%--<header id="js-header" class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance u-shadow-v19">
         <div class="u-header__section g-bg-white g-transition-0_3">
             <nav class="js-mega-menu navbar navbar-expand-lg g-pa-0">
                 <div class="container">
-                    <!-- Logo -->
-                    <a class="navbar-brand g-pl-15 py-3" href="home-page-1.html">
-                        <img class="g-width-95" src="assets/img/logo/logo.png" alt="Logo">
-                    </a>
-                    <!-- End Logo -->
-
-                    <!-- Responsive Toggle Button -->
-                    <button class="navbar-toggler navbar-toggler-right btn g-line-height-1 g-brd-none g-pos-abs g-top-10 g-right-0 g-pa-0 g-mt-2" type="button"
-                        aria-label="Toggle navigation"
-                        aria-expanded="false"
-                        aria-controls="navBar"
-                        data-toggle="collapse"
-                        data-target="#navBar">
-                        <span class="hamburger hamburger--slider g-px-15">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </span>
-                    </button>
-                    <!-- End Responsive Toggle Button -->
 
                     <!-- Navigation -->
                     <div id="navBar" class="collapse navbar-collapse align-items-center flex-sm-row">
                         <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
-                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="home-page-1.html">Home
-                                </a>
-                            </li>
 
                             <!-- About - Submenu -->
                             <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a id="nav-link--page" class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="#"
-                                    aria-haspopup="true"
-                                    aria-expanded="false"
-                                    aria-controls="nav-submenu--page">About
-                                </a>
-
                                 <!-- Submenu -->
                                 <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
                                     aria-labelledby="nav-link--page">
                                     <li class="dropdown-item">
                                         <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-services-1.html">Services</a>
                                     </li>
                                     <li class="dropdown-item">
                                         <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
@@ -269,12 +242,6 @@
                     </ul>
                     <!-- End Social Icons -->
 
-                    <div class="col-auto g-hidden-md-down g-pr-0">
-                        <div class="g-bg-main g-cursor-pointer g-px-25 g-py-20">
-                            <span class="d-block g-color-primary g-font-size-11 mb-1">(0161) 347 8854</span>
-                            <span class="d-block g-color-primary"><i class="mr-2 fa fa-phone"></i>Request a Call</span>
-                        </div>
-                    </div>
                 </div>
             </nav>
         </div>
@@ -303,9 +270,6 @@
                         <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
                     </li>
                     <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-services-1.html">Services</a>
-                    </li>
-                    <li class="dropdown-item">
                         <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
                     </li>
                     <li class="dropdown-item">
@@ -314,22 +278,10 @@
                     <li class="dropdown-item">
                         <a class="nav-link g-color-text g-font-weight-600" href="page-hire-us-1.html">Hire Us</a>
                     </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-careers-1.html">Careers</a>
-                    </li>
                 </ul>
                 <!-- End Submenu -->
             </li>
             <!-- End About - Submenu -->
-
-            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-help-1.html">Help
-                </a>
-            </li>
-            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-pricing-1.html">Pricing
-                </a>
-            </li>
             <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
                 <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
                 </a>
@@ -342,20 +294,7 @@
     <!-- End Navigation -->
 
 
-
-
-
-
-
-    <%--<section id="header">
-        <div class="d-flex justify-content-center align-items-center bg-dark py-1">
-            <img src="images/UnitcandyIcon32.png" alt="Logo" class="img-fluid mr-5" />
-            <h2 class="mr-5 g-color-white">UnitCandy</h2>
-            <button id="button-convert" class="btn btn-warning mr-4 text-uppercase">Convert</button>
-            <button id="button-info" class="btn btn-primary px-4 text-uppercase">Info</button>
-        </div>
-    </section>--%>
-
+    <!-- Unit Buttons -->
     <section id="unit-buttons">
         <div class="container-fluid pt-4 pb-2">
             <div class="row">
@@ -397,32 +336,10 @@
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15 g-hidden-sm-down">Black</a>--%>
                 </div>
             </div>
-            <div class="row py-3">
-                <div class="col-4 offset-4">
-                    <input id="any-unit" class="form-control text-dark" type="text" value="" 
-                        data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
-                </div>
-            </div>
         </div>
     </section>
 
-
-    
-    <div id="infoOLD" class="wrap-container60 bg-primary" style="margin-top: 50px" hidden="hidden">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                </div>
-                <div class="col-md-7">
-                    <div class="input-group" style="max-width: 375px">
-                    </div>
-                    <p class="help-block" style="color: white">Enter, for example, "24in", "60 Fahrenheit", etc.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- unit groups -->
+    <!-- Unit Groups -->
     <section id="unit-groups" class="g-theme-bg-gray-light-v1">
         <div class="container-fluid py-5">
             <asp:PlaceHolder ID="UnitGroupsPlaceHolder" runat="server" />
@@ -430,7 +347,7 @@
     </section>
 
     <!-- Main Form -->
-    <form id="mainform" runat="server" action="/" method="post">
+    <form id="MainForm" runat="server" action="/" method="post">
 
         <asp:ScriptManager ID="scriptManagerMain" runat="server">
             <Services>
@@ -660,32 +577,6 @@
     </section>
 
 
-    <%-- Contact UnitCandy --%>
-    <div id="ContactUnitCandy" class="wrap-container6020 " hidden="hidden">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
-
-                    <h2>Service Providers</h2>
-                    <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), provide the Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.</p>
-                    <p>These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
-
-                    <h3>Analytics</h3>
-                    <p>We may use third-party Service Providers to monitor and analyse the use of our Service.</p>
-
-                    <h2>Children's Privacy</h2>
-                    <p>Our Service does not address anyone under the age of 18 ("Children").</p>
-                    <p>We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.</p>
-
-
-                    <h2>Changes to This Privacy Policy</h2>
-                    <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
-                    <p>We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy.</p>
-                    <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- JS Global Compulsory -->
@@ -793,13 +684,6 @@
     </script>
 
 
-
-    <%--JavaScript--%>
-    <%-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>--%>
 
     <%--<script type="text/javascript" src="Dolaris.UnitConverter.js"></script>--%>
     <%--<script type="text/javascript" src="unitcandy.js"></script>--%>
