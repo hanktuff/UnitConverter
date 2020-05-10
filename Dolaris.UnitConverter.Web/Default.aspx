@@ -32,17 +32,7 @@
 
     <!-- Stylesheets -->
     <%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/slick.css" />
-    <link rel="stylesheet" href="css/slick-theme.css" />
-    <link rel="stylesheet" href="css/jquery.fancybox.css" />
-    <link rel="stylesheet" href="css/animate.min.css" />
     <link rel="stylesheet" href="css/style.css" />--%>
-
-    <%--[if lt IE 9]>
-    	<script src="js/html5.js"></script>
-        <script src="js/respond.min.js"></script>
-	<![endif]--%>
 
     <%--[if lt IE 8]>
     	<link rel="stylesheet" href="css/ie-older.css">
@@ -55,11 +45,6 @@
     <link rel="unitcandy-icon" sizes="80x58" href="images/unitcandy_icon.png" />
     <link rel="shortcut icon" sizes="16x16" href="images/favicon.ico" />
     <link rel="shortcut icon" href="images/unitcandy_icon.png" />
-    <%--<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />--%>
-    <%--<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />--%>
-    <%--<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />--%>
-
-
 
 
     <!-- Google Fonts -->
@@ -103,7 +88,6 @@
         ga('send', 'pageview');
     </script>
 
-    <div id="fb-root"></div>
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -112,33 +96,16 @@
             js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'))
-
-
-        function test() {
-            //www.unitcandy.com.ws.UnitCandyService.Recalculate()
-        }
     </script>
 
     <%--<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top" hidden="hidden">
         <div class="container">
-            <div class="navbar-header">
-                <img src="images/UnitcandyIcon32.png" alt="Logo" class="navbar-brand" />
-                <a class="navbar-brand smooth-scroll" href="#info" title="UnitCandy lets you convert units of measurement.">UnitCandy</a>
-                <div class="header-img">
-                    <img src="images/unitcandy_logo.gif" alt="Logo" style="width: 154px; height: 58px" />
-                </div>
-            </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li>
-                        <button id="buttonConvert" class="btn navbar-btn btn-danger" onclick="setFocusToLastUnitControl()" style="margin-left: 10px; margin-right: 10px;">Convert</button>
-                        <span><a href="#ContactUnitCandy" class="btn navbar-btn btn-info smooth-scroll" role="button" style="width: 90px !important; color: white !important;">INFO</a></span>
-                    </li>
                     <li><a href="javascript:void(0);" onclick="clearLastUnitGroup()"><i class="fa fa-remove text-danger" data-toggle="tooltip" data-placement="bottom" title="Clear Input"></i></a></li>
                      Refresh 
                     <li><a href="https://www.unitcandy.com/"><i class="fa fa-refresh text-info" data-toggle="tooltip" data-placement="bottom" title="Refresh Site"></i></a></li>
                      Info 
-                    <li><a href="#AboutUnitCandy" class="smooth-scroll"><i class="fa fa-info-circle" style="color: white" data-toggle="tooltip" data-placement="bottom" title="More Information"></i></a></li>
                 </ul>
             </div>
         </div>
@@ -146,33 +113,36 @@
 
 
     <!--navigation -->
-    <nav class="navbar navbar-expand-sm sticky-top navbar-light">
+    <div id="page-top"></div>
+    <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
         <div class="container">
+
+            <img src="images/UnitcandyIcon32.png" class="img-fluid mr-4" />
+            <ul class="navbar-nav mr-5">
+                <li class="nav-item">
+                    <a class="nav-link" href="#page-top">QuoteCandy</a>
+                </li>
+            </ul>
+
+            <input id="any-unit" class="form-control text-dark w-50" type="text"
+                data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler1" aria-controls="navbar-toggler1" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbar-toggler1">
-                <%--<a class="navbar-brand" href="#">Hidden brand</a>--%>
-                <img src="images/UnitcandyIcon32.png" class="img-fluid" />
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                        <a class="nav-link" href="#">Show All</a>
                     </li>
                 </ul>
-                <input id="any-unit" class="form-control text-dark" type="text"
-                    data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
             </div>
 
         </div>
     </nav>
-
 
     <!-- Header -->
     <%--<header id="js-header" class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance u-shadow-v19">
@@ -195,24 +165,11 @@
                                     <li class="dropdown-item">
                                         <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
                                     </li>
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-works-1.html">Works</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-hire-us-1.html">Hire Us</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-careers-1.html">Careers</a>
-                                    </li>
                                 </ul>
                                 <!-- End Submenu -->
                             </li>
                             <!-- End About - Submenu -->
 
-                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-help-1.html">Help
-                                </a>
-                            </li>
                             <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
                                 <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-pricing-1.html">Pricing
                                 </a>
@@ -220,9 +177,6 @@
                             <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
                                 <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
                                 </a>
-                            </li>
-                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a class="nav-link d-inline-block rounded g-brd-around g-brd-2 g-brd-primary g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-20 g-py-8" href="../../index.html">Main</a>
                             </li>
                         </ul>
                     </div>
@@ -235,9 +189,6 @@
                         </li>
                         <li class="list-inline-item g-mx-0">
                             <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li class="list-inline-item g-mx-0">
-                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-pinterest"></i></a>
                         </li>
                     </ul>
                     <!-- End Social Icons -->
@@ -257,35 +208,14 @@
 
             <!-- About - Submenu -->
             <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a id="nav-link--page" class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="#"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    aria-controls="nav-submenu--page">About
-                </a>
 
                 <!-- Submenu -->
                 <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
                     aria-labelledby="nav-link--page">
-                    <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
-                    </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
-                    </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-works-1.html">Works</a>
-                    </li>
-                    <li class="dropdown-item">
-                        <a class="nav-link g-color-text g-font-weight-600" href="page-hire-us-1.html">Hire Us</a>
-                    </li>
                 </ul>
                 <!-- End Submenu -->
             </li>
             <!-- End About - Submenu -->
-            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
-                </a>
-            </li>
             <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
                 <a class="nav-link d-inline-block rounded g-brd-around g-brd-2 g-brd-primary g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-20 g-py-8" href="../../index.html">Main</a>
             </li>
@@ -375,61 +305,53 @@
 
     <!-- About -->
     <section id="about">
-        <div class="d-flex justify-content-center g-bg-brown-opacity-0_1 py-3">
+        <div class="container-fluid bg-dark py-5">
+            <div class="row justify-content-center">
 
-            <div class="mr-5">
-                <img src="images/UnitcandyIcon64.png" class="img-fluid" />
-            </div>
-
-            <div class="mr-5">
-                <h4>UnitCandy</h4>
-                <p>Created by Dolaris.</p>
-                <p>
-                    © 2020 Copyright.<br />
-                    All Rights Reserved
-                </p>
-            </div>
-
-            <div class="mr-0">
-                <h4>Contact</h4>
-                <p>
-                    Dolaris<br />
-                    P.O. Box 1801<br />
-                    Bellevue, WA 98009<br />
-                    United States
-                </p>
-                <a href="mailto:unitcandycom@gmail.com" class="text-dark">unitcandycom@gmail.com</a>
-            </div>
-
-            <div class="mr-0">
-                <h4>Privacy</h4>
-                <a href="#privacy-policy" class="text-dark" data-toggle="collapse" data-target="#privacy-policy">Click here to read<br />
-                    our privacy policy.</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Links -->
-    <section id="links">
-        <div class="d-flex justify-content-center g-bg-beige py-4">
-
-            <div class="m-5">
-                <h1><a href="https://www.facebook.com/UnitCandycom-331411840674514/" target="_blank"><i class="fa fa-facebook-square g-color-facebook"></i></a></h1>
-            </div>
-
-            <div class="m-5">
-                <h1><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter g-color-twitter"></i></a></h1>
-            </div>
-
-            <div class="m-5">
-                <div class="d-flex flex-column align-items-baseline">
-                    <h1><a href="https://itunes.apple.com/us/app/unitcandy/id1225441184?mt=8" target="_blank" style="display: inline-block; overflow: hidden; background: url(//linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat; width: 135px; height: 40px; background-size: contain;"></a></h1>
+                <div class="col-6 col-sm-3 col-xl-1">
+                    <img src="images/UnitcandyIcon64.png" class="img-fluid align-self-center" />
                 </div>
+
+                <div class="col-6 col-sm-3 col-xl-1">
+                    <h5 class="g-color-white">UnitCandy</h5>
+                    <p>Created by Dolaris.</p>
+                    <p>
+                        © 2020 Copyright.<br />
+                        All Rights Reserved
+                    </p>
+                </div>
+
+                <div class="col-6 col-sm-3 col-xl-1">
+                    <h5 class="g-color-white">Contact</h5>
+                    <p>
+                        Dolaris<br />
+                        P.O. Box 1801<br />
+                        Bellevue, WA 98009<br />
+                        United States
+                    </p>
+                    <a href="mailto:unitcandycom@gmail.com" class="xx-text-dark">unitcandycom@gmail.com</a>
+                </div>
+
+                <div class="col-6 col-sm-3 col-xl-1">
+                    <h5 class="g-color-white">Privacy</h5>
+                    <a href="#privacy-policy" class="xx-text-dark font-italic" data-toggle="collapse" data-target="#privacy-policy">Click here to read<br />
+                        our privacy policy.</a>
+                </div>
+
             </div>
 
-            <div class="m-5">
-                <h1><a href="mailto:unitcandycom@gmail.com"><i class="fa fa-envelope g-color-yellow"></i></a></h1>
+            <div class="row d-flex justify-content-center py-3 py-md-5">
+                <h3>
+                    <span class="mr-2 mr-md-4"><a href="https://www.facebook.com/UnitCandycom-331411840674514/" target="_blank"><i class="fa fa-facebook-square g-color-gray-light-v1 g-color-facebook--hover" title="Facebook"></i></a></span>
+                    <span class="mr-2 mr-md-4"><a href="https://twitter.com/unitcandy" target="_blank"><i class="fa fa-twitter g-color-gray-light-v1 g-color-twitter--hover" title="Twitter"></i></a></span>
+                    <span class="mr-2 mr-md-4"><a href="mailto:unitcandycom@gmail.com"><i class="fa fa-envelope-o g-color-gray-light-v1 g-color-yellow--hover" title="E-Mail"></i></a></span>
+                </h3>
+            </div>
+
+            <div class="row d-flex justify-content-center pb-3 pb-md-5">
+                <h1>
+                    <a href="https://itunes.apple.com/us/app/unitcandy/id1225441184?mt=8" target="_blank" style="display: inline-block; overflow: hidden; background: url(//linkmaker.itunes.apple.com/assets/shared/badges/en-us/appstore-lrg.svg) no-repeat; width: 135px; height: 40px; background-size: contain;"></a>
+                </h1>
             </div>
 
         </div>
@@ -577,8 +499,6 @@
     </section>
 
 
-
-
     <!-- JS Global Compulsory -->
     <script src="assets/vendor/jquery/jquery.min.js"></script>
     <script src="assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
@@ -608,7 +528,6 @@
 
 
     <!-- JS Customization -->
-    <%--<script src="../../assets/js/custom.js"></script>--%>
     <script src="unitcandy.js"></script>
 
     <!-- JS Plugins Init. -->
@@ -683,10 +602,6 @@
         });
     </script>
 
-
-
-    <%--<script type="text/javascript" src="Dolaris.UnitConverter.js"></script>--%>
-    <%--<script type="text/javascript" src="unitcandy.js"></script>--%>
 
     <script type="text/javascript">
         var infolinks_pid = 3190727;
