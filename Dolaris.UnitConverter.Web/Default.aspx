@@ -449,7 +449,7 @@
     <script src="assets/js/components/hs.go-to.js"></script>
 
     <!-- JS Customization -->
-    <script src="unitcandy.js"></script>
+    <script src="Scripts/unitcandy.js"></script>
 
     <!-- JS Plugins Init. -->
     <script>
