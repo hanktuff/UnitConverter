@@ -42,6 +42,7 @@ namespace Dolaris.UnitConverter {
         CubicMeter,
         Liter,
         Milliliter,
+        CC,
         Gallon,
         Quart,
         Pint,

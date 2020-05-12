@@ -165,7 +165,7 @@ var UnitCandyUI = /** @class */ (function () {
     UnitCandyUI.prototype.setAutoCursor = function () {
         document.body.style.cursor = "auto";
     };
-    // copy to clipboard
+    /** copy provided text to clipboard */
     UnitCandyUI.prototype.copyTextToClipboard = function (text) {
         var textarea = document.createElement("textarea");
         try {
@@ -221,7 +221,9 @@ var UnitCandyUI = /** @class */ (function () {
             for (var i = 0; i < unitsOfSameType.length; i++) {
                 text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
-            text += 'https://www.unitcandy.com?#' + type + '\n';
+            if (_this.lastRecalculatedUnit !== undefined) {
+                text += location.origin + location.pathname + '?' + _this.lastRecalculatedUnit.value + _this.lastRecalculatedUnit.symbol;
+            }
             _this.copyTextToClipboard(text);
             _this.lastRecalculatedUnit.element.focus();
         });
@@ -306,6 +308,14 @@ var UnitCandyUI = /** @class */ (function () {
 $(document).ready(function () {
     recalculateUnit = new Recalculate();
     UI = new UnitCandyUI();
+    // register popovers
     $('[data-toggle="popover"]').popover();
+    // handle uri with parameters
+    // for example: https://www.unitcandy.com?68Fahrenheit
+    var indexOfQuestionMark = location.href.indexOf('?');
+    if (indexOfQuestionMark > 0) {
+        var findstr = location.href.substring(indexOfQuestionMark + 1);
+        recalculateUnit.findUnit(findstr);
+    }
 });
 //# sourceMappingURL=unitcandy.js.map

@@ -73,6 +73,7 @@ namespace Dolaris.UnitConverter {
             listOfUnits.Add(new Unit() { Name = "Cubic Meter", Symbol = "m3", ID = UnitID.CubicMeter, Type = UnitType.Volume, Sloap = 1, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Liter", Symbol = "ltr", ID = UnitID.Liter, Type = UnitType.Volume, Sloap = 0.001, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Milliliter", Symbol = "ml", ID = UnitID.Milliliter, Type = UnitType.Volume, Sloap = 0.000001, Intercept = 0 });
+            listOfUnits.Add(new Unit() { Name = "Cubic Centimeter", Symbol = "cc", ID = UnitID.CC, Type = UnitType.Volume, Sloap = 0.000001, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Gallon", Symbol = "gal", ID = UnitID.Gallon, Type = UnitType.Volume, Sloap = 0.00378541, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Quart", Symbol = "qt", ID = UnitID.Quart, Type = UnitType.Volume, Sloap = 0.000946353, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Pint", Symbol = "pt", ID = UnitID.Pint, Type = UnitType.Volume, Sloap = 0.000473176, Intercept = 0 });

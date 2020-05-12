@@ -233,7 +233,7 @@ class UnitCandyUI {
         document.body.style.cursor = "auto";
     }
 
-    // copy to clipboard
+    /** copy provided text to clipboard */
     public copyTextToClipboard(text: string): void {
 
         const textarea = document.createElement("textarea");
@@ -330,7 +330,9 @@ class UnitCandyUI {
                 text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
             }
 
-            text += 'https://www.unitcandy.com?#' + type + '\n';
+            if (this.lastRecalculatedUnit !== undefined) {
+                text += location.origin + location.pathname + '?' + this.lastRecalculatedUnit.value + this.lastRecalculatedUnit.symbol;
+            }
 
             this.copyTextToClipboard(text);
 
@@ -449,5 +451,17 @@ $(document).ready(() => {
     recalculateUnit = new Recalculate();
     UI = new UnitCandyUI();
 
+    // register popovers
     $('[data-toggle="popover"]').popover();
+
+    // handle uri with parameters
+    // for example: https://www.unitcandy.com?68Fahrenheit
+
+    const indexOfQuestionMark = location.href.indexOf('?');
+
+    if (indexOfQuestionMark > 0) {
+
+        const findstr = location.href.substring(indexOfQuestionMark + 1);
+        recalculateUnit.findUnit(findstr);
+    }
 });

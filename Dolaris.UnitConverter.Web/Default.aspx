@@ -100,14 +100,6 @@
 
     <%--<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top" hidden="hidden">
         <div class="container">
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="javascript:void(0);" onclick="clearLastUnitGroup()"><i class="fa fa-remove text-danger" data-toggle="tooltip" data-placement="bottom" title="Clear Input"></i></a></li>
-                     Refresh 
-                    <li><a href="https://www.unitcandy.com/"><i class="fa fa-refresh text-info" data-toggle="tooltip" data-placement="bottom" title="Refresh Site"></i></a></li>
-                     Info 
-                </ul>
-            </div>
         </div>
     </nav>--%>
 
@@ -159,25 +151,11 @@
                                 <!-- Submenu -->
                                 <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
                                     aria-labelledby="nav-link--page">
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-about-1.html">About</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a class="nav-link g-color-text g-font-weight-600" href="page-consultants-1.html">Consultants</a>
-                                    </li>
                                 </ul>
                                 <!-- End Submenu -->
                             </li>
                             <!-- End About - Submenu -->
 
-                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-pricing-1.html">Pricing
-                                </a>
-                            </li>
-                            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="page-contacts-1.html">Contacts
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <!-- End Navigation -->
@@ -186,9 +164,6 @@
                     <ul class="col-auto list-inline g-pos-abs g-right-0 g-pos-rel--lg g-top-minus-3 g-py-20 g-py-6--lg g-pr-5 g-mr-60 g-mr-0--lg ml-auto ml-lg-0 mb-0">
                         <li class="list-inline-item g-mx-0">
                             <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item g-mx-0">
-                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-twitter"></i></a>
                         </li>
                     </ul>
                     <!-- End Social Icons -->
@@ -205,20 +180,6 @@
                 <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="home-page-1.html">Home
                 </a>
             </li>
-
-            <!-- About - Submenu -->
-            <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-
-                <!-- Submenu -->
-                <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
-                    aria-labelledby="nav-link--page">
-                </ul>
-                <!-- End Submenu -->
-            </li>
-            <!-- End About - Submenu -->
-            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a class="nav-link d-inline-block rounded g-brd-around g-brd-2 g-brd-primary g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-20 g-py-8" href="../../index.html">Main</a>
-            </li>
         </ul>
     </nav>--%>
     <!-- End Navigation -->
@@ -226,11 +187,12 @@
 
     <!-- Unit Buttons -->
     <section id="unit-buttons">
-        <div class="container-fluid pt-4 pb-2">
+        <div class="container-fluid justify-content-center pt-4 pb-2">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3" data-animation="fadeIn">
                     <a href="#" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Length">Length</a>
-                    <a href="#" class="btn btn-sm u-btn-primary g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-primary g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>--%>
+                    <a href="#" class="h4 g-mr-10 g-mb-15 g-color-primary g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
                     <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Area">Area</a>
                     <a href="#" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
                     <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Volume">Volume</a>
