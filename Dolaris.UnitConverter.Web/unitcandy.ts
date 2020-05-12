@@ -166,6 +166,8 @@ class UnitCandyUI {
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
         this.initializeAnyUnitTextBox();
+
+        $('#unitcandy-icon').on('click', () => { setTimeout(() => { window.location.href = location.origin + location.pathname }, 1000); });
     }
 
 

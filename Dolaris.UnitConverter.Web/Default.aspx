@@ -9,28 +9,30 @@
 
 <head runat="server">
 
-    <!-- Your Basic Site Informations -->
+    <!-- Title -->
     <title>UnitCandy - Unit Converter</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Favicons -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+
+    <!-- Data for Search Engine -->
     <meta name="description" content="UnitCandy lets you convert units of measurement." />
     <meta name="keywords" content="unit converter,unit conversion,units,measurement,conversion,converter" />
     <meta name="author" content="Dolaris" />
 
+    <!-- Facebook Information -->
     <meta property="og:url" content="https://www.unitcandy.com/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="UnitCandy" />
     <meta property="og:description" content="UnitCandy lets you convert units of measurement." />
     <meta property="og:image" content="https://www.unitcandy.com/images/UnitcandyExample.jpg" />
 
-    <!-- Mobile Specific Meta -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-    <%--Favicons--%>
+    <!-- Favicons -->
     <link rel="unitcandy-icon" sizes="80x58" href="images/unitcandy_icon.png" />
     <link rel="shortcut icon" sizes="16x16" href="images/favicon.ico" />
     <link rel="shortcut icon" href="images/unitcandy_icon.png" />
-
 
     <!-- Google Fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet" />
@@ -56,6 +58,7 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="assets/css/custom.css" />
+
 </head>
 
 <body id="topofpage" data-spy="scroll" data-target=".navbar" data-offset="10">
@@ -73,6 +76,7 @@
         ga('send', 'pageview');
     </script>
 
+    <!-- Like on Facebook -->
     <script>
         (function (d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
@@ -87,7 +91,7 @@
     <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
         <div class="container">
 
-            <img src="images/UnitcandyIcon32.png" class="img-fluid mr-4" />
+            <img id="unitcandy-icon" src="images/UnitcandyIcon32.png" class="img-fluid mr-4" />
             <ul class="navbar-nav mr-5">
                 <li class="nav-item">
                     <a class="nav-link" href="#topofpage">QuoteCandy</a>
@@ -123,39 +127,39 @@
                     <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Area">Area</a>
                     <%--<a href="#" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>--%>
                     <a href="#" class="h5 g-color-red m-3 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Volume">Volume</a>
                     <%--<a href="#" class="btn btn-sm u-btn-lightred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>--%>
                     <a href="#" class="h5 g-color-lightred m-3 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Temperature">Temperature</a>
                     <%--<a href="#" class="btn btn-sm u-btn-darkred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>--%>
                     <a href="#" class="h5 g-color-darkred m-3 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Mass">Mass</a>
                     <%--<a href="#" class="btn btn-sm u-btn-blue g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>--%>
                     <a href="#" class="h5 g-color-blue m-3 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Speed">Speed</a>
                     <%--<a href="#" class="btn btn-sm u-btn-indigo g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>--%>
                     <a href="#" class="h5 g-color-indigo m-3 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Energy">Energy</a>
                     <%--<a href="#" class="btn btn-sm u-btn-purple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>--%>
                     <a href="#" class="h5 g-color-purple m-3 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Power">Power</a>
                     <%--<a href="#" class="btn btn-sm u-btn-darkpurple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>--%>
                     <a href="#" class="h5 g-color-darkpurple m-3 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Pressure">Pressure</a>
                     <%--<a href="#" class="btn btn-sm u-btn-pink g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>--%>
                     <a href="#" class="h5 g-color-pink m-3 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Time">Time</a>
                     <%--<a href="#" class="btn btn-sm u-btn-orange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>--%>
                     <a href="#" class="h5 g-color-orange m-3 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>
-                    
+
                     <a href="#" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
                     <%--<a href="#" class="btn btn-sm u-btn-deeporange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>--%>
                     <a href="#" class="h5 g-color-deeporange m-3 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
@@ -444,7 +448,6 @@
     <script src="assets/js/components/hs.carousel.js"></script>
     <script src="assets/js/components/hs.go-to.js"></script>
 
-
     <!-- JS Customization -->
     <script src="unitcandy.js"></script>
 
@@ -520,7 +523,7 @@
         });
     </script>
 
-
+    <!-- InfoLinks Ads -->
     <script type="text/javascript">
         var infolinks_pid = 3190727;
         var infolinks_wsid = 2;

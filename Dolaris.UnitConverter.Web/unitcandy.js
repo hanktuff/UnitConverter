@@ -115,6 +115,7 @@ var UnitCandyUI = /** @class */ (function () {
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
         this.initializeAnyUnitTextBox();
+        $('#unitcandy-icon').on('click', function () { setTimeout(function () { window.location.href = location.origin + location.pathname; }, 1000); });
     }
     /** sets the unit identified by unitID to the value
         example: unitID = "NauticalMiles", value = "305.72" */
