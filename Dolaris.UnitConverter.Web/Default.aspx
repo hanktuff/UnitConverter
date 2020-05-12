@@ -98,12 +98,6 @@
         }(document, 'script', 'facebook-jssdk'))
     </script>
 
-    <%--<nav id="navigation" class="navbar navbar-inverse navbar-fixed-top" hidden="hidden">
-        <div class="container">
-        </div>
-    </nav>--%>
-
-
     <!--navigation -->
     <div id="page-top"></div>
     <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
@@ -127,9 +121,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link" href="#">Show All</a>
-                    </li>
+                    </li>--%>
                 </ul>
             </div>
 
@@ -147,13 +141,6 @@
                         <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
 
                             <!-- About - Submenu -->
-                            <li class="nav-item hs-has-sub-menu g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                                <!-- Submenu -->
-                                <ul id="nav-submenu--page" class="hs-sub-menu list-unstyled u-shadow-v11 g-min-width-220 g-mt-18"
-                                    aria-labelledby="nav-link--page">
-                                </ul>
-                                <!-- End Submenu -->
-                            </li>
                             <!-- End About - Submenu -->
 
                         </ul>
@@ -173,16 +160,6 @@
         </div>
     </header>--%>
     <!-- End Header -->
-
-    <%--<nav id="navBar" class="collapse navbar-collapse align-items-center flex-sm-row">
-        <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
-            <li class="nav-item g-mx-15 g-mx-3--lg g-mb-5 g-mb-0--lg">
-                <a class="nav-link rounded g-color-primary--hover g-bg-transparent g-bg-main--hover g-font-weight-600 g-font-size-15 g-px-14 g-py-10" href="home-page-1.html">Home
-                </a>
-            </li>
-        </ul>
-    </nav>--%>
-    <!-- End Navigation -->
 
 
     <!-- Unit Buttons -->

@@ -200,10 +200,39 @@ class UnitCandyUI {
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
 
         } else {
+
             this.anyUnitTextBox.val('');
             this.anyUnitTextBox.popover('show');
             setTimeout(() => this.anyUnitTextBox.popover('hide'), 3000);
         }
+    }
+
+    public setUnitFromUri(uri: string): void {
+
+        // handle uri with parameters
+        // for example: https://www.unitcandy.com?68Fahrenheit
+
+        const indexOfQuestionMark = uri.indexOf('?');
+
+        if (indexOfQuestionMark < 0) {
+            return;
+        }
+
+        const param = location.href.substring(indexOfQuestionMark + 1);
+
+        for (let i = 0; i < this.units.length; i++) {
+
+            const unitGroupType = this.units[i].type;
+
+            if (unitGroupType.toLowerCase() === param.toLowerCase()) {
+
+                this.showUnitGroup(unitGroupType);
+                this.getBaseUnitOrDefault(unitGroupType).element.focus();
+                return;
+            }
+        }
+
+        recalculateUnit.findUnit(param);
     }
 
     public recalculateUnit(unit: UnitElement, forceRecalc = false): void {
@@ -365,8 +394,7 @@ class UnitCandyUI {
                 const unitgroupType = $(e.target).data('goto-unitgroup');
                 this.showUnitGroup(unitgroupType);
 
-                const units = this.getUnitsOfSameType(unitgroupType);
-                this.getBaseUnitOrDefault(units).element.focus();
+                this.getBaseUnitOrDefault(unitgroupType).element.focus();
             });
     }
 
@@ -415,7 +443,9 @@ class UnitCandyUI {
         return null;
     }
 
-    protected getBaseUnitOrDefault(units: Array<UnitElement>): UnitElement {
+    protected getBaseUnitOrDefault(unitGroupType: string): UnitElement {
+
+        const units = this.getUnitsOfSameType(unitGroupType);
 
         for (let i = 0; i < units.length; i++) {
 
@@ -448,20 +478,12 @@ class UnitCandyUI {
 
 $(document).ready(() => {
 
-    recalculateUnit = new Recalculate();
-    UI = new UnitCandyUI();
-
     // register popovers
     $('[data-toggle="popover"]').popover();
 
-    // handle uri with parameters
-    // for example: https://www.unitcandy.com?68Fahrenheit
+    recalculateUnit = new Recalculate();
+    UI = new UnitCandyUI();
 
-    const indexOfQuestionMark = location.href.indexOf('?');
-
-    if (indexOfQuestionMark > 0) {
-
-        const findstr = location.href.substring(indexOfQuestionMark + 1);
-        recalculateUnit.findUnit(findstr);
-    }
+    // in case uri has params
+    UI.setUnitFromUri(location.href);
 });

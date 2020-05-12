@@ -143,6 +143,24 @@ var UnitCandyUI = /** @class */ (function () {
             setTimeout(function () { return _this.anyUnitTextBox.popover('hide'); }, 3000);
         }
     };
+    UnitCandyUI.prototype.setUnitFromUri = function (uri) {
+        // handle uri with parameters
+        // for example: https://www.unitcandy.com?68Fahrenheit
+        var indexOfQuestionMark = uri.indexOf('?');
+        if (indexOfQuestionMark < 0) {
+            return;
+        }
+        var param = location.href.substring(indexOfQuestionMark + 1);
+        for (var i = 0; i < this.units.length; i++) {
+            var unitGroupType = this.units[i].type;
+            if (unitGroupType.toLowerCase() === param.toLowerCase()) {
+                this.showUnitGroup(unitGroupType);
+                this.getBaseUnitOrDefault(unitGroupType).element.focus();
+                return;
+            }
+        }
+        recalculateUnit.findUnit(param);
+    };
     UnitCandyUI.prototype.recalculateUnit = function (unit, forceRecalc) {
         if (forceRecalc === void 0) { forceRecalc = false; }
         if (forceRecalc === false) {
@@ -248,8 +266,7 @@ var UnitCandyUI = /** @class */ (function () {
         this.buttonGotoUnitGroup.on('click', function (e) {
             var unitgroupType = $(e.target).data('goto-unitgroup');
             _this.showUnitGroup(unitgroupType);
-            var units = _this.getUnitsOfSameType(unitgroupType);
-            _this.getBaseUnitOrDefault(units).element.focus();
+            _this.getBaseUnitOrDefault(unitgroupType).element.focus();
         });
     };
     UnitCandyUI.prototype.initializeAnyUnitTextBox = function () {
@@ -284,7 +301,8 @@ var UnitCandyUI = /** @class */ (function () {
         }
         return null;
     };
-    UnitCandyUI.prototype.getBaseUnitOrDefault = function (units) {
+    UnitCandyUI.prototype.getBaseUnitOrDefault = function (unitGroupType) {
+        var units = this.getUnitsOfSameType(unitGroupType);
         for (var i = 0; i < units.length; i++) {
             if (units[i].isBaseUnit === true) {
                 return units[i];
@@ -306,16 +324,11 @@ var UnitCandyUI = /** @class */ (function () {
     return UnitCandyUI;
 }());
 $(document).ready(function () {
-    recalculateUnit = new Recalculate();
-    UI = new UnitCandyUI();
     // register popovers
     $('[data-toggle="popover"]').popover();
-    // handle uri with parameters
-    // for example: https://www.unitcandy.com?68Fahrenheit
-    var indexOfQuestionMark = location.href.indexOf('?');
-    if (indexOfQuestionMark > 0) {
-        var findstr = location.href.substring(indexOfQuestionMark + 1);
-        recalculateUnit.findUnit(findstr);
-    }
+    recalculateUnit = new Recalculate();
+    UI = new UnitCandyUI();
+    // in case uri has params
+    UI.setUnitFromUri(location.href);
 });
 //# sourceMappingURL=unitcandy.js.map
