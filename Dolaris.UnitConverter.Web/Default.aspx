@@ -26,21 +26,6 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-    <!-- Fonts -->
-    <%--<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" rel="stylesheet" type="text/css" />--%>
-    <%--<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />--%>
-
-    <!-- Stylesheets -->
-    <%--    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />--%>
-
-    <%--[if lt IE 8]>
-    	<link rel="stylesheet" href="css/ie-older.css">
-    <![endif]--%>
-
-    <%--<noscript><link rel="stylesheet" href="css/no-js.css" /></noscript>--%>
-    <%--<link rel="stylesheet" href="css/no-js.css" />--%>
-
     <%--Favicons--%>
     <link rel="unitcandy-icon" sizes="80x58" href="images/unitcandy_icon.png" />
     <link rel="shortcut icon" sizes="16x16" href="images/favicon.ico" />
@@ -73,7 +58,7 @@
     <link rel="stylesheet" href="assets/css/custom.css" />
 </head>
 
-<body data-spy="scroll" data-target=".navbar" data-offset="10">
+<body id="topofpage" data-spy="scroll" data-target=".navbar" data-offset="10">
 
     <!-- Google Analytics -->
     <script>
@@ -99,18 +84,17 @@
     </script>
 
     <!--navigation -->
-    <div id="page-top"></div>
     <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light">
         <div class="container">
 
             <img src="images/UnitcandyIcon32.png" class="img-fluid mr-4" />
             <ul class="navbar-nav mr-5">
                 <li class="nav-item">
-                    <a class="nav-link" href="#page-top">QuoteCandy</a>
+                    <a class="nav-link" href="#topofpage">QuoteCandy</a>
                 </li>
             </ul>
 
-            <input id="any-unit" class="form-control text-dark w-50" type="text"
+            <input id="any-unit" class="form-control text-dark w-50 mr-5" type="text"
                 data-toggle="popover" title="Examples:" data-content="24in<br />60 Fahrenheit<br />16 gal" data-placement="bottom" data-html="true" data-trigger="hover" />
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggler1" aria-controls="navbar-toggler1" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,46 +105,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <%--<li class="nav-item">
-                        <a class="nav-link" href="#">Show All</a>
-                    </li>--%>
                 </ul>
             </div>
 
         </div>
     </nav>
-
-    <!-- Header -->
-    <%--<header id="js-header" class="u-header u-header--sticky-top u-header--toggle-section u-header--change-appearance u-shadow-v19">
-        <div class="u-header__section g-bg-white g-transition-0_3">
-            <nav class="js-mega-menu navbar navbar-expand-lg g-pa-0">
-                <div class="container">
-
-                    <!-- Navigation -->
-                    <div id="navBar" class="collapse navbar-collapse align-items-center flex-sm-row">
-                        <ul class="navbar-nav ml-auto g-pb-30 g-pb-0--lg">
-
-                            <!-- About - Submenu -->
-                            <!-- End About - Submenu -->
-
-                        </ul>
-                    </div>
-                    <!-- End Navigation -->
-
-                    <!-- Social Icons -->
-                    <ul class="col-auto list-inline g-pos-abs g-right-0 g-pos-rel--lg g-top-minus-3 g-py-20 g-py-6--lg g-pr-5 g-mr-60 g-mr-0--lg ml-auto ml-lg-0 mb-0">
-                        <li class="list-inline-item g-mx-0">
-                            <a class="u-icon-v3 u-icon-size--xs g-bg-transparent g-bg-main--hover rounded" href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                    </ul>
-                    <!-- End Social Icons -->
-
-                </div>
-            </nav>
-        </div>
-    </header>--%>
-    <!-- End Header -->
-
 
     <!-- Unit Buttons -->
     <section id="unit-buttons">
@@ -169,37 +118,67 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3" data-animation="fadeIn">
                     <a href="#" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Length">Length</a>
                     <%--<a href="#" class="btn btn-sm u-btn-primary g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>--%>
-                    <a href="#" class="h4 g-mr-10 g-mb-15 g-color-primary g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
+                    <a href="#" class="h5 g-color-primary m-3 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Area">Area</a>
-                    <a href="#" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>--%>
+                    <a href="#" class="h5 g-color-red m-3 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Volume">Volume</a>
-                    <a href="#" class="btn btn-sm u-btn-lightred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-lightred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>--%>
+                    <a href="#" class="h5 g-color-lightred m-3 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Temperature">Temperature</a>
-                    <a href="#" class="btn btn-sm u-btn-darkred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-darkred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>--%>
+                    <a href="#" class="h5 g-color-darkred m-3 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Mass">Mass</a>
-                    <a href="#" class="btn btn-sm u-btn-blue g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-blue g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>--%>
+                    <a href="#" class="h5 g-color-blue m-3 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Speed">Speed</a>
-                    <a href="#" class="btn btn-sm u-btn-indigo g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-indigo g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>--%>
+                    <a href="#" class="h5 g-color-indigo m-3 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Energy">Energy</a>
-                    <a href="#" class="btn btn-sm u-btn-purple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-purple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>--%>
+                    <a href="#" class="h5 g-color-purple m-3 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Power">Power</a>
-                    <a href="#" class="btn btn-sm u-btn-darkpurple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-darkpurple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>--%>
+                    <a href="#" class="h5 g-color-darkpurple m-3 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Pressure">Pressure</a>
-                    <a href="#" class="btn btn-sm u-btn-pink g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-pink g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>--%>
+                    <a href="#" class="h5 g-color-pink m-3 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Time">Time</a>
-                    <a href="#" class="btn btn-sm u-btn-orange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-orange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>--%>
+                    <a href="#" class="h5 g-color-orange m-3 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>
+                    
                     <a href="#" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
-                    <a href="#" class="btn btn-sm u-btn-deeporange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-deeporange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>--%>
+                    <a href="#" class="h5 g-color-deeporange m-3 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Frequency">Frequency</a>
-                    <a href="#" class="btn btn-sm u-btn-aqua g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-aqua g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>--%>
+                    <a href="#" class="h5 g-color-aqua m-3 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Acceleration">Acceleration</a>
-                    <a href="#" class="btn btn-sm u-btn-yellow g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-yellow g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>--%>
+                    <a href="#" class="h5 g-color-yellow m-3 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Density">Density</a>
-                    <a href="#" class="btn btn-sm u-btn-cyan g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-cyan g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>--%>
+                    <a href="#" class="h5 g-color-cyan m-3 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Angle">Angle</a>
-                    <a href="#" class="btn btn-sm u-btn-teal g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-teal g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>--%>
+                    <a href="#" class="h5 g-color-teal m-3 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>
+
                     <a href="#" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
-                    <a href="#" class="btn btn-sm u-btn-brown g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
+                    <%--<a href="#" class="btn btn-sm u-btn-brown g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>--%>
+                    <a href="#" class="h5 g-color-brown m-3 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
                     <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15 g-hidden-sm-down">Blue Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15 g-hidden-sm-down">Dark Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-black g-mr-10 g-mb-15 g-hidden-sm-down">Black</a>--%>
