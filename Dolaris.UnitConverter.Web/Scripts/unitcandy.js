@@ -12,7 +12,7 @@ var Recalculate = /** @class */ (function () {
             method: 'GET',
             data: { unitName: unitElement.ID, unitValue: unitElement.value },
             dataType: 'json',
-            beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 500); },
+            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 500); },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
                     UI.setUnitToValue(result.UnitName, result.UnitValue);
@@ -33,7 +33,7 @@ var Recalculate = /** @class */ (function () {
             method: 'GET',
             data: { unitName: unitElement.ID, unitValue: unitElement.value, action: helperAction },
             dataType: 'json',
-            beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 500); },
+            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 500); },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
                     UI.setUnitToValue(result.UnitName, result.UnitValue);
@@ -54,7 +54,7 @@ var Recalculate = /** @class */ (function () {
             method: 'GET',
             data: { inputstring: findstr, unitName: null },
             dataType: 'json',
-            beforeSend: function () { UI.setWaitCursor(); setTimeout(function () { return UI.setAutoCursor(); }, 1000); },
+            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 1000); },
             success: function (data, status, xhr) {
                 var unitName = data.d !== null ? data.d.UnitName : null;
                 var unitValue = data.d !== null ? data.d.UnitValue : null;
@@ -134,7 +134,8 @@ var UnitCandyUI = /** @class */ (function () {
         if (unitID !== null) {
             var unit = this.getUnitById(unitID);
             unit.value = unitValue;
-            this.showUnitGroup(unit.type);
+            //this.showUnitGroup(unit.type);
+            this.scrollToUnitGroup(unit.type);
             this.recalculateUnit(unit, true);
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
         }
@@ -155,7 +156,8 @@ var UnitCandyUI = /** @class */ (function () {
         for (var i = 0; i < this.units.length; i++) {
             var unitGroupType = this.units[i].type;
             if (unitGroupType.toLowerCase() === param.toLowerCase()) {
-                this.showUnitGroup(unitGroupType);
+                //this.showUnitGroup(unitGroupType);
+                this.scrollToUnitGroup(unitGroupType);
                 this.getBaseUnitOrDefault(unitGroupType).element.focus();
                 return;
             }
@@ -177,11 +179,11 @@ var UnitCandyUI = /** @class */ (function () {
         recalculateUnit.recalculate(unit);
     };
     /** sets the cursor to Wait */
-    UnitCandyUI.prototype.setWaitCursor = function () {
+    UnitCandyUI.prototype.showWaitCursor = function () {
         document.body.style.cursor = "wait";
     };
     /** sets the cursor to Auto */
-    UnitCandyUI.prototype.setAutoCursor = function () {
+    UnitCandyUI.prototype.showAutoCursor = function () {
         document.body.style.cursor = "auto";
     };
     /** copy provided text to clipboard */
@@ -266,8 +268,7 @@ var UnitCandyUI = /** @class */ (function () {
         var _this = this;
         this.buttonGotoUnitGroup.on('click', function (e) {
             var unitgroupType = $(e.target).data('goto-unitgroup');
-            _this.showUnitGroup(unitgroupType);
-            _this.getBaseUnitOrDefault(unitgroupType).element.focus();
+            _this.scrollToUnitGroup(unitgroupType);
         });
     };
     UnitCandyUI.prototype.initializeAnyUnitTextBox = function () {
@@ -293,6 +294,11 @@ var UnitCandyUI = /** @class */ (function () {
                 $(unitGroups[i]).hide();
             }
         }
+    };
+    UnitCandyUI.prototype.scrollToUnitGroup = function (unitGroupType) {
+        $('html, body').animate({
+            scrollTop: $('#' + unitGroupType).offset().top - 75
+        }, 'slow');
     };
     UnitCandyUI.prototype.getUnitById = function (id) {
         for (var i = 0; i < this.units.length; i++) {

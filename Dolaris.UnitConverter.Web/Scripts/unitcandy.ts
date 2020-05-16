@@ -20,7 +20,7 @@ class Recalculate {
             method: 'GET',
             data: { unitName: unitElement.ID, unitValue: unitElement.value },
             dataType: 'json',
-            beforeSend: function () { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
+            beforeSend: function () { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 500); },
 
             success: (data, status, xhr) => {
 
@@ -48,7 +48,7 @@ class Recalculate {
             method: 'GET',
             data: { unitName: unitElement.ID, unitValue: unitElement.value, action: helperAction },
             dataType: 'json',
-            beforeSend: () => { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 500); },
+            beforeSend: () => { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 500); },
 
             success: (data, status, xhr) => {
 
@@ -76,7 +76,7 @@ class Recalculate {
             method: 'GET',
             data: { inputstring: findstr, unitName: null },
             dataType: 'json',
-            beforeSend: () => { UI.setWaitCursor(); setTimeout(() => UI.setAutoCursor(), 1000); },
+            beforeSend: () => { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 1000); },
 
             success: (data, status, xhr) => {
 
@@ -196,7 +196,8 @@ class UnitCandyUI {
             const unit = this.getUnitById(unitID);
 
             unit.value = unitValue;
-            this.showUnitGroup(unit.type);
+            //this.showUnitGroup(unit.type);
+            this.scrollToUnitGroup(unit.type);
             this.recalculateUnit(unit, true);
 
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
@@ -228,7 +229,8 @@ class UnitCandyUI {
 
             if (unitGroupType.toLowerCase() === param.toLowerCase()) {
 
-                this.showUnitGroup(unitGroupType);
+                //this.showUnitGroup(unitGroupType);
+                this.scrollToUnitGroup(unitGroupType);
                 this.getBaseUnitOrDefault(unitGroupType).element.focus();
                 return;
             }
@@ -255,12 +257,12 @@ class UnitCandyUI {
     }
 
     /** sets the cursor to Wait */
-    public setWaitCursor(): void {
+    public showWaitCursor(): void {
         document.body.style.cursor = "wait";
     }
 
     /** sets the cursor to Auto */
-    public setAutoCursor(): void {
+    public showAutoCursor(): void {
         document.body.style.cursor = "auto";
     }
 
@@ -394,9 +396,7 @@ class UnitCandyUI {
             (e) => {
 
                 const unitgroupType = $(e.target).data('goto-unitgroup');
-                this.showUnitGroup(unitgroupType);
-
-                this.getBaseUnitOrDefault(unitgroupType).element.focus();
+                this.scrollToUnitGroup(unitgroupType);
             });
     }
 
@@ -431,6 +431,13 @@ class UnitCandyUI {
                 $(unitGroups[i]).hide();
             }
         }
+    }
+
+    protected scrollToUnitGroup(unitGroupType: string): void {
+
+        $('html, body').animate({
+            scrollTop: $('#' + unitGroupType).offset().top - 75
+        }, 'slow');
     }
 
     protected getUnitById(id: string): UnitElement {
