@@ -121,67 +121,36 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 offset-xl-3" data-animation="fadeIn">
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-primary g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Length">Length</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-primary g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-primary m-3 g-hidden-md-up" data-goto-unitgroup="Length">Length</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-red g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Area">Area</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-red g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-red m-3 g-hidden-md-up" data-goto-unitgroup="Area">Area</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-lightred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Volume">Volume</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-lightred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-lightred m-3 g-hidden-md-up" data-goto-unitgroup="Volume">Volume</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-darkred g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Temperature">Temperature</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-darkred g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-darkred m-3 g-hidden-md-up" data-goto-unitgroup="Temperature">Temperature</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-blue g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Mass">Mass</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-blue g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-blue m-3 g-hidden-md-up" data-goto-unitgroup="Mass">Mass</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-indigo g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Speed">Speed</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-indigo g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-indigo m-3 g-hidden-md-up" data-goto-unitgroup="Speed">Speed</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-purple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Energy">Energy</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-purple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-purple m-3 g-hidden-md-up" data-goto-unitgroup="Energy">Energy</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-darkpurple g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Power">Power</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-darkpurple g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-darkpurple m-3 g-hidden-md-up" data-goto-unitgroup="Power">Power</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-pink g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Pressure">Pressure</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-pink g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-pink m-3 g-hidden-md-up" data-goto-unitgroup="Pressure">Pressure</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-orange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Time">Time</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-orange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-orange m-3 g-hidden-md-up" data-goto-unitgroup="Time">Time</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-deeporange g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-deeporange g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-deeporange m-3 g-hidden-md-up" data-goto-unitgroup="FuelEconomy">Fuel Economy</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-aqua g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Frequency">Frequency</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-aqua g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-aqua m-3 g-hidden-md-up" data-goto-unitgroup="Frequency">Frequency</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-yellow g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Acceleration">Acceleration</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-yellow g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-yellow m-3 g-hidden-md-up" data-goto-unitgroup="Acceleration">Acceleration</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-cyan g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Density">Density</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-cyan g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-cyan m-3 g-hidden-md-up" data-goto-unitgroup="Density">Density</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-teal g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="Angle">Angle</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-teal g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-teal m-3 g-hidden-md-up" data-goto-unitgroup="Angle">Angle</a>
-
                     <a href="javascript:void(0)" class="btn btn-md u-btn-outline-brown g-mr-10 g-mb-15 g-hidden-sm-down" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
-                    <%--<a href="javascript:void(0)" class="btn btn-sm u-btn-brown g-mr-10 g-mb-15 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>--%>
                     <a href="javascript:void(0)" class="h5 g-color-brown m-3 g-hidden-md-up" data-goto-unitgroup="DigitalStorage">Digital Storage</a>
                     <%--<a href="#" class="btn btn-md u-btn-outline-bluegray g-mr-10 g-mb-15 g-hidden-sm-down">Blue Gray</a>--%>
                     <%--<a href="#" class="btn btn-md u-btn-outline-darkgray g-mr-10 g-mb-15 g-hidden-sm-down">Dark Gray</a>--%>
