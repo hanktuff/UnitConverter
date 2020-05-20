@@ -22,6 +22,7 @@ namespace Dolaris.UnitConverter {
         // area
         SquareMeter,
         SquareFoot,
+        SquareInch,
         Acre,
         SquareKilometer,
         Hectare,

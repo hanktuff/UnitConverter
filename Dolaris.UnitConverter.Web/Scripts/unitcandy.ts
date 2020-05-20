@@ -360,4 +360,18 @@ $(document).ready(() => {
 
     // if icon clicked, reload the page
     $('#unitcandy-icon').on('click', () => { setTimeout(() => { window.location.href = location.origin + location.pathname }, 1000); });
+
+
+    //$('[href="#privacy-policy"]').click(
+    //    () => {
+    //        const button = $('[href="#privacy-policy"]');
+
+    //        if (button.text() == 'Show') {
+    //            button.text('Hide');
+
+    //        } else {
+    //            button.text('Show');
+    //        }
+    //    });
+    $('[href="#privacy-policy"]').off('click');
 });

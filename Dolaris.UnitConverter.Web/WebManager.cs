@@ -145,6 +145,7 @@ namespace Dolaris.UnitConverter.Web {
             // Area
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareMeter)) { Enabled = true, IsMetric = true });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareFoot)) { Enabled = true, IsMetric = false });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareInch)) { Enabled = true, IsMetric = false });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Acre)) { Enabled = true, IsMetric = false });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.SquareKilometer)) { Enabled = true, IsMetric = true });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Hectare)) { Enabled = true, IsMetric = true });

@@ -224,9 +224,8 @@
                 </div>
 
                 <div class="col-6 col-sm-3 col-xl-1">
-                    <h5 class="g-color-white">Privacy</h5>
-                    <a href="#privacy-policy" class="xx-text-dark font-italic" data-toggle="collapse" data-target="#privacy-policy">Click here to read<br />
-                        our privacy policy.</a>
+                    <h5 class="g-color-white">Privacy Policy</h5>
+                    <p>Click <a href="#privacy-policy" class="xxx-text-dark" data-toggle="collapse" data-target="#privacy-policy">here</a> to show or hide our privacy policy.</p>
                 </div>
 
             </div>

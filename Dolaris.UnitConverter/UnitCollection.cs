@@ -56,6 +56,8 @@ namespace Dolaris.UnitConverter {
 
             listOfUnits.Add(new Unit() { Name = "Square Meter", Symbol = "m2", ID = UnitID.SquareMeter, Type = UnitType.Area, Sloap = 1, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Square Foot", Symbol = "sqft", ID = UnitID.SquareFoot, Type = UnitType.Area, Sloap = 0.09290304, Intercept = 0 });
+            listOfUnits.Add(new Unit() { Name = "Square Inch", Symbol = "sq in", ID = UnitID.SquareInch, Type = UnitType.Area, Sloap = 0.00064516, Intercept = 0 });
+
             listOfUnits.Add(new Unit() { Name = "Acre", Symbol = "ac", ID = UnitID.Acre, Type = UnitType.Area, Sloap = 4047, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Square Kilometer", Symbol = "km2", ID = UnitID.SquareKilometer, Type = UnitType.Area, Sloap = 1000000, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Hectare", Symbol = "ha", ID = UnitID.Hectare, Type = UnitType.Area, Sloap = 10000, Intercept = 0 });

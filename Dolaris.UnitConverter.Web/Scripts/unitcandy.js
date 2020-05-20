@@ -251,5 +251,15 @@ $(document).ready(function () {
     ucui.setUnitFromUri(location.href);
     // if icon clicked, reload the page
     $('#unitcandy-icon').on('click', function () { setTimeout(function () { window.location.href = location.origin + location.pathname; }, 1000); });
+    //$('[href="#privacy-policy"]').click(
+    //    () => {
+    //        const button = $('[href="#privacy-policy"]');
+    //        if (button.text() == 'Show') {
+    //            button.text('Hide');
+    //        } else {
+    //            button.text('Show');
+    //        }
+    //    });
+    $('[href="#privacy-policy"]').off('click');
 });
 //# sourceMappingURL=unitcandy.js.map
