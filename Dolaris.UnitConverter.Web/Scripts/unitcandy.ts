@@ -235,10 +235,10 @@ class UnitCandyUI {
 
             for (let i = 0; i < unitsOfSameType.length; i++) {
 
-                setTimeout(() => unitsOfSameType[i].value = '', Math.random() * 500);
+                setTimeout(() => unitsOfSameType[i].element.attr("disabled", "disabled"), Math.random() * 300);
+                setTimeout(() => unitsOfSameType[i].value = '', Math.random() * 300 + 300);
+                setTimeout(() => unitsOfSameType[i].element.removeAttr('disabled'), Math.random() * 300 + 600);
             }
-
-            this.lastRecalculatedUnit.element.focus();
         });
     }
 
@@ -360,18 +360,4 @@ $(document).ready(() => {
 
     // if icon clicked, reload the page
     $('#unitcandy-icon').on('click', () => { setTimeout(() => { window.location.href = location.origin + location.pathname }, 1000); });
-
-
-    //$('[href="#privacy-policy"]').click(
-    //    () => {
-    //        const button = $('[href="#privacy-policy"]');
-
-    //        if (button.text() == 'Show') {
-    //            button.text('Hide');
-
-    //        } else {
-    //            button.text('Show');
-    //        }
-    //    });
-    $('[href="#privacy-policy"]').off('click');
 });
