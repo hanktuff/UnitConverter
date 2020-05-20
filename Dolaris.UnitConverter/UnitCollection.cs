@@ -77,6 +77,7 @@ namespace Dolaris.UnitConverter {
             listOfUnits.Add(new Unit() { Name = "Gallon", Symbol = "gal", ID = UnitID.Gallon, Type = UnitType.Volume, Sloap = 0.00378541, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Quart", Symbol = "qt", ID = UnitID.Quart, Type = UnitType.Volume, Sloap = 0.000946353, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Pint", Symbol = "pt", ID = UnitID.Pint, Type = UnitType.Volume, Sloap = 0.000473176, Intercept = 0 });
+            listOfUnits.Add(new Unit() { Name = "Fluid Ounce", Symbol = "fl oz", ID = UnitID.FluidOunce, Type = UnitType.Volume, Sloap = 0.00002957353, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Cubic Foot", Symbol = "cu ft", ID = UnitID.CubicFoot, Type = UnitType.Volume, Sloap = 0.0283168, Intercept = 0 });
             listOfUnits.Add(new Unit() { Name = "Cubic Inch", Symbol = "cu in", ID = UnitID.CubicInch, Type = UnitType.Volume, Sloap = 0.0000016387, Intercept = 0 });
 

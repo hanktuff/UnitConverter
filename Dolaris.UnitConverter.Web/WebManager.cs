@@ -157,6 +157,7 @@ namespace Dolaris.UnitConverter.Web {
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Gallon)) { Enabled = true, IsMetric = true });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Quart)) { Enabled = true, IsMetric = true });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.Pint)) { Enabled = true, IsMetric = true });
+            webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.FluidOunce)) { Enabled = true, IsMetric = false });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.CubicFoot)) { Enabled = true, IsMetric = true });
             webUnits.Add(new WebUnit(_unitsManager.GetUnit(UnitID.CubicInch)) { Enabled = true, IsMetric = true });
 

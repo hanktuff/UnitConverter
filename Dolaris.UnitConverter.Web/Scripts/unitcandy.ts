@@ -3,171 +3,18 @@
 
 
 
-let recalculateUnit: Recalculate;
-let UI: UnitCandyUI;
-
-
-
-class Recalculate {
-
-    public constructor() { }
-
-    public recalculate(unitElement: UnitElement): void {
-
-        $.ajax({
-            url: 'UnitCandyService.svc/Recalculate',
-            async: true,
-            method: 'GET',
-            data: { unitName: unitElement.ID, unitValue: unitElement.value },
-            dataType: 'json',
-            beforeSend: function () { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 500); },
-
-            success: (data, status, xhr) => {
-
-                $.each(data.d,
-                    (index, result) => {
-                        UI.setUnitToValue(result.UnitName, result.UnitValue)
-                    });
-
-                return null;
-            },
-
-            error: (xhr, status, error) => {
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    }
-
-    public recalculateWithHelperAction(unitElement: UnitElement, helperAction: string): void {
-
-        $.ajax({
-            url: 'UnitCandyService.svc/RecalculateWithHelperAction',
-            async: true,
-            method: 'GET',
-            data: { unitName: unitElement.ID, unitValue: unitElement.value, action: helperAction },
-            dataType: 'json',
-            beforeSend: () => { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 500); },
-
-            success: (data, status, xhr) => {
-
-                $.each(data.d,
-                    (index, result) => {
-                        UI.setUnitToValue(result.UnitName, result.UnitValue)
-                    });
-
-                return null;
-            },
-
-            error: (xhr, status, error) => {
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    }
-
-    public findUnit(findstr: string): void {
-
-        $.ajax({
-            url: 'UnitCandyService.svc/FindUnit',
-            async: true,
-            method: 'GET',
-            data: { inputstring: findstr, unitName: null },
-            dataType: 'json',
-            beforeSend: () => { UI.showWaitCursor(); setTimeout(() => UI.showAutoCursor(), 1000); },
-
-            success: (data, status, xhr) => {
-
-                const unitName = data.d !== null ? data.d.UnitName : null;
-                const unitValue = data.d !== null ? data.d.UnitValue : null;
-
-                UI.setUnitFromFindstr(unitName, unitValue);
-
-                return null;
-            },
-
-            error: (xhr, status, error) => {
-
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    }
-}
-
-
-
-class UnitElement {
-
-    public constructor(element: JQuery) {
-
-        this.ID = this.type = '';
-
-        if (element !== null) {
-
-            this.element = element;
-            this.ID = element.data(UnitElement.UnitTextboxAttr);
-            this.type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            this.name = element.data('unit-name');
-            this.plural = element.data('unit-plural');
-            this.symbol = element.data('unit-symbol');
-            this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
-            this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
-        }
-    }
-
-
-    public static UnitTextboxAttr = 'unit-textbox';
-    public static UnitTypeAttr = 'unit-type';
-    public static UnitHelperGroupAttr = 'unit-helper-group';
-
-
-    public ID: string;
-
-    public type: string;
-
-    public name: string;
-
-    public plural: string;
-
-    public symbol: string;
-
-    public isBaseUnit: boolean;
-
-    public element: JQuery;
-
-    public elementHelperGroup: JQuery;
-
-    public get value(): string {
-        return this.element !== null ? this.element.val() : '';
-    }
-
-    public set value(s: string) {
-
-        if (this.element !== null) {
-            this.element.val(s);
-        }
-    }
-
-    public previousValue: string;
-}
-
-
-
 class UnitCandyUI {
 
     public constructor() {
 
         this.initializeUnitElements();
-        this.initializeCopyButtons();
-        this.initializeClearButtons();
-        this.initializeGotoUnitgroupButtons();
+        this.initializeUnitHelpers();
         this.initializeAnyUnitTextBox();
 
-        $('#unitcandy-icon').on('click', () => { setTimeout(() => { window.location.href = location.origin + location.pathname }, 1000); });
+        this.initializeCopyButtons();
+        this.initializeClearButtons();
+
+        this.initializeGotoUnitgroupButtons();
     }
 
 
@@ -185,11 +32,11 @@ class UnitCandyUI {
             setTimeout(() => unit.value = unitValue, Math.random() * 500);
 
         } else {
-            unit.value = unitValue
+            unit.value = unitValue;
         }
     }
 
-    public setUnitFromFindstr(unitID: string, unitValue: string): void {
+    public setUnitFromSearchstr(unitID: string, unitValue: string): void {
 
         if (unitID !== null) {
 
@@ -198,7 +45,7 @@ class UnitCandyUI {
             unit.value = unitValue;
             //this.showUnitGroup(unit.type);
             this.scrollToUnitGroup(unit.type);
-            this.recalculateUnit(unit, true);
+            this.recalculateUnit(unit);
 
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
 
@@ -236,34 +83,30 @@ class UnitCandyUI {
             }
         }
 
-        recalculateUnit.findUnit(param);
+        this.appearBusy();
+
+        UnitCandyData.findUnit(param, (id, v) => this.setUnitFromSearchstr(id, v));
     }
 
-    public recalculateUnit(unit: UnitElement, forceRecalc = false): void {
+    public recalculateUnit(unit: UnitElement, helper: string = null): void {
 
-        if (forceRecalc === false) {
-            if (this.lastRecalculatedUnit !== undefined) {
-                if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
-                    return;
-                }
-            }
+        //if (this.lastRecalculatedUnit !== undefined) {
+        //    if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
+        //        return;
+        //    }
+        //}
+
+        this.appearBusy();
+
+        this.lastRecalculatedUnit = unit;
+        this.lastRecalculatedUnit.previousValue = unit.value;
+
+        if (helper === null) {
+            UnitCandyData.recalculateUnits(unit, (n, v) => this.setUnitToValue(n, v));
+
+        } else {
+            UnitCandyData.recalculateUnitsWithHelper(unit, helper, (n, v) => this.setUnitToValue(n, v));
         }
-
-        UI.lastRecalculatedUnit = unit;
-        UI.lastRecalculatedUnit.previousValue = unit.value;
-
-        recalculateUnit = new Recalculate();
-        recalculateUnit.recalculate(unit);
-    }
-
-    /** sets the cursor to Wait */
-    public showWaitCursor(): void {
-        document.body.style.cursor = "wait";
-    }
-
-    /** sets the cursor to Auto */
-    public showAutoCursor(): void {
-        document.body.style.cursor = "auto";
     }
 
     /** copy provided text to clipboard */
@@ -297,6 +140,7 @@ class UnitCandyUI {
 
     public lastRecalculatedUnit: UnitElement;
     public lastUnitHelperGroup: JQuery;
+    public lastValueOfUnit: string;
 
     protected initializeUnitElements(): void {
 
@@ -304,19 +148,20 @@ class UnitCandyUI {
 
             const unit = new UnitElement($(item));
 
-            unit.element.on('keypress',
+            // recalculate unit when Enter key pressed
+
+            unit.element.on('keyup',
                 (e) => {
 
-                    const key = e.keyCode || e.which;
+                    const element = $(e.target);
+                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-                    if (key === 13) {
+                    unit.value = element.val();
 
-                        const element = $(e.target);
-                        const unitToRecalculate = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-
-                        this.recalculateUnit(unitToRecalculate);
-                    }
+                    this.recalculateUnit(unit);
                 });
+
+            // show unit helpers when focus received
 
             unit.element.on('focusin',
                 (e) => {
@@ -330,22 +175,29 @@ class UnitCandyUI {
 
                     unit.elementHelperGroup.show();
                     this.lastUnitHelperGroup = unit.elementHelperGroup;
+
+                    this.lastValueOfUnit = unit.value;
                 });
 
             this.units.push(unit);
         });
+    }
 
-        $('[data-unit-helper-action]').on('click', (e) => {
+    protected initializeUnitHelpers(): void {
 
-            const element = $(e.target);
+        $('[data-unit-helper-action]').on('click',
+            (e) => {
 
-            const unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
-            const unit = this.getUnitById(unitID);
+                this.appearBusy();
 
-            const helperAction = element.data('unit-helper-action');
+                const element = $(e.target);
+                const unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
+                const unit = this.getUnitById(unitID);
 
-            recalculateUnit.recalculateWithHelperAction(unit, helperAction);
-        });
+                const helper = element.data('unit-helper-action');
+
+                this.recalculateUnit(unit, helper);
+            });
     }
 
     protected initializeCopyButtons(): void {
@@ -409,8 +261,10 @@ class UnitCandyUI {
 
                 if (key === 13) {
 
-                    const findstr = $(e.target).val();
-                    recalculateUnit.findUnit(findstr);
+                    this.appearBusy();
+
+                    const searchstr = $(e.target).val();
+                    UnitCandyData.findUnit(searchstr, (id, v) => this.setUnitFromSearchstr(id, v));
                 }
             });
     }
@@ -433,6 +287,7 @@ class UnitCandyUI {
         }
     }
 
+    /** scrolls to top of unit group */
     protected scrollToUnitGroup(unitGroupType: string): void {
 
         $('html, body').animate({
@@ -440,6 +295,7 @@ class UnitCandyUI {
         }, 'slow');
     }
 
+    /** returns the unit object matching the id; returns null if not found */
     protected getUnitById(id: string): UnitElement {
 
         for (let i = 0; i < this.units.length; i++) {
@@ -452,6 +308,8 @@ class UnitCandyUI {
         return null;
     }
 
+    /** returns unit object that is the base unit (for length this is Meter); 
+     * if there is no base unit returns the first unit */
     protected getBaseUnitOrDefault(unitGroupType: string): UnitElement {
 
         const units = this.getUnitsOfSameType(unitGroupType);
@@ -481,6 +339,12 @@ class UnitCandyUI {
 
         return unitsOfSameType;
     }
+
+    protected appearBusy(duration = 500): void {
+
+        document.body.style.cursor = "wait";
+        setTimeout(() => document.body.style.cursor = "auto", duration);
+    }
 }
 
 
@@ -490,9 +354,10 @@ $(document).ready(() => {
     // register popovers
     $('[data-toggle="popover"]').popover();
 
-    recalculateUnit = new Recalculate();
-    UI = new UnitCandyUI();
-
     // in case uri has params
-    UI.setUnitFromUri(location.href);
+    const ucui = new UnitCandyUI();
+    ucui.setUnitFromUri(location.href);
+
+    // if icon clicked, reload the page
+    $('#unitcandy-icon').on('click', () => { setTimeout(() => { window.location.href = location.origin + location.pathname }, 1000); });
 });

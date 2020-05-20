@@ -48,6 +48,7 @@ namespace Dolaris.UnitConverter {
         Pint,
         CubicFoot,
         CubicInch,
+        FluidOunce,
 
         // speed
         KilometerPerHour,

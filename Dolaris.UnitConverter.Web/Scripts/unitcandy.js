@@ -1,106 +1,5 @@
 /// <reference path="typings/jquery/jquery.d.ts"/>
 /// <reference path="typings/jqueryui/jqueryui.d.ts"/>
-var recalculateUnit;
-var UI;
-var Recalculate = /** @class */ (function () {
-    function Recalculate() {
-    }
-    Recalculate.prototype.recalculate = function (unitElement) {
-        $.ajax({
-            url: 'UnitCandyService.svc/Recalculate',
-            async: true,
-            method: 'GET',
-            data: { unitName: unitElement.ID, unitValue: unitElement.value },
-            dataType: 'json',
-            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 500); },
-            success: function (data, status, xhr) {
-                $.each(data.d, function (index, result) {
-                    UI.setUnitToValue(result.UnitName, result.UnitValue);
-                });
-                return null;
-            },
-            error: function (xhr, status, error) {
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    };
-    Recalculate.prototype.recalculateWithHelperAction = function (unitElement, helperAction) {
-        $.ajax({
-            url: 'UnitCandyService.svc/RecalculateWithHelperAction',
-            async: true,
-            method: 'GET',
-            data: { unitName: unitElement.ID, unitValue: unitElement.value, action: helperAction },
-            dataType: 'json',
-            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 500); },
-            success: function (data, status, xhr) {
-                $.each(data.d, function (index, result) {
-                    UI.setUnitToValue(result.UnitName, result.UnitValue);
-                });
-                return null;
-            },
-            error: function (xhr, status, error) {
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    };
-    Recalculate.prototype.findUnit = function (findstr) {
-        $.ajax({
-            url: 'UnitCandyService.svc/FindUnit',
-            async: true,
-            method: 'GET',
-            data: { inputstring: findstr, unitName: null },
-            dataType: 'json',
-            beforeSend: function () { UI.showWaitCursor(); setTimeout(function () { return UI.showAutoCursor(); }, 1000); },
-            success: function (data, status, xhr) {
-                var unitName = data.d !== null ? data.d.UnitName : null;
-                var unitValue = data.d !== null ? data.d.UnitValue : null;
-                UI.setUnitFromFindstr(unitName, unitValue);
-                return null;
-            },
-            error: function (xhr, status, error) {
-                console.log(status + ' ' + error + ' ' + xhr.statusText + ' ' + xhr.responseText);
-                //alert('Error: ' + xhr.statusText + xhr.responseText);
-                return null;
-            }
-        });
-    };
-    return Recalculate;
-}());
-var UnitElement = /** @class */ (function () {
-    function UnitElement(element) {
-        this.ID = this.type = '';
-        if (element !== null) {
-            this.element = element;
-            this.ID = element.data(UnitElement.UnitTextboxAttr);
-            this.type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            this.name = element.data('unit-name');
-            this.plural = element.data('unit-plural');
-            this.symbol = element.data('unit-symbol');
-            this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
-            this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
-        }
-    }
-    Object.defineProperty(UnitElement.prototype, "value", {
-        get: function () {
-            return this.element !== null ? this.element.val() : '';
-        },
-        set: function (s) {
-            if (this.element !== null) {
-                this.element.val(s);
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    UnitElement.UnitTextboxAttr = 'unit-textbox';
-    UnitElement.UnitTypeAttr = 'unit-type';
-    UnitElement.UnitHelperGroupAttr = 'unit-helper-group';
-    return UnitElement;
-}());
 var UnitCandyUI = /** @class */ (function () {
     function UnitCandyUI() {
         this.units = new Array();
@@ -111,11 +10,11 @@ var UnitCandyUI = /** @class */ (function () {
         this.unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
         this.anyUnitTextBox = $('#any-unit');
         this.initializeUnitElements();
+        this.initializeUnitHelpers();
+        this.initializeAnyUnitTextBox();
         this.initializeCopyButtons();
         this.initializeClearButtons();
         this.initializeGotoUnitgroupButtons();
-        this.initializeAnyUnitTextBox();
-        $('#unitcandy-icon').on('click', function () { setTimeout(function () { window.location.href = location.origin + location.pathname; }, 1000); });
     }
     /** sets the unit identified by unitID to the value
         example: unitID = "NauticalMiles", value = "305.72" */
@@ -129,14 +28,14 @@ var UnitCandyUI = /** @class */ (function () {
             unit.value = unitValue;
         }
     };
-    UnitCandyUI.prototype.setUnitFromFindstr = function (unitID, unitValue) {
+    UnitCandyUI.prototype.setUnitFromSearchstr = function (unitID, unitValue) {
         var _this = this;
         if (unitID !== null) {
             var unit = this.getUnitById(unitID);
             unit.value = unitValue;
             //this.showUnitGroup(unit.type);
             this.scrollToUnitGroup(unit.type);
-            this.recalculateUnit(unit, true);
+            this.recalculateUnit(unit);
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
         }
         else {
@@ -148,6 +47,7 @@ var UnitCandyUI = /** @class */ (function () {
     UnitCandyUI.prototype.setUnitFromUri = function (uri) {
         // handle uri with parameters
         // for example: https://www.unitcandy.com?68Fahrenheit
+        var _this = this;
         var indexOfQuestionMark = uri.indexOf('?');
         if (indexOfQuestionMark < 0) {
             return;
@@ -162,29 +62,26 @@ var UnitCandyUI = /** @class */ (function () {
                 return;
             }
         }
-        recalculateUnit.findUnit(param);
+        this.appearBusy();
+        UnitCandyData.findUnit(param, function (id, v) { return _this.setUnitFromSearchstr(id, v); });
     };
-    UnitCandyUI.prototype.recalculateUnit = function (unit, forceRecalc) {
-        if (forceRecalc === void 0) { forceRecalc = false; }
-        if (forceRecalc === false) {
-            if (this.lastRecalculatedUnit !== undefined) {
-                if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
-                    return;
-                }
-            }
+    UnitCandyUI.prototype.recalculateUnit = function (unit, helper) {
+        //if (this.lastRecalculatedUnit !== undefined) {
+        //    if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
+        //        return;
+        //    }
+        //}
+        var _this = this;
+        if (helper === void 0) { helper = null; }
+        this.appearBusy();
+        this.lastRecalculatedUnit = unit;
+        this.lastRecalculatedUnit.previousValue = unit.value;
+        if (helper === null) {
+            UnitCandyData.recalculateUnits(unit, function (n, v) { return _this.setUnitToValue(n, v); });
         }
-        UI.lastRecalculatedUnit = unit;
-        UI.lastRecalculatedUnit.previousValue = unit.value;
-        recalculateUnit = new Recalculate();
-        recalculateUnit.recalculate(unit);
-    };
-    /** sets the cursor to Wait */
-    UnitCandyUI.prototype.showWaitCursor = function () {
-        document.body.style.cursor = "wait";
-    };
-    /** sets the cursor to Auto */
-    UnitCandyUI.prototype.showAutoCursor = function () {
-        document.body.style.cursor = "auto";
+        else {
+            UnitCandyData.recalculateUnitsWithHelper(unit, helper, function (n, v) { return _this.setUnitToValue(n, v); });
+        }
     };
     /** copy provided text to clipboard */
     UnitCandyUI.prototype.copyTextToClipboard = function (text) {
@@ -205,14 +102,14 @@ var UnitCandyUI = /** @class */ (function () {
         var _this = this;
         $('[data-' + UnitElement.UnitTextboxAttr + ']').each(function (index, item) {
             var unit = new UnitElement($(item));
-            unit.element.on('keypress', function (e) {
-                var key = e.keyCode || e.which;
-                if (key === 13) {
-                    var element = $(e.target);
-                    var unitToRecalculate = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                    _this.recalculateUnit(unitToRecalculate);
-                }
+            // recalculate unit when Enter key pressed
+            unit.element.on('keyup', function (e) {
+                var element = $(e.target);
+                var unit = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+                unit.value = element.val();
+                _this.recalculateUnit(unit);
             });
+            // show unit helpers when focus received
             unit.element.on('focusin', function (e) {
                 var element = $(e.target);
                 var unit = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
@@ -221,15 +118,20 @@ var UnitCandyUI = /** @class */ (function () {
                 }
                 unit.elementHelperGroup.show();
                 _this.lastUnitHelperGroup = unit.elementHelperGroup;
+                _this.lastValueOfUnit = unit.value;
             });
             _this.units.push(unit);
         });
+    };
+    UnitCandyUI.prototype.initializeUnitHelpers = function () {
+        var _this = this;
         $('[data-unit-helper-action]').on('click', function (e) {
+            _this.appearBusy();
             var element = $(e.target);
             var unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
             var unit = _this.getUnitById(unitID);
-            var helperAction = element.data('unit-helper-action');
-            recalculateUnit.recalculateWithHelperAction(unit, helperAction);
+            var helper = element.data('unit-helper-action');
+            _this.recalculateUnit(unit, helper);
         });
     };
     UnitCandyUI.prototype.initializeCopyButtons = function () {
@@ -272,11 +174,13 @@ var UnitCandyUI = /** @class */ (function () {
         });
     };
     UnitCandyUI.prototype.initializeAnyUnitTextBox = function () {
+        var _this = this;
         this.anyUnitTextBox.on('keypress', function (e) {
             var key = e.keyCode || e.which;
             if (key === 13) {
-                var findstr = $(e.target).val();
-                recalculateUnit.findUnit(findstr);
+                _this.appearBusy();
+                var searchstr = $(e.target).val();
+                UnitCandyData.findUnit(searchstr, function (id, v) { return _this.setUnitFromSearchstr(id, v); });
             }
         });
     };
@@ -295,11 +199,13 @@ var UnitCandyUI = /** @class */ (function () {
             }
         }
     };
+    /** scrolls to top of unit group */
     UnitCandyUI.prototype.scrollToUnitGroup = function (unitGroupType) {
         $('html, body').animate({
             scrollTop: $('#' + unitGroupType).offset().top - 75
         }, 'slow');
     };
+    /** returns the unit object matching the id; returns null if not found */
     UnitCandyUI.prototype.getUnitById = function (id) {
         for (var i = 0; i < this.units.length; i++) {
             if (this.units[i].ID === id) {
@@ -308,6 +214,8 @@ var UnitCandyUI = /** @class */ (function () {
         }
         return null;
     };
+    /** returns unit object that is the base unit (for length this is Meter);
+     * if there is no base unit returns the first unit */
     UnitCandyUI.prototype.getBaseUnitOrDefault = function (unitGroupType) {
         var units = this.getUnitsOfSameType(unitGroupType);
         for (var i = 0; i < units.length; i++) {
@@ -328,14 +236,20 @@ var UnitCandyUI = /** @class */ (function () {
         }
         return unitsOfSameType;
     };
+    UnitCandyUI.prototype.appearBusy = function (duration) {
+        if (duration === void 0) { duration = 500; }
+        document.body.style.cursor = "wait";
+        setTimeout(function () { return document.body.style.cursor = "auto"; }, duration);
+    };
     return UnitCandyUI;
 }());
 $(document).ready(function () {
     // register popovers
     $('[data-toggle="popover"]').popover();
-    recalculateUnit = new Recalculate();
-    UI = new UnitCandyUI();
     // in case uri has params
-    UI.setUnitFromUri(location.href);
+    var ucui = new UnitCandyUI();
+    ucui.setUnitFromUri(location.href);
+    // if icon clicked, reload the page
+    $('#unitcandy-icon').on('click', function () { setTimeout(function () { window.location.href = location.origin + location.pathname; }, 1000); });
 });
 //# sourceMappingURL=unitcandy.js.map

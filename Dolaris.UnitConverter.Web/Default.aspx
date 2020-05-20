@@ -418,6 +418,8 @@
     <script src="assets/js/components/hs.go-to.js"></script>
 
     <!-- JS Customization -->
+    <script src="scripts/unitcandy.data.js"></script>
+    <script src="scripts/unitcandy.unitelement.js"></script>
     <script src="scripts/unitcandy.js"></script>
 
     <!-- JS Plugins Init. -->

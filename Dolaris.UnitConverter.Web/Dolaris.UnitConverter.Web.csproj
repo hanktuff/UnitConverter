@@ -527,7 +527,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="scripts\typings\jqueryui\jqueryui.d.ts" />
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="scripts\unitcandy.data.ts" />
     <TypeScriptCompile Include="scripts\unitcandy.ts" />
+    <TypeScriptCompile Include="scripts\unitcandy.unitelement.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
