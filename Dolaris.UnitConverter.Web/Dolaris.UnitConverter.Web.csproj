@@ -529,6 +529,7 @@
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\unitcandy.data.ts" />
     <TypeScriptCompile Include="scripts\unitcandy.ts" />
+    <TypeScriptCompile Include="scripts\unitcandy.UI.ts" />
     <TypeScriptCompile Include="scripts\unitcandy.unitelement.ts" />
   </ItemGroup>
   <ItemGroup>

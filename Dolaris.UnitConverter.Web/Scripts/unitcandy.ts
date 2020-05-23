@@ -3,349 +3,258 @@
 
 
 
-class UnitCandyUI {
+//class UnitCandyUI {
 
-    public constructor() {
+//    public constructor() {
 
-        this.initializeUnitElements();
-        this.initializeUnitHelpers();
-        this.initializeAnyUnitTextBox();
+//        this.initializeUnitElements();
+//        this.initializeUnitHelpers();
+//        this.initializeAnyUnitTextBox();
 
-        this.initializeCopyButtons();
-        this.initializeClearButtons();
+//        this.initializeCopyButtons();
+//        this.initializeClearButtons();
 
-        this.initializeGotoUnitgroupButtons();
-    }
+//        this.initializeGotoUnitgroupButtons();
+//    }
 
 
-    public units: Array<UnitElement> = new Array<UnitElement>();
 
-    /** sets the unit identified by unitID to the value 
-        example: unitID = "NauticalMiles", value = "305.72" */
-    public setUnitToValue(unitID: string, unitValue: string): void {
 
-        const unit = this.getUnitById(unitID);
+//    public setUnitFromSearchstr(unitID: string, unitValue: string): void {
 
-        if (this.lastRecalculatedUnit === undefined || unit.ID !== this.lastRecalculatedUnit.ID) {
+//        if (unitID !== null) {
 
-            unit.value = '';
-            setTimeout(() => unit.value = unitValue, Math.random() * 500);
+//            const unit = this.getUnitById(unitID);
 
-        } else {
-            unit.value = unitValue;
-        }
-    }
+//            unit.value = unitValue;
+//            //this.showUnitGroup(unit.type);
+//            this.scrollToUnitGroup(unit.type);
+//            this.recalculateUnit(unit);
 
-    public setUnitFromSearchstr(unitID: string, unitValue: string): void {
+//            this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
 
-        if (unitID !== null) {
+//        } else {
 
-            const unit = this.getUnitById(unitID);
+//            this.anyUnitTextBox.val('');
+//            this.anyUnitTextBox.popover('show');
+//            setTimeout(() => this.anyUnitTextBox.popover('hide'), 3000);
+//        }
+//    }
 
-            unit.value = unitValue;
-            //this.showUnitGroup(unit.type);
-            this.scrollToUnitGroup(unit.type);
-            this.recalculateUnit(unit);
+//    public recalculateUnit(unit: UnitElement, helper: string = null): void {
 
-            this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
+//        //if (this.lastRecalculatedUnit !== undefined) {
+//        //    if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
+//        //        return;
+//        //    }
+//        //}
 
-        } else {
+//        this.appearBusy();
 
-            this.anyUnitTextBox.val('');
-            this.anyUnitTextBox.popover('show');
-            setTimeout(() => this.anyUnitTextBox.popover('hide'), 3000);
-        }
-    }
+//        this.lastRecalculatedUnit = unit;
+//        this.lastRecalculatedUnit.previousValue = unit.value;
 
-    public setUnitFromUri(uri: string): void {
+//        if (helper === null) {
+//            UnitCandyData.recalculateUnits(unit, (n, v) => this.setUnitToValue(n, v));
 
-        // handle uri with parameters
-        // for example: https://www.unitcandy.com?68Fahrenheit
+//        } else {
+//            UnitCandyData.recalculateUnitsWithHelper(unit, helper, (n, v) => this.setUnitToValue(n, v));
+//        }
+//    }
 
-        const indexOfQuestionMark = uri.indexOf('?');
+//    /** copy provided text to clipboard */
+//    public copyTextToClipboard(text: string): void {
 
-        if (indexOfQuestionMark < 0) {
-            return;
-        }
+//        const textarea = document.createElement("textarea");
 
-        const param = location.href.substring(indexOfQuestionMark + 1);
+//        try {
+//            document.activeElement.appendChild(textarea);
 
-        for (let i = 0; i < this.units.length; i++) {
+//            textarea.value = text;
+//            textarea.textContent = text;
+//            textarea.select();
 
-            const unitGroupType = this.units[i].type;
+//            document.execCommand("copy");
 
-            if (unitGroupType.toLowerCase() === param.toLowerCase()) {
+//            textarea.parentElement.removeChild(textarea);
 
-                //this.showUnitGroup(unitGroupType);
-                this.scrollToUnitGroup(unitGroupType);
-                this.getBaseUnitOrDefault(unitGroupType).element.focus();
-                return;
-            }
-        }
+//        } catch (e) {
+//            textarea.parentElement.removeChild(textarea);
+//        }
+//    }
 
-        this.appearBusy();
 
-        UnitCandyData.findUnit(param, (id, v) => this.setUnitFromSearchstr(id, v));
-    }
+//    protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
+//    protected copyButtons = $('[data-button-copy]');
+//    protected embedButtons = $('[data-button-embed]');
+//    protected clearButtons = $('[data-button-clear]');
+//    protected unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
+//    protected anyUnitTextBox = $('#any-unit');
 
-    public recalculateUnit(unit: UnitElement, helper: string = null): void {
+//    protected initializeUnitElements(): void {
 
-        //if (this.lastRecalculatedUnit !== undefined) {
-        //    if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
-        //        return;
-        //    }
-        //}
+//        $('[data-' + UnitElement.UnitTextboxAttr + ']').each((index, item) => {
 
-        this.appearBusy();
+//            const unit = new UnitElement($(item));
 
-        this.lastRecalculatedUnit = unit;
-        this.lastRecalculatedUnit.previousValue = unit.value;
+//            // recalculate unit when Enter key pressed
 
-        if (helper === null) {
-            UnitCandyData.recalculateUnits(unit, (n, v) => this.setUnitToValue(n, v));
+//            unit.element.on('keyup',
+//                (e) => {
 
-        } else {
-            UnitCandyData.recalculateUnitsWithHelper(unit, helper, (n, v) => this.setUnitToValue(n, v));
-        }
-    }
+//                    const element = $(e.target);
+//                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-    /** copy provided text to clipboard */
-    public copyTextToClipboard(text: string): void {
+//                    unit.value = element.val();
 
-        const textarea = document.createElement("textarea");
+//                    if (isNaN(Number(unit.value)) === false) {
+//                        this.recalculateUnit(unit);
+//                    }
+//                });
 
-        try {
-            document.activeElement.appendChild(textarea);
+//            // show unit helpers when focus received
 
-            textarea.value = text;
-            textarea.textContent = text;
-            textarea.select();
+//            unit.element.on('focusin',
+//                (e) => {
 
-            document.execCommand("copy");
+//                    const element = $(e.target);
+//                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
 
-            textarea.parentElement.removeChild(textarea);
+//                    if (this.lastUnitHelperGroup !== undefined) {
+//                        this.lastUnitHelperGroup.hide();
+//                    }
 
-        } catch (e) {
-            textarea.parentElement.removeChild(textarea);
-        }
-    }
+//                    unit.elementHelperGroup.show();
+//                    this.lastUnitHelperGroup = unit.elementHelperGroup;
 
+//                    this.lastValueOfUnit = unit.value;
+//                });
 
-    protected buttonGotoUnitGroup = $('[data-goto-unitgroup]');
-    protected copyButtons = $('[data-button-copy]');
-    protected embedButtons = $('[data-button-embed]');
-    protected clearButtons = $('[data-button-clear]');
-    protected unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
-    protected anyUnitTextBox = $('#any-unit');
+//            this.units.push(unit);
+//        });
+//    }
 
-    public lastRecalculatedUnit: UnitElement;
-    public lastUnitHelperGroup: JQuery;
-    public lastValueOfUnit: string;
+//    protected initializeUnitHelpers(): void {
 
-    protected initializeUnitElements(): void {
+//        $('[data-unit-helper-action]').on('click',
+//            (e) => {
 
-        $('[data-' + UnitElement.UnitTextboxAttr + ']').each((index, item) => {
+//                this.appearBusy();
 
-            const unit = new UnitElement($(item));
+//                const element = $(e.target);
+//                const unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
+//                const unit = this.getUnitById(unitID);
 
-            // recalculate unit when Enter key pressed
+//                const helper = element.data('unit-helper-action');
 
-            unit.element.on('keyup',
-                (e) => {
+//                this.recalculateUnit(unit, helper);
+//            });
+//    }
 
-                    const element = $(e.target);
-                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+//    protected initializeGotoUnitgroupButtons(): void {
 
-                    unit.value = element.val();
+//        this.buttonGotoUnitGroup.on('click',
+//            (e) => {
 
-                    this.recalculateUnit(unit);
-                });
+//                const unitgroupType = $(e.target).data('goto-unitgroup');
+//                this.scrollToUnitGroup(unitgroupType);
+//            });
+//    }
 
-            // show unit helpers when focus received
+//    protected initializeAnyUnitTextBox(): void {
 
-            unit.element.on('focusin',
-                (e) => {
+//        this.anyUnitTextBox.on('keypress',
+//            (e) => {
 
-                    const element = $(e.target);
-                    const unit = this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
+//                const key = e.keyCode || e.which;
 
-                    if (this.lastUnitHelperGroup !== undefined) {
-                        this.lastUnitHelperGroup.hide();
-                    }
+//                if (key === 13) {
 
-                    unit.elementHelperGroup.show();
-                    this.lastUnitHelperGroup = unit.elementHelperGroup;
+//                    this.appearBusy();
 
-                    this.lastValueOfUnit = unit.value;
-                });
+//                    const searchstr = $(e.target).val();
+//                    UnitCandyData.findUnit(searchstr, (id, v) => this.setUnitFromSearchstr(id, v));
+//                }
+//            });
+//    }
 
-            this.units.push(unit);
-        });
-    }
+//    /** shows only the unit group of the provided type and hides all others;
+//     * unitGroupType = "DigitalStorage"
+//     * Null hides all; "all" shows all */
+//    protected showUnitGroup(unitGroupType: string): void {
 
-    protected initializeUnitHelpers(): void {
+//        const unitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
 
-        $('[data-unit-helper-action]').on('click',
-            (e) => {
+//        for (let i = 0; i < unitGroups.length; i++) {
 
-                this.appearBusy();
+//            if (($(unitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType ?? '') || unitGroupType === 'all') {
+//                $(unitGroups[i]).fadeIn(500);
 
-                const element = $(e.target);
-                const unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
-                const unit = this.getUnitById(unitID);
+//            } else {
+//                $(unitGroups[i]).hide();
+//            }
+//        }
+//    }
 
-                const helper = element.data('unit-helper-action');
+//    /** scrolls to top of unit group */
+//    protected scrollToUnitGroup(unitGroupType: string): void {
 
-                this.recalculateUnit(unit, helper);
-            });
-    }
+//        $('html, body').animate({
+//            scrollTop: $('#' + unitGroupType).offset().top - 75
+//        }, 'slow');
+//    }
 
-    protected initializeCopyButtons(): void {
+//    /** returns the unit object matching the id; returns null if not found */
+//    protected getUnitById(id: string): UnitElement {
 
-        this.copyButtons.click((e) => {
+//        for (let i = 0; i < this.units.length; i++) {
 
-            const element = $(e.target);
-            const type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            const unitsOfSameType = this.getUnitsOfSameType(type);
+//            if (this.units[i].ID === id) {
+//                return this.units[i];
+//            }
+//        }
 
-            let text: string = type + '\n';
+//        return null;
+//    }
 
-            for (let i = 0; i < unitsOfSameType.length; i++) {
+//    /** returns unit object that is the base unit (for length this is Meter); 
+//     * if there is no base unit returns the first unit */
+//    protected getBaseUnitOrDefault(unitGroupType: string): UnitElement {
 
-                text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
-            }
+//        const units = this.getUnitsOfSameType(unitGroupType);
 
-            if (this.lastRecalculatedUnit !== undefined) {
-                text += location.origin + location.pathname + '?' + this.lastRecalculatedUnit.value + this.lastRecalculatedUnit.symbol;
-            }
+//        for (let i = 0; i < units.length; i++) {
 
-            this.copyTextToClipboard(text);
+//            if (units[i].isBaseUnit === true) {
+//                return units[i];
+//            }
+//        }
 
-            this.lastRecalculatedUnit.element.focus();
-        });
-    }
+//        return units[0];
+//    }
 
-    protected initializeClearButtons(): void {
+//    /** returns all units that are of the same type as the provided unit
+//        for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
+//    protected getUnitsOfSameType(type: string): Array<UnitElement> {
 
-        this.clearButtons.click((e) => {
+//        const unitsOfSameType = new Array<UnitElement>();
 
-            const element = $(e.target);
-            const type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            const unitsOfSameType = this.getUnitsOfSameType(type);
+//        for (let i = 0; i < this.units.length; i++) {
 
-            for (let i = 0; i < unitsOfSameType.length; i++) {
+//            if (this.units[i].type === type) {
+//                unitsOfSameType.push(this.units[i]);
+//            }
+//        }
 
-                setTimeout(() => unitsOfSameType[i].element.attr("disabled", "disabled"), Math.random() * 300);
-                setTimeout(() => unitsOfSameType[i].value = '', Math.random() * 300 + 300);
-                setTimeout(() => unitsOfSameType[i].element.removeAttr('disabled'), Math.random() * 300 + 600);
-            }
-        });
-    }
+//        return unitsOfSameType;
+//    }
 
-    protected initializeGotoUnitgroupButtons(): void {
+//    protected appearBusy(duration = 500): void {
 
-        this.buttonGotoUnitGroup.on('click',
-            (e) => {
-
-                const unitgroupType = $(e.target).data('goto-unitgroup');
-                this.scrollToUnitGroup(unitgroupType);
-            });
-    }
-
-    protected initializeAnyUnitTextBox(): void {
-
-        this.anyUnitTextBox.on('keypress',
-            (e) => {
-
-                const key = e.keyCode || e.which;
-
-                if (key === 13) {
-
-                    this.appearBusy();
-
-                    const searchstr = $(e.target).val();
-                    UnitCandyData.findUnit(searchstr, (id, v) => this.setUnitFromSearchstr(id, v));
-                }
-            });
-    }
-
-    /** shows only the unit group of the provided type and hides all others;
-     * unitGroupType = "DigitalStorage"
-     * Null hides all; "all" shows all */
-    protected showUnitGroup(unitGroupType: string): void {
-
-        const unitGroups = $('[data-' + UnitElement.UnitTypeAttr + ']');
-
-        for (let i = 0; i < unitGroups.length; i++) {
-
-            if (($(unitGroups[i]).data(UnitElement.UnitTypeAttr) === unitGroupType ?? '') || unitGroupType === 'all') {
-                $(unitGroups[i]).fadeIn(500);
-
-            } else {
-                $(unitGroups[i]).hide();
-            }
-        }
-    }
-
-    /** scrolls to top of unit group */
-    protected scrollToUnitGroup(unitGroupType: string): void {
-
-        $('html, body').animate({
-            scrollTop: $('#' + unitGroupType).offset().top - 75
-        }, 'slow');
-    }
-
-    /** returns the unit object matching the id; returns null if not found */
-    protected getUnitById(id: string): UnitElement {
-
-        for (let i = 0; i < this.units.length; i++) {
-
-            if (this.units[i].ID === id) {
-                return this.units[i];
-            }
-        }
-
-        return null;
-    }
-
-    /** returns unit object that is the base unit (for length this is Meter); 
-     * if there is no base unit returns the first unit */
-    protected getBaseUnitOrDefault(unitGroupType: string): UnitElement {
-
-        const units = this.getUnitsOfSameType(unitGroupType);
-
-        for (let i = 0; i < units.length; i++) {
-
-            if (units[i].isBaseUnit === true) {
-                return units[i];
-            }
-        }
-
-        return units[0];
-    }
-
-    /** returns all units that are of the same type as the provided unit
-        for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
-    protected getUnitsOfSameType(type: string): Array<UnitElement> {
-
-        const unitsOfSameType = new Array<UnitElement>();
-
-        for (let i = 0; i < this.units.length; i++) {
-
-            if (this.units[i].type === type) {
-                unitsOfSameType.push(this.units[i]);
-            }
-        }
-
-        return unitsOfSameType;
-    }
-
-    protected appearBusy(duration = 500): void {
-
-        document.body.style.cursor = "wait";
-        setTimeout(() => document.body.style.cursor = "auto", duration);
-    }
-}
+//        document.body.style.cursor = "wait";
+//        setTimeout(() => document.body.style.cursor = "auto", duration);
+//    }
+//}
 
 
 
