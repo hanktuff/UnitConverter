@@ -9,7 +9,6 @@ var UnitCandyUI = /** @class */ (function () {
         this.clearButtons = $('[data-button-clear]');
         this.unitHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + ']');
         this.anyUnitTextBox = $('#any-unit');
-        this.lastEditedUnit = new UnitElement($('[data-' + UnitElement.UnitTextboxAttr + ']').first());
         this.initializeUnitElements();
         this.initializeUnitHelpers();
         this.initializeAnyUnitTextBox();
@@ -21,12 +20,12 @@ var UnitCandyUI = /** @class */ (function () {
         example: unitID = "NauticalMiles", value = "305.72" */
     UnitCandyUI.prototype.setUnitToValue = function (unitID, unitValue) {
         var unit = this.getUnitById(unitID);
-        if (this.lastEditedUnit === undefined || unit.ID !== this.lastEditedUnit.ID) {
+        if (isNaN(Number(unit.value)) || isNaN(Number(unitValue))) {
+            unit.value = unitValue;
+        }
+        else if (unit.value !== unitValue) {
             unit.value = '';
             setTimeout(function () { return unit.value = unitValue; }, Math.random() * 500);
-        }
-        else {
-            //unit.value = unitValue;
         }
     };
     UnitCandyUI.prototype.setUnitFromSearchstr = function (unitID, unitValue) {
@@ -36,7 +35,7 @@ var UnitCandyUI = /** @class */ (function () {
             unit.value = unitValue;
             //this.showUnitGroup(unit.type);
             this.scrollToUnitGroup(unit.type);
-            this.recalculateUnit(unit);
+            this.recalculateUnits(unit);
             this.anyUnitTextBox.val(unit.value + ' ' + unit.symbol);
         }
         else {
@@ -66,17 +65,10 @@ var UnitCandyUI = /** @class */ (function () {
         this.appearBusy();
         UnitCandyData.findUnit(param, function (id, v) { return _this.setUnitFromSearchstr(id, v); });
     };
-    UnitCandyUI.prototype.recalculateUnit = function (unit, helper) {
-        //if (this.lastRecalculatedUnit !== undefined) {
-        //    if (unit.ID === this.lastRecalculatedUnit.ID && unit.value === this.lastRecalculatedUnit.previousValue) {
-        //        return;
-        //    }
-        //}
+    UnitCandyUI.prototype.recalculateUnits = function (unit, helper) {
         var _this = this;
         if (helper === void 0) { helper = null; }
         this.appearBusy();
-        this.lastEditedUnit = unit;
-        this.lastEditedUnit.previousValue = unit.value;
         if (helper === null) {
             UnitCandyData.recalculateUnits(unit, function (n, v) { return _this.setUnitToValue(n, v); });
         }
@@ -103,32 +95,16 @@ var UnitCandyUI = /** @class */ (function () {
         var _this = this;
         $('[data-' + UnitElement.UnitTextboxAttr + ']').each(function (index, item) {
             var unit = new UnitElement($(item));
-            // recalculate unit when Enter key pressed
-            unit.element.on('keyup', function (e) {
-                try {
-                    var element = $(e.target);
-                    var unit_1 = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                    unit_1.value = element.val();
-                    if (isNaN(Number(unit_1.value))) {
-                        return;
-                    }
-                    //this.lastEditedUnit = unit;
-                    _this.recalculateUnit(unit_1);
+            unit.onValueChanged(function (unit) {
+                if (isNaN(Number(unit.value))) {
+                    return;
                 }
-                catch (e) {
-                    var x = 1;
-                }
+                _this.lastEditedUnit = unit;
+                _this.recalculateUnits(unit);
             });
-            // show unit helpers when focus received
-            unit.element.on('focusin', function (e) {
-                var element = $(e.target);
-                var unit = _this.getUnitById(element.data(UnitElement.UnitTextboxAttr));
-                if (_this.lastUnitHelperGroup !== undefined) {
-                    _this.lastUnitHelperGroup.hide();
-                }
+            unit.onGetFocus(function (unit) {
+                _this.units.forEach(function (item) { return item.elementHelperGroup.hide(); });
                 unit.elementHelperGroup.show();
-                _this.lastUnitHelperGroup = unit.elementHelperGroup;
-                _this.lastValueOfUnit = unit.value;
             });
             _this.units.push(unit);
         });
@@ -141,7 +117,7 @@ var UnitCandyUI = /** @class */ (function () {
             var unitID = element.parents('[data-' + UnitElement.UnitHelperGroupAttr + ']').data(UnitElement.UnitHelperGroupAttr);
             var unit = _this.getUnitById(unitID);
             var helper = element.data('unit-helper-action');
-            _this.recalculateUnit(unit, helper);
+            _this.recalculateUnits(unit, helper);
         });
     };
     UnitCandyUI.prototype.initializeCopyButtons = function () {
@@ -149,7 +125,7 @@ var UnitCandyUI = /** @class */ (function () {
         this.copyButtons.click(function (e) {
             var element = $(e.target);
             var type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            var unitsOfSameType = _this.getUnitsOfSameType(type);
+            var unitsOfSameType = _this.getUnitsByType(type);
             var text = type + '\n';
             for (var i = 0; i < unitsOfSameType.length; i++) {
                 text += unitsOfSameType[i].plural + ': ' + unitsOfSameType[i].value + ' ' + unitsOfSameType[i].symbol + '\n';
@@ -167,7 +143,7 @@ var UnitCandyUI = /** @class */ (function () {
             var _a;
             var element = $(e.target);
             var type = element.parents('[data-' + UnitElement.UnitTypeAttr + ']').data(UnitElement.UnitTypeAttr);
-            var unitsOfSameType = _this.getUnitsOfSameType(type);
+            var unitsOfSameType = _this.getUnitsByType(type);
             var _loop_1 = function (i) {
                 setTimeout(function () { return unitsOfSameType[i].element.attr("disabled", "disabled"); }, Math.random() * 300);
                 setTimeout(function () { return unitsOfSameType[i].value = ''; }, Math.random() * 300 + 300);
@@ -176,7 +152,9 @@ var UnitCandyUI = /** @class */ (function () {
             for (var i = 0; i < unitsOfSameType.length; i++) {
                 _loop_1(i);
             }
-            (_a = _this.getLastEditedUnit()) === null || _a === void 0 ? void 0 : _a.element.focus();
+            if (((_a = _this.lastEditedUnit) === null || _a === void 0 ? void 0 : _a.type) === type) {
+                setTimeout(function () { var _a, _b; return (_b = (_a = _this.lastEditedUnit) === null || _a === void 0 ? void 0 : _a.element) === null || _b === void 0 ? void 0 : _b.focus(); }, 1000);
+            }
         });
     };
     UnitCandyUI.prototype.initializeGotoUnitgroupButtons = function () {
@@ -229,8 +207,8 @@ var UnitCandyUI = /** @class */ (function () {
     };
     /** returns unit object that is the base unit (for length this is Meter);
      * if there is no base unit returns the first unit */
-    UnitCandyUI.prototype.getBaseUnitOrDefault = function (unitGroupType) {
-        var units = this.getUnitsOfSameType(unitGroupType);
+    UnitCandyUI.prototype.getBaseUnitOrDefault = function (type) {
+        var units = this.getUnitsByType(type);
         for (var i = 0; i < units.length; i++) {
             if (units[i].isBaseUnit === true) {
                 return units[i];
@@ -240,7 +218,7 @@ var UnitCandyUI = /** @class */ (function () {
     };
     /** returns all units that are of the same type as the provided unit
         for example: "Fahrenheit" is a Temperature. The function returns "Fahrenheit", "Celsius", and "Kelvin". */
-    UnitCandyUI.prototype.getUnitsOfSameType = function (type) {
+    UnitCandyUI.prototype.getUnitsByType = function (type) {
         var unitsOfSameType = new Array();
         for (var i = 0; i < this.units.length; i++) {
             if (this.units[i].type === type) {
@@ -254,12 +232,6 @@ var UnitCandyUI = /** @class */ (function () {
         document.body.style.cursor = "wait";
         setTimeout(function () { return document.body.style.cursor = "auto"; }, duration);
     };
-    UnitCandyUI.prototype.setLastEditedUnit = function (unit) {
-        this.lastEditedUnit = unit;
-    };
-    UnitCandyUI.prototype.getLastEditedUnit = function () {
-        return this.lastEditedUnit;
-    };
     return UnitCandyUI;
 }());
-//# sourceMappingURL=unitcandy.UI.js.map
+//# sourceMappingURL=unitcandy.ui.js.map

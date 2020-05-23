@@ -20,7 +20,32 @@ class UnitElement {
             this.symbol = element.data('unit-symbol');
             this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
             this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
+
+            this.element.on('keyup', () => {
+
+                if (this.valueChangedHandler !== null) {
+                    this.valueChangedHandler(this);
+                }
+            });
+
+            this.element.on('focus', () => {
+
+                if (this.getFocusHandler !== null) {
+                    this.getFocusHandler(this);
+                }
+            });
         }
+    }
+
+
+    private valueChangedHandler: (unit: UnitElement) => void = null;
+    public onValueChanged(handler: (unit: UnitElement) => void): void {
+        this.valueChangedHandler = handler;
+    }
+
+    private getFocusHandler: (unit: UnitElement) => void = null;
+    public onGetFocus(handler: (unit: UnitElement) => void): void {
+        this.getFocusHandler = handler;
     }
 
 
@@ -50,6 +75,8 @@ class UnitElement {
     }
 
     public set value(s: string) {
+
+        this.previousValue = this.value;
 
         if (this.element !== null) {
             this.element.val(s);
