@@ -88,7 +88,7 @@
     </script>
 
     <!-- Navigation -->
-    <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light"><div data-test="debug"></div>
+    <nav id="navigation" class="navbar navbar-expand-sm sticky-top navbar-light bg-light"><div data-test="debug2"></div>
         <div class="container">
 
             <img id="unitcandy-icon" src="images/UnitcandyIcon32.png" class="img-fluid mr-4" />
