@@ -30,7 +30,9 @@ class UnitCandyData {
 
                 $.each(data.d,
                     (index, result) => {
-                        reportUpdate(result.UnitName, result.UnitValue);
+                        if (result.UnitName !== unit.name) {
+                            reportUpdate(result.UnitName, result.UnitValue);
+                        }
                     });
 
                 return null;

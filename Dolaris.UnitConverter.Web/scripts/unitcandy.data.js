@@ -22,7 +22,9 @@ var UnitCandyData = /** @class */ (function () {
             beforeSend: function () { },
             success: function (data, status, xhr) {
                 $.each(data.d, function (index, result) {
-                    reportUpdate(result.UnitName, result.UnitValue);
+                    if (result.UnitName !== unit.name) {
+                        reportUpdate(result.UnitName, result.UnitValue);
+                    }
                 });
                 return null;
             },
