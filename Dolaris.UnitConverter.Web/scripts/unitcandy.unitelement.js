@@ -44,7 +44,7 @@ var UnitElement = /** @class */ (function () {
                 this.element.val(s);
             }
         },
-        enumerable: true,
+        enumerable: false,
         configurable: true
     });
     UnitElement.UnitTextboxAttr = 'unit-textbox';
