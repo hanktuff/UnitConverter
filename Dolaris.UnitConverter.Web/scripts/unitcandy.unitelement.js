@@ -16,9 +16,16 @@ var UnitElement = /** @class */ (function () {
             this.symbol = element.data('unit-symbol');
             this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
             this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
-            this.element.on('keyup', function () {
-                if (_this.valueChangedHandler !== null) {
-                    _this.valueChangedHandler(_this);
+            //this.element.on('keyup', () => {
+            //    if (this.valueChangedHandler !== null) {
+            //        this.valueChangedHandler(this);
+            //    }
+            //});
+            this.element.keypress(function (e) {
+                if (e.keyCode === 13) {
+                    if (_this.valueChangedHandler !== null) {
+                        _this.valueChangedHandler(_this);
+                    }
                 }
             });
             this.element.on('focus', function () {

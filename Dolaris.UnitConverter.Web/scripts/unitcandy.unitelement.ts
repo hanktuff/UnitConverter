@@ -21,10 +21,20 @@ class UnitElement {
             this.isBaseUnit = element.data('unit-baseunit') === 'True' ? true : false;
             this.elementHelperGroup = $('[data-' + UnitElement.UnitHelperGroupAttr + '="' + this.ID + '"]');
 
-            this.element.on('keyup', () => {
+            //this.element.on('keyup', () => {
 
-                if (this.valueChangedHandler !== null) {
-                    this.valueChangedHandler(this);
+            //    if (this.valueChangedHandler !== null) {
+            //        this.valueChangedHandler(this);
+            //    }
+            //});
+
+            this.element.keypress((e) => {
+
+                if (e.keyCode === 13) {
+
+                    if (this.valueChangedHandler !== null) {
+                        this.valueChangedHandler(this);
+                    }
                 }
             });
 
