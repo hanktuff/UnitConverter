@@ -1,4 +1,4 @@
-﻿cr<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Dolaris.UnitConverter.Web.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Dolaris.UnitConverter.Web.Default" %>
 
 <%@ Register Src="~/UnitGroupControl.ascx" TagPrefix="uc1" TagName="UnitGroupControl" %>
 
