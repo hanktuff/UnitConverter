@@ -14,7 +14,7 @@ var UnitCandyData = /** @class */ (function () {
      */
     UnitCandyData.recalculateUnits = function (unit, reportUpdate) {
         $.ajax({
-            url: 'UnitCandyService.svc/Recalculate',
+            url: 'UnitCandyService.svc/RecalculateString',
             async: true,
             method: 'GET',
             data: { unitName: unit.ID, unitValue: unit.value },

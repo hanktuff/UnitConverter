@@ -56,5 +56,109 @@ namespace Dolaris.UnitConverter.Test {
                 throw new Exception("There should be at least 2 units starting with this string");
             }
         }
+
+
+
+        [TestMethod]
+        public void SplitUnitStringBasicTests() {
+
+            var unitstr = new UnitString();
+
+            var elements = new List<UnitString.Element>();
+
+            elements = unitstr.Split(null)?.ToList();
+            Assert.AreEqual(0, elements.Count());
+
+            elements = unitstr.Split("")?.ToList();
+            Assert.AreEqual(0, elements.Count());
+
+            elements = unitstr.Split("    ")?.ToList();
+            Assert.AreEqual(0, elements.Count());
+        }
+
+        [TestMethod]
+        public void SplitUnitStringOnlyTextTest() {
+
+            var unitstr = new UnitString();
+            var elements = new List<UnitString.Element>();
+
+            elements = unitstr.Split("a")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsFalse(elements.First().IsNumeric);
+
+            elements = unitstr.Split("  abc     ")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsFalse(elements.First().IsNumeric);
+
+            elements = unitstr.Split(" a   b  c  ")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsFalse(elements.First().IsNumeric);
+
+            elements = unitstr.Split("abc   def")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsFalse(elements.First().IsNumeric);
+
+            elements = unitstr.Split("-a.e+x")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsFalse(elements.First().IsNumeric);
+        }
+
+        [TestMethod]
+        public void SplitUnitStringBasicNumbersTest() {
+
+            var unitstr = new UnitString();
+            var elements = new List<UnitString.Element>();
+
+            elements = unitstr.Split("123")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsTrue(elements.First().IsNumeric);
+
+            elements = unitstr.Split("-4.56")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsTrue(elements.First().IsNumeric);
+
+            elements = unitstr.Split("2e+3")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsTrue(elements.First().IsNumeric);
+
+            elements = unitstr.Split(".12345")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+
+            elements = unitstr.Split("-.5e+2")?.ToList();
+            Assert.AreEqual(1, elements.Count());
+            Assert.IsTrue(elements.First().IsNumeric);
+        }
+
+        [TestMethod]
+        public void SplitUnitStringComplexTest() {
+
+            var unitstr = new UnitString();
+            var elements = new List<UnitString.Element>();
+
+            elements = unitstr.Split("123 45 6")?.ToList();
+            Assert.AreEqual(5, elements.Count());
+            Assert.AreEqual(2, elements.Count(p => p.IsNumeric == false));
+            Assert.AreEqual(3, elements.Count(p => p.IsNumeric == true));
+
+            elements = unitstr.Split("abcd-4.56")?.ToList();
+            Assert.AreEqual(2, elements.Count());
+            Assert.AreEqual(1, elements.Count(p => p.IsNumeric == false));
+            Assert.AreEqual(1, elements.Count(p => p.IsNumeric == true));
+
+            elements = unitstr.Split("2e+3qwerty")?.ToList();
+            Assert.AreEqual(2, elements.Count());
+            Assert.AreEqual(1, elements.Count(p => p.IsNumeric == false));
+            Assert.AreEqual(1, elements.Count(p => p.IsNumeric == true));
+
+            elements = unitstr.Split(".12345;'+{}(-*-0.5e+1")?.ToList();
+            Assert.AreEqual(3, elements.Count());
+            Assert.AreEqual(2, elements.Count(p => p.IsNumeric == true));
+            Assert.AreEqual(1, elements.Count(p => p.IsNumeric == false));
+
+            elements = unitstr.Split("a33bc5.4 qwerty-7e-2xyz")?.ToList();
+            Assert.AreEqual(7, elements.Count());
+            Assert.AreEqual(3, elements.Count(p => p.IsNumeric == true));
+            Assert.AreEqual(4, elements.Count(p => p.IsNumeric == false));
+        }
     }
 }

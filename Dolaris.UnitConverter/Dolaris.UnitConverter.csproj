@@ -52,6 +52,7 @@
     <Compile Include="UnitExtensions.cs" />
     <Compile Include="UnitID.cs" />
     <Compile Include="UnitsManager.cs" />
+    <Compile Include="UnitString.cs" />
     <Compile Include="UnitType.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

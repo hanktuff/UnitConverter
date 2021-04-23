@@ -96,9 +96,9 @@ var UnitCandyUI = /** @class */ (function () {
         $('[data-' + UnitElement.UnitTextboxAttr + ']').each(function (index, item) {
             var unit = new UnitElement($(item));
             unit.onValueChanged(function (unit) {
-                if (isNaN(Number(unit.value))) {
-                    return;
-                }
+                //if (isNaN(Number(unit.value))) {
+                //    return;
+                //}
                 _this.lastEditedUnit = unit;
                 _this.recalculateUnits(unit);
             });

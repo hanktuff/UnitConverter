@@ -62,7 +62,7 @@ namespace Dolaris.UnitConverter.Web {
         //[WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, ResponseFormat = WebMessageFormat.Json)]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
         public List<FormattedUnit> Recalculate(string unitName, string unitValue) {
-            //System.Threading.Thread.Sleep(3000);
+
             var result = new List<FormattedUnit>();
 
             // ensure that the unit name and unit value is okay
@@ -120,6 +120,85 @@ namespace Dolaris.UnitConverter.Web {
                 }
 
                 result.Add((FormattedUnit)(Unit)unit);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Based on the unit and a string, finds all numbers in the string and recalculates the values of all other units.
+        /// </summary>
+        /// <param name="unitName"></param>
+        /// <param name="unitValue"></param>
+        /// <returns></returns>
+        [WebGet(ResponseFormat = WebMessageFormat.Json)]
+        public List<FormattedUnit> RecalculateString(string unitName, string unitValue) {
+
+            var result = new List<FormattedUnit>();
+
+            // ensure that the unit name and unit value is okay
+
+            if (string.IsNullOrEmpty(unitName) || string.IsNullOrEmpty(unitValue)) {
+                throw new Exception("The unit name or the unit value is empty!");
+            }
+
+            UnitID? unitID = unitName.GetUnitID();
+
+            if (unitID.HasValue == false) {
+                throw new Exception(string.Format("The unit name '{0}' is unknown!", unitName));
+            }
+
+            // find the source unit and all other units of the same type
+
+            var sourceUnit = WebManager.GetUnit(unitID.Value);
+            var unitType = WebManager.GetUnit(unitID.Value).Type;
+
+            // if user entered a number, recalculate all other units
+
+            int? roundToDecimals = null;
+            sourceUnit.Magnitude = double.NaN;
+
+            var units = WebManager.GetUnits(unitType);
+            var parts = WebManager.GetStringParts(unitValue);
+
+            foreach (IUnit unit in units) {
+
+                string unitvalue = string.Empty;
+
+                foreach (var part in parts) {
+
+                    string text = part.Item1;
+                    bool isNumber = part.Item2;
+
+                    if (isNumber) {
+
+                        sourceUnit.Magnitude = double.Parse(text);
+                        roundToDecimals = sourceUnit.GetDecimalPlaces() + 4;
+
+                        var currentUnit = WebManager.Recalculate(sourceUnit).First(p => p.ID == unit.ID) as Unit;
+
+                        if (roundToDecimals.HasValue) {
+
+                            var placesBeforeDecimalPoint = currentUnit.GetPlacesBeforeDecimalPoint();
+                            if (placesBeforeDecimalPoint > 4) {
+                                roundToDecimals = placesBeforeDecimalPoint;
+                            }
+
+                            var scientific = currentUnit.ToScientificNotation(roundToDecimals.Value);
+                            currentUnit.Magnitude = scientific.ToDouble();
+                        }
+
+                        unitvalue += ((FormattedUnit)currentUnit).UnitValue;
+
+                    } else {
+                        unitvalue += text;
+                    }
+                }
+
+                FormattedUnit formattedUnit = (FormattedUnit)(Unit)unit;
+                formattedUnit.UnitValue = unitvalue;
+
+                result.Add(formattedUnit);
             }
 
             return result;

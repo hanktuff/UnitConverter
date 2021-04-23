@@ -139,9 +139,9 @@ class UnitCandyUI {
 
             unit.onValueChanged((unit) => {
 
-                if (isNaN(Number(unit.value))) {
-                    return;
-                }
+                //if (isNaN(Number(unit.value))) {
+                //    return;
+                //}
 
                 this.lastEditedUnit = unit;
                 this.recalculateUnits(unit);

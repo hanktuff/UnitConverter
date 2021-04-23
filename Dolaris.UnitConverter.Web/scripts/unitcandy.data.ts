@@ -19,7 +19,7 @@ class UnitCandyData {
     public static recalculateUnits(unit: UnitElement, reportUpdate: (unitName: string, unitValue: string) => void): void {
 
         $.ajax({
-            url: 'UnitCandyService.svc/Recalculate',
+            url: 'UnitCandyService.svc/RecalculateString',
             async: true,
             method: 'GET',
             data: { unitName: unit.ID, unitValue: unit.value },

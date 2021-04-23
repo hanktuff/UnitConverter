@@ -55,8 +55,7 @@ namespace Dolaris.UnitConverter {
             //string s2 = string.Copy(s);
 
             string s2 = string.Empty;
-            foreach (char ch in s.ToCharArray())
-            {
+            foreach (char ch in s.ToCharArray()) {
                 s2 += ch;
             }
 
@@ -118,6 +117,14 @@ namespace Dolaris.UnitConverter {
             }
 
             return null;
+        }
+
+
+        public static List<UnitString.Element> SplitIntoParts(string s) {
+
+            var unitString = new UnitString();
+
+            return unitString.Split(s).ToList();
         }
     }
 }

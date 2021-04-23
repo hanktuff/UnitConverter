@@ -41,6 +41,13 @@ namespace Dolaris.UnitConverter.Web {
                 return unitsManager.Units;
             }
         }
+        
+        public static List<Tuple<string, bool>> GetStringParts(string s) {
+
+            return UnitConverterUtility.SplitIntoParts(s)
+                    .Select(part => new Tuple<string, bool>(part.Text, part.IsNumeric))
+                    .ToList();
+        }
 
         public static IUnit GetUnit(UnitID unitID) {
 
